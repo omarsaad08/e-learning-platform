@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master programming from beginner to advanced with interactive online courses in Python, JavaScript, web development, data science, and more. Learn at your own pace with real-world projects and expert instructors.">
+    <meta name="keywords" content="learn programming, online coding courses, programming for beginners, advanced coding tutorials, Python course, JavaScript training, HTML CSS course, web development bootcamp, data science classes, machine learning tutorials, full stack development, front end development, back end programming, coding interview prep, software engineering course, mobile app development, React course, Node.js training, coding for kids, self-paced coding lessons, interactive coding platform, build real-world projects, computer science fundamentals, AI programming course, online coding certification, remote coding school, code with projects, programming mentorship, tech career training, coding challenges, algorithm tutorials, css, js, html,c++, data structure ,oop, computer ,programming,courses">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="js.js">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+    <link rel="stylesheet" href="https://use.typekit.net/[YOUR_KIT_ID].css">
+</head>
+<body>
+
+  
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">MyCourses</h1>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="#">Articles</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+  
+  </nav>
+
+  <div class="page">
+   
+     <!-- Filter Toggle Button (Visible on small screens) -->
+     <button class="filter-toggle" id="filterButton">Filters</button>
+
+     <!-- Sidebar Filters -->
+     <aside class="sidebar" id="sidebar">
+         <h2>Filter Courses</h2>
+         <div class="filter-group">
+             <h4>Category</h4>
+             <label><input type="checkbox" value="web"> Web Development</label>
+             <label><input type="checkbox" value="data"> Data Science</label>
+             <label><input type="checkbox" value="ai"> AI & ML</label>
+         </div>
+         <div class="filter-group">
+             <h4>Level</h4>
+             <label><input type="checkbox" value="beginner"> Beginner</label>
+             <label><input type="checkbox" value="intermediate"> Intermediate</label>
+             <label><input type="checkbox" value="advanced"> Advanced</label>
+         </div>
+     </aside>
+  
+    <!-- Main Content -->
+    <main class="content">
+      <div class="topbar">
+        <h1>All Courses</h1>
+        <input type="text" placeholder="Search courses..." class="search-box">
+      </div>
+  
+      <div class="grid">
+        <!-- Course Card Example -->
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <div class="card" data-category="web" data-level="beginner">
+          <img src="images/html.jpg" alt="HTML Course" />
+          <h3>HTML Basics</h3>
+          <p>John Doe</p>
+          <div class="rating">⭐️⭐️⭐️⭐️☆</div>
+          <span class="tag beginner">Beginner</span>
+          <button>Enroll</button>
+        </div>
+        <!-- Repeat more cards with different categories/levels -->
+      </div>
+    </main>
+  </div>
+ 
+<script src="script.js"></script>
+</body>
+</html>
