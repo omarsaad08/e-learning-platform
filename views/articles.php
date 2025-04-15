@@ -23,9 +23,9 @@
     <div class="container">
       <h1 class="logo">MyCourses</h1>
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Courses</a></li>
-        <li><a href="#">Articles</a></li>
+        <li><a href="اhome.php">Home</a></li>
+        <li><a href="courses.php">Courses</a></li>
+        <li><a href="articles.php">Articles</a></li>
         <li><a href="#">About</a></li>
       </ul>
     </div>
