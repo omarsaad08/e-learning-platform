@@ -47,6 +47,7 @@ body {
     left: 0;
     width: 100%;
     z-index: 1000;
+    height: 70px;
 
 }
 
@@ -194,6 +195,9 @@ body {
     margin-top: 80px; /* Ensure it starts below the navbar */
     display: block; /* Visible by default on larger screens */
     transition: transform 0.3s ease-in-out;
+    height: calc(100vh - 100px);
+    position: sticky;
+    top: 80px;
 }
 
 /* Sidebar content should remain fixed */
@@ -282,7 +286,7 @@ body {
   
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
   }
   
@@ -290,7 +294,7 @@ body {
 .card {
     background-color: white;
     padding: 15px;
-    width: 260px; /* Default size for cards */
+    min-width: 280px; /* Default size for cards */
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: 0.3s;
@@ -332,7 +336,7 @@ body {
 /* Make cards even bigger on larger screens (desktop) */
 @media (min-width: 1024px) {
     .card {
-        width: 350px; /* Increase card width further on larger screens */
+        width: 300px; /* Increase card width further on larger screens */
     }
 }
 

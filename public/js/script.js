@@ -1,6 +1,7 @@
 // Get the filter toggle button and sidebar
 const filterButton = document.getElementById("filterButton");
 const sidebar = document.getElementById("sidebar");
+const searchBox = document.querySelector(".search-box");  // Corrected this line
 
 // Function to toggle sidebar visibility
 filterButton.addEventListener("click", function() {
@@ -36,11 +37,28 @@ checkboxes.forEach(cb => {
 
     cards.forEach(card => {
       const matches = activeFilters.length === 0 || activeFilters.some(filter =>
-        card.dataset.category === filter || card.dataset.level === filter
+        card.dataset.topic === filter || card.dataset.level === filter  // Fixed data attribute names
       );
 
       card.style.display = matches ? 'block' : 'none';
     });
   });
 });
-  
+
+// Add an event listener to the search box input
+searchBox.addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+
+  // Get all the article card elements
+  const articles = document.querySelectorAll('.card');
+
+  // Loop through each article card and check if it matches the search term
+  articles.forEach((article) => {
+    const articleText = article.textContent.toLowerCase();
+    if (articleText.includes(searchTerm)) {
+      article.style.display = 'block';
+    } else {
+      article.style.display = 'none';
+    }
+  });
+});
