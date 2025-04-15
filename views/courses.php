@@ -23,9 +23,9 @@
     <div class="container">
       <h1 class="logo">MyCourses</h1>
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="index.html">Courses</a></li>
-        <li><a href="article.html">Articles</a></li>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="courses.php">Courses</a></li>
+        <li><a href="article.php">Articles</a></li>
         <li><a href="#">About</a></li>
       </ul>
     </div>
@@ -198,9 +198,9 @@
     <div class="footer-links">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="index.html">Courses</a></li>
-        <li><a href="article.html">Articles</a></li>
+        <li><a href="home.php">Home</a></li>
+        <li><a href="coursed.php">Courses</a></li>
+        <li><a href="article.php">Articles</a></li>
         <li><a href="#">About</a></li>
       </ul>
     </div>
