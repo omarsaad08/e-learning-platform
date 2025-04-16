@@ -199,7 +199,7 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="home.php">Home</a></li>
-          <li><a href="courses.php">Courses</a></li>
+          <li><a href="D:\xampp\htdocs\e-learning-platform\views\articles.phpلهف ">Courses</a></li>
           <li><a href="articles.php">Articles</a></li>
           <li><a href="#">About</a></li>
         </ul>
