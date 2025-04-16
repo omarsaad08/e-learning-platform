@@ -63,7 +63,7 @@
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="index.html">Courses</a></li>
-        <li><a href="article.html">Articles</a></li>
+        <li><a href="D:\xampp\htdocs\e-learning-platform\views\articles.php">Articles</a></li>
         <li><a href="#">About</a></li>
       </ul>
     </div>
