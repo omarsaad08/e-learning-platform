@@ -199,8 +199,8 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="home.php">Home</a></li>
-          <li><a href="coursed.php">Courses</a></li>
-          <li><a href="article.php">Articles</a></li>
+          <li><a href="courses.php">Courses</a></li>
+          <li><a href="articles.php">Articles</a></li>
           <li><a href="#">About</a></li>
         </ul>
       </div>
@@ -208,10 +208,11 @@
       <div class="footer-social">
         <h4>Follow Us</h4>
         <div class="social-icons">
-          <a href="#"><img src="facebook_black_logo_icon_147136.png" alt="Facebook" /></a>
-          <a href="#"><img src="twitterlogoincircularblackbutton_79784.png" alt="Twitter" /></a>
+          <a href="#"><img src="D:\xampp\htdocs\e-learning-platform\public\images\facebook_black_logo_icon_147136.png" alt="Facebook" /></a>
+          <a href="#"><img src="D:\xampp\htdocs\e-learning-platform\public\images\twitterlogoincircularblackbutton_79784.png" alt="Twitter" /></a>
+          <a href="#"><img src="D:\xampp\htdocs\e-learning-platform\public\images\instagram_black_logo_icon_147122.png" alt="instagram" /></a>
 
-          <a href="#"><img src="linkedin_black_logo_icon_147114.png" alt="linkedin" /></a>
+          <a href="#"><img src="D:\xampp\htdocs\e-learning-platform\public\images\linkedin_black_logo_icon_147114.png" alt="linkedin" /></a>
         </div>
       </div>
     </div>
