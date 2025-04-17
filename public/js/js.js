@@ -1,44 +1,72 @@
-// Get elements
+// Get the filter toggle button and sidebar
 const filterButton = document.getElementById("filterButton");
 const sidebar = document.getElementById("sidebar");
-const searchBox = document.querySelector(".search-box");
+
+// Function to toggle sidebar visibility
+filterButton.addEventListener("click", function() {
+    // Toggle the sidebar's visibility
+    if (sidebar.style.display === "none" || sidebar.style.display === "") {
+        sidebar.style.display = "block";  // Show the sidebar
+    } else {
+        sidebar.style.display = "none";   // Hide the sidebar
+    }
+});
+
+// Function to show/hide the filter button based on screen width
+function handleFilterButtonVisibility() {
+    if (window.innerWidth <= 768) {
+        filterButton.style.display = "block";  // Show the button on small screens
+    } else {
+        filterButton.style.display = "none";   // Hide the button on larger screens
+    }
+}
+
+// Call the function initially to set the button visibility
+handleFilterButtonVisibility();
+
 const checkboxes = document.querySelectorAll('.sidebar input[type="checkbox"]');
 const cards = document.querySelectorAll('.card');
 
-// Toggle sidebar visibility on small screens
-filterButton.addEventListener("click", () => {
-    sidebar.style.display = (sidebar.style.display === "none" || sidebar.style.display === "") 
-        ? "block" 
-        : "none";
-});
+checkboxes.forEach(cb => {
+  cb.addEventListener('change', () => {
+    // نجيب الفلاتر المتعلم عليها ونفصلها حسب النوع (category / level)
+    const selectedCategories = [...checkboxes]
+      .filter(c => c.checked && (c.value === 'ai' || c.value === 'web' || c.value === 'Frontend' || c.value === 'Backend' ||c.value === 'data'||c.value==="Career Tips" ))
+      .map(c => c.value);
 
-// Handle filter button visibility based on screen width
-function handleFilterButtonVisibility() {
-    filterButton.style.display = window.innerWidth <= 768 ? "block" : "none";
-}
-window.addEventListener("resize", handleFilterButtonVisibility);
-handleFilterButtonVisibility(); // Call once on load
-
-// Combined filter + search function
-function applyFiltersAndSearch() {
-    const activeFilters = [...checkboxes].filter(c => c.checked).map(c => c.value.toLowerCase());
-    const searchTerm = searchBox.value.toLowerCase();
+    const selectedLevels = [...checkboxes]
+      .filter(c => c.checked && (c.value === 'beginner' || c.value === 'intermediate' || c.value === 'advanced'))
+      .map(c => c.value);
 
     cards.forEach(card => {
-        const topic = card.dataset.topic?.toLowerCase() || '';
-        const level = card.dataset.level?.toLowerCase() || '';
-        const text = card.textContent.toLowerCase();
+      const cardCategory = card.dataset.category;
+      const cardLevel = card.dataset.level;
 
-        const matchesFilter = activeFilters.length === 0 || activeFilters.includes(topic) || activeFilters.includes(level);
-        const matchesSearch = text.includes(searchTerm);
+      const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(cardCategory);
+      const matchLevel = selectedLevels.length === 0 || selectedLevels.includes(cardLevel);
 
-        card.style.display = (matchesFilter && matchesSearch) ? 'block' : 'none';
+      // يظهر الكارد فقط لو بيحقق الشرطين معًا
+      card.style.display = matchCategory && matchLevel ? 'block' : 'none';
     });
-}
+  });
+});
 
-// Attach the combined filter+search to events
-checkboxes.forEach(cb => cb.addEventListener('change', applyFiltersAndSearch));
-searchBox.addEventListener('input', applyFiltersAndSearch);
+// Add an event listener to the search box input
+const searchBox = document.querySelector('.search-box');
 
-// Apply filters on page load
-window.addEventListener("DOMContentLoaded", applyFiltersAndSearch);
+searchBox.addEventListener('input', (e) => {
+  const searchTerm = e.target.value.toLowerCase();
+
+  // Get all the course card elements
+  const courses = document.querySelectorAll('.card');
+
+  // Loop through each course card and check if it matches the search term
+  courses.forEach((course) => {
+    const courseText = course.textContent.toLowerCase();
+    if (courseText.includes(searchTerm)) {
+      course.style.display = 'block';
+    } else {
+      course.style.display = 'none';
+    }
+  });
+});
