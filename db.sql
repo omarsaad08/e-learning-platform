@@ -44,7 +44,7 @@ CREATE TABLE lessons (
     FOREIGN KEY (course_id) REFERENCES courses(id)
 );
 CREATE TABLE comments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INT  PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
     content TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
