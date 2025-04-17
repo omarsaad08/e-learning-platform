@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../../views/teacher/teacher_home.php");
             exit();
         } elseif ($user['role'] === 'student') {
-            header("Location: ../../views/home.php");
+            header("Location: ../../views/student/home.php");
             exit();
         } else {
             echo "Unknown role.";

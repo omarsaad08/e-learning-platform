@@ -1,18 +1,11 @@
 <?php
-session_start();
-require '../../backend/db.php';
-
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'teacher') {
-    http_response_code(403);
-    echo json_encode(["error" => "Unauthorized"]);
-    exit();
+if (!isset($pdo)) {
+    require '../dbh.inc.php';
 }
 
-$teacher_id = $_SESSION['user_id'];
-
-$stmt = $pdo->prepare("SELECT * FROM courses WHERE teacher_id = ?");
-$stmt->execute([$teacher_id]);
-$courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-header('Content-Type: application/json');
-echo json_encode($courses);
+function getTeacherCourses($teacher_id, $pdo)
+{
+    $stmt = $pdo->prepare("SELECT * FROM courses WHERE teacher_id = ?");
+    $stmt->execute([$teacher_id]);
+    return $stmt->fetchAll();
+}
