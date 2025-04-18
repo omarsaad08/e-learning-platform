@@ -194,77 +194,29 @@ body {
     }
   }
   
-/* Remove the default checkbox */
-.form-check-input {
-  display: none; /* Hide the default checkbox */
+.progress-container {
+  margin-bottom: 2rem;
 }
 
-/* Style the label for the checkbox */
-.form-check-label {
-  position: relative; /* Positioning for the custom box */
-  font-weight: 600;
-  font-size: 1rem;
-  color: #333;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding-left: 30px; /* Space for the custom box */
-  text-transform: uppercase; /* Uppercase text for modern look */
-  letter-spacing: 0.5px; /* Slight spacing for better readability */
-  transition: color 0.3s ease;
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
-/* Creating the custom box */
-.form-check-label::before {
-  content: ''; /* Empty content for the box */
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 25px; /* Adjust the width of the box */
-  height: 25px; /* Adjust the height of the box */
-  border: 2px solid #333; /* Border color for the box */
-  background-color: white; /* Box background color */
-  border-radius: 8px; /* Rounded corners for the box */
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center the text */
-  font-size: 12px; /* Size of the word inside the box */
-  color: #333; /* Color of the word */
-  transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
-  font-weight: 600;
+.progress-bar div {
+  height: 100%;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
 }
 
-/* Change the word inside the box when checked */
-.form-check-input:checked + .form-check-label::before {
-  background-color: #007bff; /* Box background color when checked */
-  border-color: #007bff; /* Border color when checked */
-  color: white; /* Change text color when checked */
-}
-
-.form-check-input:checked + .form-check-label::after {
-  content: '✔'; /* Change the content to checked word */
-  font-size: 14px; /* Adjust font size for the word */
-  font-weight: bold; /* Make the word bold */
-  color: white; /* White color for text inside the box */
-}
-
-/* Hover effects */
-.form-check-label:hover::before {
-  border-color: #007bff; /* Change border color on hover */
-}
-
-.form-check-input:focus + .form-check-label::before {
-  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5); /* Box shadow on focus for better accessibility */
-}
-
-/* Modern styling for the text inside the box */
-.form-check-label span {
-  font-size: 14px; /* Font size for the text */
-  font-weight: 600; /* Bold text */
-  color: #333; /* Default color */
-  transition: color 0.3s ease;
-}
-
-.form-check-input:checked + .form-check-label span {
-  color: white; /* Change text color to white when checked */
+.container_buttons{
+  width: 20px;
+  height: 200px;
+  background-color: white;
+margin-top: 100px;
+margin-right: 100px;
+margin-left: 100px;
 }

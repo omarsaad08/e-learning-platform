@@ -68,35 +68,18 @@
        
       <div class="col-md-9 py-4 px-5 position-relative">
       <div class="d-flex justify-content-between align-items-center mb-3">
-  <button id="prevBtn" class="btn btn-light"><i class="bi bi-chevron-left"></i> Previous</button>
+  
 
-  <button id="startLearningBtn" class="btn btn-primary">
-    Start learning <i class="bi bi-chevron-right"></i>
-  </button>
-
-  <button id="nextBtn" class="btn btn-light">Next <i class="bi bi-chevron-right"></i></button>
-</div>
-
-<div class="form-check mb-4">
-  <input class="form-check-input" type="checkbox" id="markComplete">
-  <label class="form-check-label" for="markComplete">
-    Mark as complete
-  </label>
-</div>
-
-<!-- Already discussed earlier -->
-<div class="progress mb-4">
-  <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
-</div>
-
-
-
-
-    <div class="video-player mb-4" style="aspect-ratio: 16/9;">
+   <div class="video-player mb-4" style="aspect-ratio: 16/9;">
   <iframe id="mainVideo" width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
-</div>
-
+    </div>
   </div>
+</div>
+<div class="container_buttons">
+  
+</div>
+   
+
 
   <!-- Footer -->
   <footer class="footer mt-5">
