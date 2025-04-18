@@ -20,24 +20,7 @@ body {
     line-height: 1.6;
 }
 
-.theme-toggle {
-    margin-left: auto;
-    margin-right: 25px;
-    z-index: 1;
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-}
 
-.theme-toggle input {
-    display: none;
-}
-
-.theme-toggle span {
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: white;
-}
 
 .navbar {
     background: linear-gradient(90deg, #7184da, #4b91a2);
