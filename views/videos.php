@@ -51,12 +51,7 @@
 
       <!-- Video Area -->
       <div class="col-md-9 py-4 px-5 position-relative">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <!-- Progress Bar -->
-          <div class="progress" style="height: 10px; width: 100%;">
-            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
+   
 
         <div class="video-player mb-4" style="aspect-ratio: 16/9;">
           <iframe id="mainVideo" width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
