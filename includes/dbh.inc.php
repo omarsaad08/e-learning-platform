@@ -1,7 +1,7 @@
 <?php
 $dsn = 'mysql:host=localhost;dbname=e_learning_platform';
 $dbusername = 'root';
-$dbpassword = '01032263033Yy@';
+$dbpassword = '';
 
 try {
     $pdo = new PDO($dsn, $dbusername, $dbpassword);
