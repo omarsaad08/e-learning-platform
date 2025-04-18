@@ -14,9 +14,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../public/css/videos.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://www.youtube.com/iframe_api"></script>
+
 </head>
 
 <body>
+
   <!-- Navbar -->
   <nav class="navbar">
     <div class="container">
@@ -33,54 +36,47 @@
   <!-- Page Content -->
   <div class="container-fluid">
     <div class="row">
+     
       <!-- Sidebar -->
-      <div class="col-md-3 sidebar bg-light p-3 ">
+      <div class="col-md-3 sidebar bg-light p-3">
         <h5 class="mb-4">Course Playlist</h5>
         <div id="playlist">
           <div class="playlist-item playlist-active" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">Intro to the Course</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/tgbNymZ7vqY">Lesson 1 - HTML Basics</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/y6120QOlsfU">Lesson 2 - CSS Foundations</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/3fumBcKC6RE">Lesson 3 - Responsive Design</div>
-
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/tgbNymZ7vqY">Lesson 1 - HTML Basics</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/y6120QOlsfU">Lesson 2 - CSS Foundations</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/3fumBcKC6RE">Lesson 3 - Responsive Design</div>
-
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/tgbNymZ7vqY">Lesson 1 - HTML Basics</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/y6120QOlsfU">Lesson 2 - CSS Foundations</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/3fumBcKC6RE">Lesson 3 - Responsive Design</div>
-      
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/tgbNymZ7vqY">Lesson 1 - HTML Basics</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/y6120QOlsfU">Lesson 2 - CSS Foundations</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/3fumBcKC6RE">Lesson 3 - Responsive Design</div>
-         
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/tgbNymZ7vqY">Lesson 1 - HTML Basics</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/y6120QOlsfU">Lesson 2 - CSS Foundations</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/3fumBcKC6RE">Lesson 3 - Responsive Design</div>
-
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/tgbNymZ7vqY">Lesson 1 - HTML Basics</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/y6120QOlsfU">Lesson 2 - CSS Foundations</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/3fumBcKC6RE">Lesson 3 - Responsive Design</div>
+          <div class="playlist-item"data-completed="false" data-video="https://www.youtube.com/embed/tgbNymZ7vqY">Lesson 1 - HTML Basics</div>
+          <div class="playlist-item" data-completed="false"data-video="https://www.youtube.com/embed/y6120QOlsfU">Lesson 2 - CSS Foundations</div>
+          <div class="playlist-item" data-completed="false"data-video="https://www.youtube.com/embed/3fumBcKC6RE">Lesson 3 - Responsive Design</div>
+ 
         </div>
       </div>
 
       <!-- Video Area -->
-       
       <div class="col-md-9 py-4 px-5 position-relative">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-  
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <!-- Progress Bar -->
+          <div class="progress" style="height: 10px; width: 100%;">
+            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
 
-   <div class="video-player mb-4" style="aspect-ratio: 16/9;">
-  <iframe id="mainVideo" width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+        <div class="video-player mb-4" style="aspect-ratio: 16/9;">
+          <iframe id="mainVideo" width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+        </div>
+        
+        <div class="container_buttons">
+          <div class="buttons">
+          <button class="btn" id="next-btn">
+              <span>Next</span>
+            </button>
+            <button class="btn" id="mark-complete-btn"style="width:200px; background-color:rgb(79, 94, 230);">
+              <span>Mark As Complete</span>
+            </button>
+           <button class="btn" id="prev-btn">
+              <span>Previous</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
- <div class="container_buttons">
-
-<div class="buttons">
-  
-</div>
-   
   </div>
 
   <!-- Footer -->

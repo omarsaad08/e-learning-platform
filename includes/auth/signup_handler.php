@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Redirect based on role
     if ($role === 'student') {
-        header("Location: ../../views/home.php");
+        header("Location: ../../views/student/home.php");
     } elseif ($role === 'teacher') {
         header("Location: ../../views/teacher/teacher_home.php");
     } else {

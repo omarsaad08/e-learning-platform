@@ -1,10 +1,12 @@
-:root{
-    --color-bg:linear-gradient(to right, #ece9e6, #ffffff);
+:root {
+    --color-bg: linear-gradient(to right, #ece9e6, #ffffff);
 
 }
+
 [data-theme="dark"] {
-    --color-bg:linear-gradient(to right, #1d1c1c, #2e2a2a);
+    --color-bg: linear-gradient(to right, #1d1c1c, #2e2a2a);
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +16,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(to right, #ece9e6, #ffffff);
-    color: #333;
+    /* color: #333; */
     line-height: 1.6;
 }
 
@@ -22,7 +24,7 @@ body {
 .navbar {
     background: linear-gradient(90deg, #7184da, #4b91a2);
     padding: 1rem 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: slideDown 1s ease-in-out;
     position: fixed;
     top: 0;
@@ -72,6 +74,7 @@ body {
     margin-top: 70px;
 }
 
+
 .hero h2 {
     font-size: 2.5rem;
     font-weight: 600;
@@ -81,7 +84,6 @@ body {
 .hero p {
     font-size: 1.2rem;
     font-weight: 300;
-    color: #555;
 }
 
 
@@ -121,8 +123,8 @@ body {
 
 .card img {
     width: 100%;
-    height: 200px; 
-    object-fit: cover; 
+    height: 200px;
+    object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
 }
@@ -133,6 +135,7 @@ body {
         transform: translateY(-100%);
         opacity: 0;
     }
+
     100% {
         transform: translateY(0);
         opacity: 1;
@@ -144,6 +147,7 @@ body {
         opacity: 0;
         transform: scale(0.95);
     }
+
     100% {
         opacity: 1;
         transform: scale(1);
@@ -155,6 +159,7 @@ body {
         opacity: 0;
         transform: translateY(30px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -164,18 +169,21 @@ body {
 
 .page {
     display: flex;
-  }
- 
+}
+
 /* Sidebar Layout */
 .sidebar {
     width: 250px;
     padding: 20px;
     background-color: #fff;
     border-right: 1px solid #ddd;
-    height: 100%;  /* Ensure it takes full height */
+    height: 100%;
+    /* Ensure it takes full height */
     overflow-y: auto;
-    margin-top: 80px; /* Ensure it starts below the navbar */
-    display: block; /* Visible by default on larger screens */
+    margin-top: 80px;
+    /* Ensure it starts below the navbar */
+    display: block;
+    /* Visible by default on larger screens */
     transition: transform 0.3s ease-in-out;
     height: calc(100vh - 100px);
     position: sticky;
@@ -190,23 +198,32 @@ body {
 /* Make sidebar hidden on small screens */
 @media (max-width: 768px) {
     .sidebar {
-        display: none; /* Hide the sidebar on small screens */
-        position: fixed;  /* Position it fixed for sliding effect */
-        top: 0;           /* Make sure it starts at the top */
-        left: 0;          /* Align it to the left */
-        width: 100%;      /* Full width on small screens */
-        height: 100%;     /* Full height on small screens */
+        display: none;
+        /* Hide the sidebar on small screens */
+        position: fixed;
+        /* Position it fixed for sliding effect */
+        top: 0;
+        /* Make sure it starts at the top */
+        left: 0;
+        /* Align it to the left */
+        width: 100%;
+        /* Full width on small screens */
+        height: 100%;
+        /* Full height on small screens */
         background-color: #fff;
         padding: 10px;
-        margin-top: 70px; /* Adjust according to the navbar height */
+        margin-top: 70px;
+        /* Adjust according to the navbar height */
         transition: transform 0.3s ease-in-out;
     }
 
     /* Button to toggle sidebar visibility on small screens */
     .filter-toggle {
-        display: block; /* Show filter toggle button on small screens */
+        display: block;
+        /* Show filter toggle button on small screens */
         position: fixed;
-        top: 80px; /* Adjust according to navbar height */
+        top: 80px;
+        /* Adjust according to navbar height */
         right: 10px;
         background-color: #4b91a2;
         color: white;
@@ -214,34 +231,42 @@ body {
         font-size: 16px;
         border: none;
         cursor: pointer;
-        z-index: 1100; /* Ensure the button is above other elements */
+        z-index: 1100;
+        /* Ensure the button is above other elements */
     }
 }
 
 /* Toggle the sidebar visibility */
 .sidebar.active {
-    display: block; /* Display sidebar when active class is added */
-    transform: translateX(0); /* Slide it in */
+    display: block;
+    /* Display sidebar when active class is added */
+    transform: translateX(0);
+    /* Slide it in */
 }
 
 /* Hide sidebar if not active */
 .sidebar.inactive {
     display: none;
-    transform: translateX(-100%); /* Slide it out of view */
+    transform: translateX(-100%);
+    /* Slide it out of view */
 }
 
-  
-  .content {
+
+.content {
     flex: 1;
     padding: 20px;
-  }
-  
-  .search-box {
+}
+
+.search-box {
     padding: 8px;
-    max-width: 300px; /* Set a maximum width */
-    box-sizing: border-box; /* Ensure padding is included in width */
-    margin-right: auto; /* For centering when using flexbox */
-    margin-left: auto; /* For centering when using flexbox */
+    max-width: 300px;
+    /* Set a maximum width */
+    box-sizing: border-box;
+    /* Ensure padding is included in width */
+    margin-right: auto;
+    /* For centering when using flexbox */
+    margin-left: auto;
+    /* For centering when using flexbox */
     margin-bottom: 5px;
 }
 
@@ -249,36 +274,43 @@ body {
     display: flex;
     justify-content: space-between;
     margin-top: 55px;
-    flex-wrap: wrap; /* Ensure items can wrap on smaller screens */
+    flex-wrap: wrap;
+    /* Ensure items can wrap on smaller screens */
 }
 
 .search-box {
-    flex-grow: 1; /* Allow search box to grow to take up available space */
-    margin-right: 20px; /* Space between search box and other elements */
-    margin-left: 0; /* Optionally adjust as needed */
+    flex-grow: 1;
+    /* Allow search box to grow to take up available space */
+    margin-right: 20px;
+    /* Space between search box and other elements */
+    margin-left: 0;
+    /* Optionally adjust as needed */
 }
 
 @media (max-width: 768px) {
     .search-box {
-        width: 80%; /* On smaller screens, reduce the width */
-        max-width: none; /* Remove max-width for more flexibility */
+        width: 80%;
+        /* On smaller screens, reduce the width */
+        max-width: none;
+        /* Remove max-width for more flexibility */
     }
 }
 
-  
-  .grid {
+
+.grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
-  }
-  
- /* Default card styles */
+}
+
+/* Default card styles */
 .card {
     background-color: white;
     padding: 15px;
-    min-width: 280px; /* Default size for cards */
+    min-width: 280px;
+    /* Default size for cards */
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
 }
 
@@ -311,112 +343,123 @@ body {
 /* Make cards bigger on larger screens */
 @media (min-width: 768px) {
     .card {
-        width:100%; /* Increase card width on medium screens */
+        width: 100%;
+        /* Increase card width on medium screens */
     }
 }
 
 /* Make cards even bigger on larger screens (desktop) */
 @media (min-width: 1024px) {
     .card {
-        width: 300px; /* Increase card width further on larger screens */
+        width: 300px;
+        /* Increase card width further on larger screens */
     }
 }
 
 /* If you want to adjust the gap between the cards */
 @media (min-width: 768px) {
     .cards {
-        gap: 30px; /* Increase gap between cards on larger screens */
+        gap: 30px;
+        /* Increase gap between cards on larger screens */
     }
 }
 
 /* Keep the card size smaller for smaller screens */
 @media (max-width: 480px) {
     .card {
-        width: 400px; /* Make cards smaller on very small screens */
+        width: 400px;
+        /* Make cards smaller on very small screens */
     }
 }
 
-  .beginner {
+.beginner {
     background-color: #c2f0c2;
-  }
- .footer {
+}
+
+.footer {
     background-color: #1e1e1e;
     color: #fff;
     padding: 40px 20px 20px;
     font-family: 'Roboto', sans-serif;
-  }
-  
-  .footer-container {
+}
+
+.footer-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 40px;
     max-width: 1200px;
     margin: auto;
-  }
-  
-  .footer-about,
-  .footer-links,
-  .footer-social {
+}
+
+.footer-about,
+.footer-links,
+.footer-social {
     flex: 1 1 250px;
-  }
-  
-  .footer-about h3,
-  .footer-links h4,
-  .footer-social h4 {
+}
+
+.footer-about h3,
+.footer-links h4,
+.footer-social h4 {
     margin-bottom: 15px;
     color: #f1c40f;
-  }
-  
-  .footer-links ul {
+}
+
+.footer-links ul {
     list-style: none;
     padding: 0;
-  }
-  
-  .footer-links ul li {
+}
+
+.footer-links ul li {
     margin-bottom: 10px;
-  }
-  
-  .footer-links a {
+}
+
+.footer-links a {
     text-decoration: none;
     color: #ccc;
     transition: color 0.3s ease;
-  }
-  
-  .footer-links a:hover {
+}
+
+.footer-links a:hover {
     color: #fff;
-  }
-  
-  .social-icons a {
+}
+
+.social-icons a {
     margin-right: 10px;
     display: inline-block;
-  }
-  
-  .social-icons img {
+}
+
+.social-icons img {
     width: 24px;
     height: 24px;
     filter: brightness(0) invert(1);
     transition: transform 0.3s;
-  }
-  
-  .social-icons a:hover img {
+}
+
+.social-icons a:hover img {
     transform: scale(1.1);
-  }
-  
-  .footer-bottom {
+}
+
+.footer-bottom {
     text-align: center;
     margin-top: 30px;
     font-size: 14px;
     color: #aaa;
     border-top: 1px solid #444;
     padding-top: 15px;
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .footer-container {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
-  }
-  
+}
+
+
+div.main {
+    background-image: url('../images/home-background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}

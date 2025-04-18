@@ -1,111 +1,174 @@
 let player;
 const videoItems = [...document.querySelectorAll('.playlist-item')];
 const mainVideo = document.getElementById('mainVideo');
-const videoTitle = document.getElementById('videoTitle');
 const progressBar = document.getElementById('progressBar');
-const timeDisplay = document.getElementById('timeLeft');
-const markCompleteCheckbox = document.getElementById('markComplete');
-const completedVideos = new Set();
-const totalVideos = videoItems.length;
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const markCompleteBtn = document.getElementById('mark-complete-btn');
 
-function getActiveIndex() {
-  return videoItems.findIndex(item => item.classList.contains('playlist-active'));
-}
+// تحميل الحالة المحفوظة أو تهيئة جديدة
+const savedProgress = JSON.parse(localStorage.getItem('videoProgress')) || {};
+const videos = videoItems.map((item, index) => ({
+  id: index,
+  url: item.getAttribute('data-video'),
+  completed: savedProgress[index] || false
+}));
 
-function getActiveItem() {
-  return videoItems.find(item => item.classList.contains('playlist-active'));
-}
+let currentIndex = 0;
+let progressInterval;
 
+// دالة تحميل الفيديو
 function loadVideo(index) {
-  if (index < 0 || index >= totalVideos) return;
-
-  videoItems.forEach(item => item.classList.remove('playlist-active'));
-  const item = videoItems[index];
-  item.classList.add('playlist-active');
-
-  const videoURL = item.getAttribute('data-video') + '?enablejsapi=1';
-  player.loadVideoByUrl(videoURL);
-
-  videoTitle.textContent = item.textContent;
-  markCompleteCheckbox.checked = completedVideos.has(item.dataset.video);
+  if (index < 0 || index >= videos.length) return;
+  
+  currentIndex = index;
+  const videoId = extractVideoId(videos[index].url);
+  
+  if (player) {
+    player.loadVideoById(videoId);
+  } else {
+    mainVideo.src = `${videos[index].url}?enablejsapi=1&rel=0`;
+  }
+  
+  updateUI();
 }
 
-function updateProgress() {
-  const percent = Math.floor((completedVideos.size / totalVideos) * 100);
-  progressBar.style.width = `${percent}%`;
-  progressBar.textContent = `${percent}%`;
+// دالة تحديث واجهة المستخدم بالكامل
+function updateUI() {
+  updateActivePlaylistItem();
+  updateMarkCompleteButton();
+  updateProgressBar();
 }
 
-function updateTimeLeft() {
-  const update = () => {
-    const duration = player.getDuration();
-    const current = player.getCurrentTime();
-    const timeLeft = Math.max(0, duration - current);
-    const mins = Math.floor(timeLeft / 60);
-    const secs = Math.floor(timeLeft % 60).toString().padStart(2, '0');
-    timeDisplay.textContent = `Time left: ${mins}:${secs}`;
-    if (player.getPlayerState() === YT.PlayerState.PLAYING) {
-      requestAnimationFrame(update);
-    }
-  };
-  requestAnimationFrame(update);
+// دالة استخراج ID الفيديو
+function extractVideoId(url) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : null;
 }
 
-function onPlayerStateChange(event) {
-  if (event.data === YT.PlayerState.PLAYING) {
-    updateTimeLeft();
-  } else if (event.data === YT.PlayerState.ENDED) {
-    const current = getActiveItem();
-    if (current) {
-      completedVideos.add(current.dataset.video);
-      updateProgress();
-      markCompleteCheckbox.checked = true;
-    }
+// دالة تحديث العنصر النشط في القائمة
+function updateActivePlaylistItem() {
+  videoItems.forEach((item, index) => {
+    item.classList.toggle('playlist-active', index === currentIndex);
+    item.classList.toggle('completed', videos[index].completed);
+  });
+}
+
+// دالة تحديث زر الإكمال
+function updateMarkCompleteButton() {
+  const isCompleted = videos[currentIndex].completed;
+  markCompleteBtn.innerHTML = isCompleted ? '<span>Completed ✓</span>' : '<span>Mark As Complete</span>';
+  markCompleteBtn.style.backgroundColor = isCompleted ? '#28a745' : '#4f5ee6';
+}
+
+// دالة تحديث شريط التقدم
+function updateProgressBar() {
+  if (videos[currentIndex].completed) {
+    progressBar.style.width = "100%";
+    progressBar.classList.add('completed');
+    clearInterval(progressInterval);
+  } else {
+    progressBar.classList.remove('completed');
+    resetProgressBar();
   }
 }
 
+function resetProgressBar() {
+  progressBar.style.width = "0%";
+  clearInterval(progressInterval);
+}
+
+// نظام حفظ الحالة في localStorage
+function saveProgress() {
+  const progress = {};
+  videos.forEach(video => {
+    progress[video.id] = video.completed;
+  });
+  localStorage.setItem('videoProgress', JSON.stringify(progress));
+}
+
+// تهيئة مشغل YouTube
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('mainVideo', {
     events: {
+      'onReady': onPlayerReady,
       'onStateChange': onPlayerStateChange
     }
   });
 }
 
-// Event Listeners
-document.getElementById('prevBtn').addEventListener('click', () => {
-  const currentIndex = getActiveIndex();
-  loadVideo(currentIndex - 1);
-});
+function onPlayerReady(event) {
+  loadVideo(currentIndex);
+}
 
-document.getElementById('nextBtn').addEventListener('click', () => {
-  const currentIndex = getActiveIndex();
-  loadVideo(currentIndex + 1);
-});
-
-document.getElementById('startLearningBtn').addEventListener('click', () => {
-  const index = getActiveIndex() !== -1 ? getActiveIndex() : 0;
-  loadVideo(index);
-  player.playVideo();
-});
-
-markCompleteCheckbox.addEventListener('change', (e) => {
-  const current = getActiveItem();
-  if (!current) return;
-  const vid = current.dataset.video;
-  if (e.target.checked) {
-    completedVideos.add(vid);
+function onPlayerStateChange(event) {
+  if (event.data === YT.PlayerState.PLAYING) {
+    startProgressTimer();
   } else {
-    completedVideos.delete(vid);
+    clearInterval(progressInterval);
   }
-  updateProgress();
+}
+
+function startProgressTimer() {
+  clearInterval(progressInterval);
+  if (!videos[currentIndex].completed) {
+    progressInterval = setInterval(updateVideoProgress, 1000);
+  }
+}
+
+function updateVideoProgress() {
+  if (player && player.getDuration) {
+    const duration = player.getDuration();
+    const currentTime = player.getCurrentTime();
+    const progressPercent = (currentTime / duration) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+  }
+}
+
+// أحداث الأزرار
+nextBtn.addEventListener('click', () => {
+  if (currentIndex < videos.length - 1) {
+    loadVideo(currentIndex + 1);
+  }
 });
 
+prevBtn.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    loadVideo(currentIndex - 1);
+  }
+});
+
+markCompleteBtn.addEventListener('click', () => {
+  videos[currentIndex].completed = !videos[currentIndex].completed;
+  saveProgress();
+  updateUI();
+});
+
+// أحداث عناصر القائمة
 videoItems.forEach((item, index) => {
-  item.addEventListener('click', () => {
-    loadVideo(index);
-  });
+  item.addEventListener('click', () => loadVideo(index));
 });
 
-// Make YouTube API global callback work
-window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+// التحميل الأولي
+function initialize() {
+  // تطبيق الحالة المحفوظة على الواجهة
+  videos.forEach((video, index) => {
+    if (video.completed) {
+      videoItems[index].classList.add('completed');
+    }
+  });
+
+  // تحميل مشغل YouTube
+  if (typeof YT !== 'undefined' && YT.loaded) {
+    onYouTubeIframeAPIReady();
+  } else {
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+  }
+}
+
+initialize();
