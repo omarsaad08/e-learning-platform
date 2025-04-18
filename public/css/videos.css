@@ -1,0 +1,109 @@
+:root{
+    --color-bg:linear-gradient(to right, #ece9e6, #ffffff);
+
+}
+[data-theme="dark"] {
+    --color-bg:linear-gradient(to right, #1d1c1c, #2e2a2a);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ece9e6, #ffffff);
+    color: #333;
+    line-height: 1.6;
+}
+
+
+
+.navbar {
+    background: linear-gradient(90deg, #7184da, #4b91a2);
+    padding: 1rem 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    animation: slideDown 1s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 70px;
+
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700;
+}
+
+
+.video-player {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+
+  .playlist-item {
+    background-color: var(--card-bg);
+    padding: 10px 15px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .playlist-item:hover {
+    background-color: var(--border);
+    transform: translateX(5px);
+  }
+
+  .playlist-active {
+    background-color: var(--border);
+    border-left: 4px solid #0d6efd;
+  }
+
+  .sidebar {
+    background-color: var(--sidebar-bg);
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+    border-right: 1px solid var(--border);
+  }
+
+  .theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }

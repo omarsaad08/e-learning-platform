@@ -14,13 +14,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="../public/css/style.css">
-</head>
+
 
 <body>
 
 
   <nav class="navbar">
     <div class="container">
+      
       <h1 class="logo">MyCourses</h1>
       <ul class="nav-links">
         <li><a href="home.php">Home</a></li>
@@ -225,5 +226,5 @@
 
   <script src="../public/js/js.js"></script>
 </body>
-
+</head>
 </html>
