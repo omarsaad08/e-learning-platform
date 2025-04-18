@@ -75,11 +75,13 @@
     </div>
   </div>
 </div>
-<div class="container_buttons">
+ <div class="container_buttons">
+
+<div class="buttons">
   
 </div>
    
-
+  </div>
 
   <!-- Footer -->
   <footer class="footer mt-5">

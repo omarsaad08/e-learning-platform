@@ -213,10 +213,9 @@ body {
 }
 
 .container_buttons{
-  width: 20px;
-  height: 200px;
-  background-color: white;
-margin-top: 100px;
-margin-right: 100px;
-margin-left: 100px;
+ display:flex;
+display: inline-block;
+}
+.buttons{
+  
 }
