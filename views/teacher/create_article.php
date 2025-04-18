@@ -8,23 +8,23 @@
   <title>Write Article</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../public/css/article.css">
+  <link rel="stylesheet" href="../../public/css/article.css">
 </head>
 
 <body>
-<nav class="navbar">
+  <nav class="navbar">
     <div class="container">
-        <h1 class="logo">MyCourses</h1>
-        <ul class="nav-links">
-            <li><a href="home.php">Home</a></li>
-            <li><a href="courses.php">Courses</a></li>
-            <li><a href="articles.php">Articles</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
+      <h1 class="logo">MyCourses</h1>
+      <ul class="nav-links">
+        <li><a href="home.php">Home</a></li>
+        <li><a href="courses.php">Courses</a></li>
+        <li><a href="articles.php">Articles</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
     </div>
+  </nav>
 
-</nav>
-  <div class="container">
+  <div class="container_article">
     <h1>Write Your Article</h1>
 
     <form action="handle_article.php" method="POST">
@@ -46,39 +46,38 @@
     </form>
   </div>
 
-  
-
-<footer class="footer">
+  <footer class="footer">
     <div class="footer-container">
-        <div class="footer-about">
-            <h3>MyCourses</h3>
-            <p>An interactive platform to learn programming from beginner to advanced levels.</p>
-        </div>
+      <div class="footer-about">
+        <h3>MyCourses</h3>
+        <p>An interactive platform to learn programming from beginner to advanced levels.</p>
+      </div>
 
-        <div class="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">Articles</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-        </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Articles</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </div>
 
-        <div class="footer-social">
-            <h4>Follow Us</h4>
-            <div class="social-icons">
-                <a href="#"><img src="../public/images/facebook_black_logo_icon_147136.png" alt="Facebook" /></a>
-                <a href="#"><img src="../public/images/twitterlogoincircularblackbutton_79784.png" alt="Twitter" /></a>
-                <a href="#"><img src="../public/images/linkedin_black_logo_icon_147114.png" alt="linkedin" /></a>
-            </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><img src="../../public/images/facebook_black_logo_icon_147136.png" alt="Facebook" /></a>
+          <a href="#"><img src="../../public/images/twitterlogoincircularblackbutton_79784.png" alt="Twitter" /></a>
+          <a href="#"><img src="../../public/images/linkedin_black_logo_icon_147114.png" alt="linkedin" /></a>
         </div>
+      </div>
     </div>
 
     <div class="footer-bottom">
-        <p>© 2025 MyCourses. All rights reserved.</p>
+      <p>© 2025 MyCourses. All rights reserved.</p>
     </div>
-</footer>
-<script src="../public/js/article.js"></script>
+  </footer>
+
+  <script src="../../public/js/article.js"></script>
 </body>
 </html>
