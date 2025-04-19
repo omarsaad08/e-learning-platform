@@ -81,6 +81,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../public/js/profile.js"></script> <!-- فايل الجافا سكربت الخارجي -->
+    <script src="../public/js/profile.js"></script> <!-- فايل الجافا سكربت الخارجي -->
 </body>
 </html>
