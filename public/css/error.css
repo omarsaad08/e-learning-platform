@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    height: 100vh;
+    background: linear-gradient(to right, #79c2f2, #c2a6f5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container {
+    background: white;
+    text-align: center;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .error-code {
+    font-size: 120px;
+    font-weight: bold;
+    color: #6fb1fc; /* Use any solid color you prefer */
+  }
+  
+  .error-text {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .description {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .buttons {
+    margin-top: 30px;
+  }
+  
+  button {
+    margin: 0 10px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button:first-child {
+    background-color: #6fb1fc;
+    color: white;
+  }
+  
+  button:first-child:hover {
+    background-color: #5aa5f8;
+  }
+  
+  button:last-child {
+    background-color: transparent;
+    border: 2px solid #6fb1fc;
+    color: #6fb1fc;
+  }
+  
+  button:last-child:hover {
+    background-color: #e8f4ff;
+  }
