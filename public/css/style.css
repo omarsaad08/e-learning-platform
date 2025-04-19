@@ -3,9 +3,7 @@
 
 }
 
-[data-theme="dark"] {
-    --color-bg: linear-gradient(to right, #1d1c1c, #2e2a2a);
-}
+
 
 * {
     margin: 0;
