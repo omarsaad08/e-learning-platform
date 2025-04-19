@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // Get the filter toggle button and sidebar
 const filterButton = document.getElementById("filterButton");
 const sidebar = document.getElementById("sidebar");
@@ -71,10 +71,10 @@ searchBox.addEventListener('input', (e) => {
     }
   });
 });
-=======
+
 // Get the filter toggle button and sidebar
-const filterButton = document.getElementById("filterButton");
-const sidebar = document.getElementById("sidebar");
+ filterButton = document.getElementById("filterButton");
+ sidebar = document.getElementById("sidebar");
 
 // Function to toggle sidebar visibility
 filterButton.addEventListener("click", function() {
@@ -98,8 +98,8 @@ function handleFilterButtonVisibility() {
 // Call the function initially to set the button visibility
 handleFilterButtonVisibility();
 
-const checkboxes = document.querySelectorAll('.sidebar input[type="checkbox"]');
-const cards = document.querySelectorAll('.card');
+ checkboxes = document.querySelectorAll('.sidebar input[type="checkbox"]');
+cards = document.querySelectorAll('.card');
 
 checkboxes.forEach(cb => {
   cb.addEventListener('change', () => {
@@ -126,7 +126,7 @@ checkboxes.forEach(cb => {
 });
 
 // Add an event listener to the search box input
-const searchBox = document.querySelector('.search-box');
+ searchBox = document.querySelector('.search-box');
 
 searchBox.addEventListener('input', (e) => {
   const searchTerm = e.target.value.toLowerCase();
@@ -144,4 +144,4 @@ searchBox.addEventListener('input', (e) => {
     }
   });
 });
->>>>>>> 0ee600c0ca6c8deccfd95a84419744c5a0065590
+
