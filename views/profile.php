@@ -39,8 +39,11 @@
                                 <p id="userEmail">jane.smith@example.com</p>
                             </div>
                             <div class="mb-3">
-                                <label class="text-muted">Courses Completed</label>
-                                <p id="coursesCompleted">12</p>
+                                <label class="text-muted">Your Courses</label>
+                                <ul id="coursesCompleted">
+                                <li>Html <progress>0%</progress></li>
+                                <li>CSS<progress>0%</progress></li>
+                                </ul>
                             </div>
                         </div>
 
@@ -78,6 +81,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../public/js/profile.js"></script> <!-- فايل الجافا سكربت الخارجي -->
+    <script src="../../public/js/profile.js"></script> <!-- فايل الجافا سكربت الخارجي -->
 </body>
 </html>
