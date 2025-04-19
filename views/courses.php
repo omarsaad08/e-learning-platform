@@ -64,7 +64,7 @@
 
       <div class="grid">
         <!-- Course Card Example -->
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -72,7 +72,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -80,7 +80,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -88,7 +88,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -96,7 +96,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -104,7 +104,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -112,7 +112,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -120,7 +120,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -128,7 +128,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -136,7 +136,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -144,7 +144,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -152,7 +152,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -160,7 +160,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -168,7 +168,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -176,7 +176,7 @@
           <span class="tag beginner">Beginner</span>
           <button>Enroll</button>
         </div>
-        <div class="card" data-category="web" data-level="beginner">
+        <div class="card" data-topic="web" data-level="beginner">
           <img src="images/html.jpg" alt="HTML Course" />
           <h3>HTML Basics</h3>
           <p>John Doe</p>
@@ -224,7 +224,7 @@
   </footer>
 
 
-  <script src="../public/js/js.js"></script>
+  <script src="../public/js/script.js"></script>
 </body>
 </head>
 </html>

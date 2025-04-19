@@ -1,147 +1,81 @@
 
-// Get the filter toggle button and sidebar
+// Get DOM elements
 const filterButton = document.getElementById("filterButton");
 const sidebar = document.getElementById("sidebar");
+const searchBox = document.querySelector(".search-box");
 
-// Function to toggle sidebar visibility
+// Toggle sidebar visibility
 filterButton.addEventListener("click", function() {
-    // Toggle the sidebar's visibility
     if (sidebar.style.display === "none" || sidebar.style.display === "") {
-        sidebar.style.display = "block";  // Show the sidebar
+        sidebar.style.display = "block";
     } else {
-        sidebar.style.display = "none";   // Hide the sidebar
+        sidebar.style.display = "none";
     }
 });
 
-// Function to show/hide the filter button based on screen width
+// Handle filter button visibility based on screen size
 function handleFilterButtonVisibility() {
     if (window.innerWidth <= 768) {
-        filterButton.style.display = "block";  // Show the button on small screens
+        filterButton.style.display = "block";
+        sidebar.style.display = "none";
     } else {
-        filterButton.style.display = "none";   // Hide the button on larger screens
+        filterButton.style.display = "none";
+        sidebar.style.display = "block";
     }
 }
 
-// Call the function initially to set the button visibility
+// Initialize button visibility
 handleFilterButtonVisibility();
 
+// Handle window resize
+window.addEventListener("resize", handleFilterButtonVisibility);
+
+// Filter topics
+const topics = ['ai', 'web', 'Frontend', 'Backend', 'data', 'Career Tips'];
+const levels = ['beginner', 'intermediate', 'advanced'];
+
+// Filter functionality
 const checkboxes = document.querySelectorAll('.sidebar input[type="checkbox"]');
 const cards = document.querySelectorAll('.card');
 
-checkboxes.forEach(cb => {
-  cb.addEventListener('change', () => {
-    // نجيب الفلاتر المتعلم عليها ونفصلها حسب النوع (category / level)
-    const selectedCategories = [...checkboxes]
-      .filter(c => c.checked && (c.value === 'ai' || c.value === 'web' || c.value === 'Frontend' || c.value === 'Backend' ||c.value === 'data'||c.value==="Career Tips" ))
-      .map(c => c.value);
+function filterCards() {
+    const selectedTopics = [...checkboxes]
+        .filter(c => c.checked && topics.includes(c.value))
+        .map(c => c.value);
 
     const selectedLevels = [...checkboxes]
-      .filter(c => c.checked && (c.value === 'beginner' || c.value === 'intermediate' || c.value === 'advanced'))
-      .map(c => c.value);
+        .filter(c => c.checked && levels.includes(c.value))
+        .map(c => c.value);
 
     cards.forEach(card => {
-      const cardCategory = card.dataset.category;
-      const cardLevel = card.dataset.level;
+        const cardTopic = card.dataset.topic; // Changed from category to topic
+        const cardLevel = card.dataset.level;
 
-      const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(cardCategory);
-      const matchLevel = selectedLevels.length === 0 || selectedLevels.includes(cardLevel);
+        const matchTopic = selectedTopics.length === 0 || selectedTopics.includes(cardTopic);
+        const matchLevel = selectedLevels.length === 0 || selectedLevels.includes(cardLevel);
 
-      // يظهر الكارد فقط لو بيحقق الشرطين معًا
-      card.style.display = matchCategory && matchLevel ? 'block' : 'none';
+        card.style.display = matchTopic && matchLevel ? 'block' : 'none';
     });
-  });
-});
-
-// Add an event listener to the search box input
-const searchBox = document.querySelector('.search-box');
-
-searchBox.addEventListener('input', (e) => {
-  const searchTerm = e.target.value.toLowerCase();
-
-  // Get all the course card elements
-  const courses = document.querySelectorAll('.card');
-
-  // Loop through each course card and check if it matches the search term
-  courses.forEach((course) => {
-    const courseText = course.textContent.toLowerCase();
-    if (courseText.includes(searchTerm)) {
-      course.style.display = 'block';
-    } else {
-      course.style.display = 'none';
-    }
-  });
-});
-
-// Get the filter toggle button and sidebar
- filterButton = document.getElementById("filterButton");
- sidebar = document.getElementById("sidebar");
-
-// Function to toggle sidebar visibility
-filterButton.addEventListener("click", function() {
-    // Toggle the sidebar's visibility
-    if (sidebar.style.display === "none" || sidebar.style.display === "") {
-        sidebar.style.display = "block";  // Show the sidebar
-    } else {
-        sidebar.style.display = "none";   // Hide the sidebar
-    }
-});
-
-// Function to show/hide the filter button based on screen width
-function handleFilterButtonVisibility() {
-    if (window.innerWidth <= 768) {
-        filterButton.style.display = "block";  // Show the button on small screens
-    } else {
-        filterButton.style.display = "none";   // Hide the button on larger screens
-    }
 }
 
-// Call the function initially to set the button visibility
-handleFilterButtonVisibility();
+// Add change event listeners to checkboxes
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', filterCards);
+});
 
- checkboxes = document.querySelectorAll('.sidebar input[type="checkbox"]');
-cards = document.querySelectorAll('.card');
+// Search functionality
+searchBox.addEventListener('input', (event) => {
+    const searchTerm = event.target.value.toLowerCase();
 
-checkboxes.forEach(cb => {
-  cb.addEventListener('change', () => {
-    // نجيب الفلاتر المتعلم عليها ونفصلها حسب النوع (category / level)
-    const selectedCategories = [...checkboxes]
-      .filter(c => c.checked && (c.value === 'ai' || c.value === 'web' || c.value === 'Frontend' || c.value === 'Backend' ||c.value === 'data'||c.value==="Career Tips" ))
-      .map(c => c.value);
-
-    const selectedLevels = [...checkboxes]
-      .filter(c => c.checked && (c.value === 'beginner' || c.value === 'intermediate' || c.value === 'advanced'))
-      .map(c => c.value);
-
-    cards.forEach(card => {
-      const cardCategory = card.dataset.category;
-      const cardLevel = card.dataset.level;
-
-      const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(cardCategory);
-      const matchLevel = selectedLevels.length === 0 || selectedLevels.includes(cardLevel);
-
-      // يظهر الكارد فقط لو بيحقق الشرطين معًا
-      card.style.display = matchCategory && matchLevel ? 'block' : 'none';
+    cards.forEach((card) => {
+        const cardText = card.textContent.toLowerCase();
+        const isVisible = cardText.includes(searchTerm);
+        
+        if (isVisible) {
+            // Only show the card if it also matches the current filters
+            filterCards();
+        } else {
+            card.style.display = 'none';
+        }
     });
-  });
 });
-
-// Add an event listener to the search box input
- searchBox = document.querySelector('.search-box');
-
-searchBox.addEventListener('input', (e) => {
-  const searchTerm = e.target.value.toLowerCase();
-
-  // Get all the course card elements
-  const courses = document.querySelectorAll('.card');
-
-  // Loop through each course card and check if it matches the search term
-  courses.forEach((course) => {
-    const courseText = course.textContent.toLowerCase();
-    if (courseText.includes(searchTerm)) {
-      course.style.display = 'block';
-    } else {
-      course.style.display = 'none';
-    }
-  });
-});
-
