@@ -13,6 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 </head>
 
@@ -51,51 +53,78 @@
         <h1>All Courses</h1>
         <input type="text" placeholder="Search courses..." class="search-box">
       </div>
-
-      <?php
-      include('../../includes/dbh.inc.php');
-
-      // Adjust SQL query to join with the users table and get the teacher's name
-      $sql = "
-        SELECT c.*, u.name AS instructor_name
-        FROM courses c
-        JOIN users u ON c.teacher_id = u.id
-      ";
-      $stmt = $pdo->query($sql);
-      $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-      if (count($courses) > 0) {
-        foreach ($courses as $course) {
-          $title = htmlspecialchars($course['title']);
-          $instructor = htmlspecialchars($course['instructor_name'] ?? 'N/A');
-          $level = htmlspecialchars($course['level']);
-          $category = htmlspecialchars($course['category']);
-          $image = htmlspecialchars($course['thumbnail']);
-          $rating = floatval($course['rating']);
-
-          // Generate stars based on rating
-          $stars = str_repeat("⭐️", floor($rating));
-          if (fmod($rating, 1) >= 0.5) {
-            $stars .= "✨";
-          }
-
-          echo "
-            <div class='card' data-category='$category' data-level='$level'>
-              <img src='$image' alt='$title' />
-              <h3>$title</h3>
-              <p>$instructor</p>
-              <div class='rating'>$stars</div>
-              <span class='tag $level'>$level</span>
-              <button>Enroll</button>
+      <div class="container">
+        <div class="row">
+          <?php if (isset($_GET['message'])): ?>
+            <div class="alert alert-info text-center">
+              <?= htmlspecialchars($_GET['message']) ?>
             </div>
-          ";
-        }
-      } else {
-        echo "<p>No courses found.</p>";
-      }
+          <?php endif; ?>
+
+          <?php
+          include('../../includes/dbh.inc.php');
+
+          $sql = "
+      SELECT c.*, u.name AS instructor_name
+      FROM courses c
+      JOIN users u ON c.teacher_id = u.id
+    ";
+          $stmt = $pdo->query($sql);
+          $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+          if (count($courses) > 0) {
+            session_start();
+            $currentUserId = $_SESSION['user_id'] ?? null;
+            foreach ($courses as $course) {
+              $title = htmlspecialchars($course['title']);
+              $instructor = htmlspecialchars($course['instructor_name'] ?? 'N/A');
+              $level = htmlspecialchars($course['level']);
+              $category = htmlspecialchars($course['category']);
+              $image = htmlspecialchars($course['thumbnail']);
+              $rating = floatval($course['rating']);
+
+              $stars = str_repeat("⭐️", floor($rating));
+              if (fmod($rating, 1) >= 0.5) {
+                $stars .= "✨";
+              }
 
 
-      ?>
+              // Check if the user is enrolled in this course
+              $isEnrolled = false;
+              if ($currentUserId) {
+                $checkEnroll = $pdo->prepare("SELECT * FROM enrollments WHERE student_id = ? AND course_id = ?");
+                $checkEnroll->execute([$currentUserId, $course['id']]);
+                $isEnrolled = $checkEnroll->rowCount() > 0;
+              }
+
+              echo "
+  <div class='col-md-4 mb-4'>
+    <div class='card h-100' data-category='$category' data-level='$level'>
+      <img src='$image' class='card-img-top' alt='$title' />
+      <div class='card-body'>
+        <h5 class='card-title'>$title</h5>
+        <p class='card-text'>Instructor: $instructor</p>
+        <div class='rating'>$stars</div>
+        <span class='badge bg-secondary'>$level</span>
+      </div>
+      <div class='card-footer text-center'>";
+              if ($isEnrolled) {
+                echo "<a href='videos.php?course_id= {$course['id']} ?>'>Watch Course</a>";
+              } else {
+                echo "
+        <form action=\"../../includes/student/enroll.php\" method=\"POST\">
+          <input type=\"hidden\" name=\"course_id\" value=\"{$course['id']}\">
+          <button type=\"submit\" class=\"btn btn-dark\">Enroll</button>
+        </form>";
+              }
+              echo "</div></div></div>";
+            }
+          } else {
+            echo "<p>No courses found.</p>";
+          }
+          ?>
+        </div>
+      </div>
 
       <!-- END: Articles Page -->
       <?php

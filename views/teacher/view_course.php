@@ -4,7 +4,7 @@ require '../../includes/dbh.inc.php';
 require '../../includes/teacher/get_lessons.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'teacher') {
-    header("Location: ../login.php");
+    header("Location: ../auth/login.php");
     exit();
 }
 

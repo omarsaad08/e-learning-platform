@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS e_learning_platform;
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
@@ -9,14 +10,19 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 CREATE TABLE courses (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255),
-    description TEXT,
-    teacher_id INT,
-    thumbnail VARCHAR(255),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (teacher_id) REFERENCES users(id)
-);
+id int(11) NOT NULL AUTO_INCREMENT,
+title varchar(255) DEFAULT NULL,
+description text DEFAULT NULL,
+teacher_id int(11) DEFAULT NULL,
+thumbnail varchar(255) DEFAULT NULL,
+created_at timestamp NOT NULL DEFAULT current_timestamp(),
+rating decimal(2,1) DEFAULT 0.0,
+category varchar(100) DEFAULT NULL,
+level enum('beginner','intermediate','advanced') DEFAULT NULL,
+PRIMARY KEY (id),
+KEY teacher_id (teacher_id),
+CONSTRAINT courses_ibfk_1 FOREIGN KEY (teacher_id) REFERENCES users (id)
+)
 CREATE TABLE articles (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255),
@@ -44,7 +50,7 @@ CREATE TABLE lessons (
     FOREIGN KEY (course_id) REFERENCES courses(id)
 );
 CREATE TABLE comments (
-    id INT  PRIMARY KEY AUTO_INCREMENT,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     content TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

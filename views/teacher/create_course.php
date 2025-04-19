@@ -104,8 +104,8 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  <script src="../../public/js/course.js"></script>
+  <!-- <script src="script.js"></script> -->
+  <!-- <script src="../../public/js/course.js"></script> -->
 </body>
 
 </html>

@@ -1,19 +1,34 @@
 <?php
 session_start();
-require '../dbh.inc.php';
+require_once '../../includes/dbh.inc.php';
 
-// Ensure teacher is logged in
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'teacher') {
-    header("Location: ../login.php");
-    exit();
+// Check if the teacher is logged in
+if (!isset($_SESSION['user_id'])) {
+    die("Unauthorized access.");
 }
 
-$title = $_POST['title'];
-$content = $_POST['content'];
-$teacher_id = $_SESSION['user_id'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $title = trim($_POST['title']);
+    $content = trim($_POST['content']);
+    $teacherId = $_SESSION['user_id'];
 
-$stmt = $pdo->prepare("INSERT INTO articles (title, content, teacher_id) VALUES (?, ?, ?)");
-$stmt->execute([$title, $content, $teacher_id]);
+    if (empty($title) || empty($content)) {
+        die("Title and content are required.");
+    }
 
-header("Location: dashboard.php");
-exit();
+    try {
+        $stmt = $pdo->prepare("INSERT INTO articles (title, content, teacher_id, created_at) VALUES (:title, :content, :teacher_id, NOW())");
+        $stmt->execute([
+            ':title' => $title,
+            ':content' => $content,
+            ':teacher_id' => $teacherId
+        ]);
+
+        header("Location: ../../views/teacher/teacher_home.php");
+        exit;
+    } catch (PDOException $e) {
+        echo "Error saving article: " . $e->getMessage();
+    }
+} else {
+    echo "Invalid request.";
+}

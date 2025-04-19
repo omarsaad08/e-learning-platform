@@ -4,9 +4,9 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Write Article</title>
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../public/css/article.css">
 </head>
@@ -27,7 +27,7 @@
   <div class="container_article">
     <h1>Write Your Article</h1>
 
-    <form action="handle_article.php" method="POST">
+    <form action="../../includes/teacher/article_handler.php" method="POST">
       <div class="mb-3">
         <input type="text" name="title" id="title" class="form-control" placeholder="Article Title" required>
       </div>
@@ -80,4 +80,5 @@
 
   <script src="../../public/js/article.js"></script>
 </body>
+
 </html>

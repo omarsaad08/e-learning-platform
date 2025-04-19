@@ -16,6 +16,13 @@
 <body>
     <?php
     include('../components/navbar.php');
+    include('../../includes/dbh.inc.php');
+    // Fetch 3 random courses
+    $stmt = $pdo->query("SELECT * FROM courses ORDER BY RAND() LIMIT 3");
+    $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Fetch 3 latest articles
+    $stmt = $pdo->query("SELECT * FROM articles ORDER BY created_at DESC LIMIT 3");
+    $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
 
 
@@ -29,22 +36,27 @@
 
 
         <section class="cards">
-            <div class="card">
-                <h3>HTML Basics</h3>
-                <img src="../../public/images/html.jpg">
-                <p>Start with the structure of web development.</p>
-            </div>
-            <div class="card">
-                <h3>CSS Styling</h3>
-                <img src="../../public/images/css.jpg">
-                <p>Learn how to style beautiful and responsive pages.</p>
-            </div>
-            <div class="card">
-                <h3>JavaScript Intro</h3>
-                <img src="../../public/images/js.jpg">
-                <p>Bring your websites to life with interactivity.</p>
-            </div>
+            <?php foreach ($courses as $course): ?>
+                <div class="card">
+                    <h3><?= htmlspecialchars($course['title']) ?></h3>
+                    <img src="<?= htmlspecialchars($course['thumbnail']) ?>" alt="<?= htmlspecialchars($course['title']) ?>">
+                    <p><?= htmlspecialchars($course['description']) ?></p>
+                </div>
+            <?php endforeach; ?>
         </section>
+
+        <section class="cards">
+            <h2 style="width: 100%; text-align: center;">Latest Articles</h2>
+            <?php foreach ($articles as $article): ?>
+                <div class="card">
+                    <h3><?= htmlspecialchars($article['title']) ?></h3>
+                    <p><?= htmlspecialchars(substr($article['content'], 0, 100)) ?>...</p>
+                    <a href="view_article.php?id=<?= $article['id'] ?>" class="btn">Read More</a>
+                </div>
+            <?php endforeach; ?>
+        </section>
+
+
     </div>
     <?php
     include('../components/footer.php');

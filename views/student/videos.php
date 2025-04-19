@@ -1,3 +1,15 @@
+<?php
+include('../../includes/dbh.inc.php');
+
+$course_id = isset($_GET['course_id']) ? intval($_GET['course_id']) : 0;
+
+$sql = "SELECT id, title, video_url FROM lessons WHERE course_id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$course_id]);
+$lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,16 +18,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Master programming from beginner to advanced with interactive online courses in Python, JavaScript, web development, data science, and more. Learn at your own pace with real-world projects and expert instructors.">
   <meta name="keywords" content="learn programming, online coding courses, programming for beginners, advanced coding tutorials, Python course, JavaScript training, HTML CSS course, web development bootcamp, data science classes, machine learning tutorials, full stack development, front end development, back end programming, coding interview prep, software engineering course, mobile app development, React course, Node.js training, coding for kids, self-paced coding lessons, interactive coding platform, build real-world projects, computer science fundamentals, AI programming course, online coding certification, remote coding school, code with projects, programming mentorship, tech career training, coding challenges, algorithm tutorials, css, js, html,c++, data structure ,oop, computer ,programming,courses">
- 
+
   <title>Courses</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="../public/css/videos.css">
 
-<!-- Bootstrap CSS -->
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     :root {
@@ -33,13 +44,16 @@
       --card-bg: #343a40;
       --border: #444;
     }
+  </style>
+  <link rel="stylesheet" href="../../public/css/videos.css">
+</head>
 
 <body>
 
 
   <nav class="navbar">
     <div class="container">
-      
+
       <h1 class="logo">MyCourses</h1>
       <ul class="nav-links">
         <li><a href="home.php">Home</a></li>
@@ -58,11 +72,16 @@
       <div class="col-md-3 sidebar">
         <h5 class="mb-4">Course Playlist</h5>
         <div id="playlist">
-          <div class="playlist-item playlist-active" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">Intro to the Course</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/tgbNymZ7vqY">Lesson 1 - HTML Basics</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/y6120QOlsfU">Lesson 2 - CSS Foundations</div>
-          <div class="playlist-item" data-video="https://www.youtube.com/embed/3fumBcKC6RE">Lesson 3 - Responsive Design</div>
+          <?php foreach ($lessons as $index => $lesson): ?>
+            <div class="playlist-item <?= $index === 0 ? 'playlist-active' : '' ?>"
+              data-url="<?= htmlspecialchars($lesson['video_url']) ?>"
+              data-title="<?= htmlspecialchars($lesson['title']) ?>">
+              <?= htmlspecialchars($lesson['title']) ?>
+            </div>
+          <?php endforeach; ?>
         </div>
+
+
       </div>
 
       <!-- Main Video Content -->
@@ -74,7 +93,11 @@
         </div>
 
         <div class="video-player mb-4">
-          <iframe id="mainVideo" width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+          <video id="mainVideo" width="100%" height="100%" controls>
+            <source src="../../<?= htmlspecialchars($lessons[0]['video_url']) ?>" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
         </div>
         <h3 id="videoTitle">Intro to the Course</h3>
         <p>Welcome to your first lesson. Watch the video and continue down the playlist to master each topic.</p>
@@ -117,7 +140,7 @@
   </footer>
   <!-- Bootstrap Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script scr="../public/videos.js"
+  <script src="../../public/videos.js"></script>
 </body>
-</head>
+
 </html>
