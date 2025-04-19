@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Create Course</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../public/css/course.css">
+  <link rel="stylesheet" href="../../public/css/course.css" />
 </head>
 
 <body>
@@ -26,47 +26,49 @@
 
   <!-- Main Content -->
   <div class="container mt-5">
+
     <!-- Create Course Title -->
     <div class="createCourseName">
-      <h2 class="display-4">Create a New Course</h2>
+      <h2 class="display-4"></h2>
     </div>
 
-    <h3 class="mb-4"></h3>
-    
-    <form action="../../includes/teacher/course_handler.php" method="POST" enctype="multipart/form-data" id="courseForm">
-      <div class="mb-3">
-        <label for="title" class="form-label">Course Name</label>
-        <input type="text" name="title" id="title" class="form-control" placeholder="Enter course name" required />
-      </div>
+    <!-- Course Form Box -->
+    <div class="course-form-box mt-4">
+      <form action="../../includes/teacher/course_handler.php" method="POST" enctype="multipart/form-data" id="courseForm">
+        <div class="mb-3">
+          <label for="title" class="form-label">Course Name</label>
+          <input type="text" name="title" id="title" class="form-control" placeholder="Enter course name" required />
+        </div>
 
-      <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea name="description" id="description" class="form-control" rows="4" placeholder="Enter course description" required></textarea>
-      </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea name="description" id="description" class="form-control" rows="4" placeholder="Enter course description" required></textarea>
+        </div>
 
-      <div class="mb-3">
-        <label for="category" class="form-label">Category</label>
-        <input type="text" name="category" id="category" class="form-control" placeholder="e.g., Programming, Design" required />
-      </div>
+        <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+          <input type="text" name="category" id="category" class="form-control" placeholder="e.g., Programming, Design" required />
+        </div>
 
-      <div class="mb-3">
-        <label for="level" class="form-label">Level</label>
-        <select name="level" id="level" class="form-control" required>
-          <option value="" disabled selected>Select level</option>
-          <option value="Beginner">Beginner</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Advanced">Advanced</option>
-        </select>
-      </div>
+        <div class="mb-3">
+          <label for="level" class="form-label">Level</label>
+          <select name="level" id="level" class="form-control" required>
+            <option value="" disabled selected>Select level</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
 
-      <div class="mb-3">
-        <label for="thumbnail" class="form-label">Upload Thumbnail</label>
-        <input type="file" name="thumbnail" id="thumbnail" class="form-control" accept="image/*" required />
-        <img id="previewImage" class="mt-3 img-thumbnail" style="max-height: 200px; display: none;" />
-      </div>
+        <div class="mb-3">
+          <label for="thumbnail" class="form-label">Upload Thumbnail</label>
+          <input type="file" name="thumbnail" id="thumbnail" class="form-control" accept="image/*" required />
+          <img id="previewImage" class="mt-3 img-thumbnail" style="max-height: 200px; display: none;" />
+        </div>
 
-      <button type="submit" class="btn btn-primary">Create Course</button>
-    </form>
+        <button type="submit" class="btn btn-primary">Create Course</button>
+      </form>
+    </div>
   </div>
 
   <!-- Footer -->
