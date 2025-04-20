@@ -30,13 +30,13 @@
         </div>
     </nav>
 
-
+    <div class="main" style="background-image: url('../../public/images/home-background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;">
     <section class="hero">
         <h2>Welcome to MyCourses</h2>
         <p>Learn, explore, and grow your skills in tech!</p>
     </section>
-
-
     <section class="cards">
         <div class="card">
             <h3>HTML Basics</h3>
@@ -54,6 +54,7 @@
             <p>Bring your websites to life with interactivity.</p>
         </div>
     </section>
+</div>
 <!-- END: Articles Page -->
 <footer class="footer">
     <div class="footer-container">

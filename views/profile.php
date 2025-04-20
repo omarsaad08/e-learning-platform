@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../public/css/profile.css"> <!-- تم تصحيحه -->
 </head>
 <body>
-    <div class="container py-5">
+    <div class="container py-5" >
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="card shadow">
@@ -41,8 +41,12 @@
                             <div class="mb-3">
                                 <label class="text-muted">Your Courses</label>
                                 <ul id="coursesCompleted">
-                                <li>Html <progress>0%</progress></li>
-                                <li>CSS<progress>0%</progress></li>
+                                <li>Html <div class="progress">
+    <div class="progress-bar" style="width: 75%"></div>
+</div></li>
+                                <li>CSS<div class="progress">
+    <div class="progress-bar" style="width: 75%"></div>
+</div></li>
                                 </ul>
                             </div>
                         </div>

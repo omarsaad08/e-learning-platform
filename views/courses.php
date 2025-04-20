@@ -35,8 +35,7 @@
 
   <div class="page">
 
-    <!-- Filter Toggle Button (Visible on small screens) -->
-    <button class="filter-toggle" id="filterButton">Filters</button>
+
 
     <!-- Sidebar Filters -->
     <aside class="sidebar" id="sidebar">
