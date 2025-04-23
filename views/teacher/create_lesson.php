@@ -1,9 +1,38 @@
 <?php
+
+require_once '../../controllers/LessonController.php';
 session_start();
-require '../../includes/dbh.inc.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (
+        isset($_FILES['lesson_video']) &&
+        isset($_POST['lesson_title']) &&
+        isset($_POST['lesson_content']) &&
+        isset($_POST['course_id'])
+    ) {
+        $controller = new LessonController();
+
+        $courseId = $_POST['course_id'];
+        $title = $_POST['lesson_title'];
+        $content = $_POST['lesson_content'];
+        $position = $_POST['lesson_position'] ?? null;
+        $videoFile = $_FILES['lesson_video'];
+
+        $result = $controller->uploadLesson($courseId, $title, $content, $position, $videoFile);
+
+        if ($result['success']) {
+            header("Location: ../../views/teacher/teacher_home.php");
+            exit();
+        } else {
+            echo "Error: " . $result['error'];
+        }
+    } else {
+        echo "Missing fields.";
+    }
+}
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'teacher') {
-    header("Location: ../login.php");
+    var_dump($_SESSION);
+    header("Location: ../auth/login.php");
     exit();
 }
 

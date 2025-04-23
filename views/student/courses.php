@@ -10,9 +10,7 @@
   <title>Courses</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
@@ -111,11 +109,12 @@
               if ($isEnrolled) {
                 echo "<a href='videos.php?course_id= {$course['id']} ?>'>Watch Course</a>";
               } else {
-                echo "
-        <form action=\"../../includes/student/enroll.php\" method=\"POST\">
-          <input type=\"hidden\" name=\"course_id\" value=\"{$course['id']}\">
-          <button type=\"submit\" class=\"btn btn-dark\">Enroll</button>
-        </form>";
+                echo '
+        <form action="../../includes/student/enroll.php" method="POST">
+    <input type="hidden" name="course_id" value="<?= $course[\'id\'] ?>">
+    <button type="submit" class="btn btn-dark">Enroll</button>
+</form>
+        ';
               }
               echo "</div></div></div>";
             }

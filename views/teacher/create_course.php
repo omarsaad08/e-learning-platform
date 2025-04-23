@@ -1,3 +1,29 @@
+<?php
+// Include necessary files
+require_once  '../../controllers/CourseController.php';
+
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  require_once '../../controllers/CourseController.php';
+
+  $controller = new CourseController();
+  $result = $controller->createCourse(
+    $_POST['title'],
+    $_POST['description'],
+    $_POST['category'],
+    $_POST['level'],
+    $_FILES['thumbnail']
+  );
+
+  if ($result['success']) {
+    header("Location: ../../views/teacher/teacher_home.php");
+    exit();
+  } else {
+    echo "Error: " . ($result['error'] ?? 'Could not create course.');
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +60,7 @@
 
     <!-- Course Form Box -->
     <div class="course-form-box mt-4">
-      <form action="../../includes/teacher/course_handler.php" method="POST" enctype="multipart/form-data" id="courseForm">
+      <form method="POST" enctype="multipart/form-data" id="courseForm">
         <div class="mb-3">
           <label for="title" class="form-label">Course Name</label>
           <input type="text" name="title" id="title" class="form-control" placeholder="Enter course name" required />
@@ -71,38 +97,9 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer mt-5">
-    <div class="footer-container">
-      <div class="footer-about">
-        <h3>MyCourses</h3>
-        <p>An interactive platform to learn programming from beginner to advanced levels.</p>
-      </div>
-
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Courses</a></li>
-          <li><a href="#">Articles</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-social">
-        <h4>Follow Us</h4>
-        <div class="social-icons">
-          <a href="#"><img src="../../public/images/facebook_black_logo_icon_147136.png" alt="Facebook" /></a>
-          <a href="#"><img src="../../public/images/twitterlogoincircularblackbutton_79784.png" alt="Twitter" /></a>
-          <a href="#"><img src="../../public/images/linkedin_black_logo_icon_147114.png" alt="LinkedIn" /></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2025 MyCourses. All rights reserved.</p>
-    </div>
-  </footer>
+  <?php
+  include('../components/footer.php');
+  ?>
 
   <!-- <script src="script.js"></script> -->
   <!-- <script src="../../public/js/course.js"></script> -->

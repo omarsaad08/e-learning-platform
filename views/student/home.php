@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
     <link rel="stylesheet" href="../../public/css/style.css">
@@ -16,13 +18,14 @@
 <body>
     <?php
     include('../components/navbar.php');
-    include('../../includes/dbh.inc.php');
-    // Fetch 3 random courses
-    $stmt = $pdo->query("SELECT * FROM courses ORDER BY RAND() LIMIT 3");
-    $courses = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    // Fetch 3 latest articles
-    $stmt = $pdo->query("SELECT * FROM articles ORDER BY created_at DESC LIMIT 3");
-    $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    require_once '../../controllers/CourseController.php';
+    require_once '../../controllers/ArticleController.php';
+
+    $courseController = new CourseController();
+    $articleController = new ArticleController();
+
+    $randomCourses = $courseController->getRandomCourses(3);
+    $latestArticles = $articleController->getLatestArticles(3);
     ?>
 
 
@@ -36,7 +39,7 @@
 
 
         <section class="cards">
-            <?php foreach ($courses as $course): ?>
+            <?php foreach ($randomCourses as $course): ?>
                 <div class="card">
                     <h3><?= htmlspecialchars($course['title']) ?></h3>
                     <img src="<?= htmlspecialchars($course['thumbnail']) ?>" alt="<?= htmlspecialchars($course['title']) ?>">
@@ -47,7 +50,7 @@
 
         <section class="cards">
             <h2 style="width: 100%; text-align: center;">Latest Articles</h2>
-            <?php foreach ($articles as $article): ?>
+            <?php foreach ($latestArticles as $article): ?>
                 <div class="card">
                     <h3><?= htmlspecialchars($article['title']) ?></h3>
                     <p><?= htmlspecialchars(substr($article['content'], 0, 100)) ?>...</p>

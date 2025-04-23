@@ -12,26 +12,13 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right, #ece9e6, #ffffff);
+    font-family: 'Raleway';
     /* color: #333; */
     line-height: 1.6;
 }
 
 
-.navbar {
-    background: linear-gradient(90deg, #7184da, #4b91a2);
-    padding: 1rem 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: slideDown 1s ease-in-out;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    height: 70px;
 
-}
 
 .container {
     width: 90%;
@@ -41,28 +28,7 @@ body {
     align-items: center;
 }
 
-.logo {
-    color: white;
-    font-weight: 600;
-    font-size: 1.5rem;
-}
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: 400;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #ffd700;
-}
 
 
 .hero {

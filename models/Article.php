@@ -1,0 +1,59 @@
+<?php
+require_once '../../core/db.php';
+
+class Article
+{
+    private $db;
+
+    public function __construct()
+    {
+        $this->db = Database::getInstance()->getConnection();
+    }
+
+    public function getAll()
+    {
+        $stmt = $this->db->query("SELECT * FROM articles");
+        return $stmt->fetchAll();
+    }
+
+    public function getById($id)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM articles WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch();
+    }
+
+    public function getAllByTeacher($teacherId)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM articles WHERE teacher_id = ?");
+        $stmt->execute([$teacherId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getLatestArticles($limit = 3)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM articles ORDER BY created_at DESC LIMIT ?");
+        $stmt->bindValue(1, (int) $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function create($title, $content, $author_id)
+    {
+        $stmt = $this->db->prepare("INSERT INTO articles (title, content, author_id) VALUES (?, ?, ?)");
+        return $stmt->execute([$title, $content, $author_id]);
+    }
+
+    public function update($id, $title, $content)
+    {
+        $stmt = $this->db->prepare("UPDATE articles SET title = ?, content = ? WHERE id = ?");
+        return $stmt->execute([$title, $content, $id]);
+    }
+
+    public function delete($id)
+    {
+        $stmt = $this->db->prepare("DELETE FROM articles WHERE id = ?");
+        return $stmt->execute([$id]);
+    }
+}

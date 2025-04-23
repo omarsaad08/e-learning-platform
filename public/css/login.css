@@ -1,54 +1,54 @@
-
 body {
-    background: linear-gradient(90deg, #7184da, #4b91a2);
-    background-size: cover;
-    background-position: center;
-    font-family: 'Segoe UI', sans-serif;
-    cursor: pointer;
+  background: #1A1A1D;
+  background-size: cover;
+  background-position: center;
+  font-family: 'Raleway';
+  cursor: pointer;
+}
+
+
+.login-box {
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 0 20px #6A1E55;
+  width: 100%;
+  max-width: 400px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+.form-control {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: white;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-control:focus {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: white;
+  box-shadow: none;
+}
+
+
+.form-floating label {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
   }
-  
-  
-  .login-box {
-    padding: 40px;
-    border-radius: 20px;
-    backdrop-filter: blur(12px);
-      
-    box-shadow: 0 0 20px white;
-    width: 100%;
-    max-width: 400px;
-    animation: fadeIn 1s ease-in-out;
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  
-  .form-control {
-    background-color: rgba(255, 255, 255, 0.15);
-    border: none;
-    color: white;
-  }
-  
-  .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-  }
-  
-  .form-control:focus {
-    background-color: rgba(255, 255, 255, 0.25);
-    color: white;
-    box-shadow: none;
-  }
-  
-  
-  .form-floating label {
-    color: rgba(255, 255, 255, 0.8);
-  }
-  
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+}

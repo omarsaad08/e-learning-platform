@@ -1,9 +1,17 @@
+<?php
+require_once  '../../controllers/AuthController.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $auth = new AuthController();
+    $auth->signup($_POST['name'], $_POST['email'], $_POST['password'], $_POST['role']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Login Form</title>
+    <title>Signup Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet">
@@ -14,7 +22,7 @@
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="login-box text-white text-center">
             <h2 class="mb-4">Signup</h2>
-            <form action="../../includes/auth/signup_handler.php" method="POST">
+            <form action="" method="POST">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
                     <label for="name">Name</label>

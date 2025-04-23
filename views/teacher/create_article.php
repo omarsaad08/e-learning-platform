@@ -1,4 +1,24 @@
-<!-- teacher/create_article.php -->
+<?php
+require_once '../../controllers/ArticleController.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $controller = new ArticleController();
+
+  $title = trim($_POST['title']);
+  $content = trim($_POST['content']);
+
+  $result = $controller->createArticle($title, $content);
+
+  if ($result['success']) {
+    header("Location: ../../views/teacher/teacher_home.php");
+    exit;
+  } else {
+    echo "Error: " . $result['error'];
+  }
+} else {
+  echo "Invalid request.";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
