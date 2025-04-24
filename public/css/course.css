@@ -74,6 +74,7 @@ body {
     text-align: center;
     margin-top: 60px;
     animation: fadeInHeading 1s ease-in-out;
+
 }
 
 @keyframes fadeInHeading {
@@ -117,6 +118,7 @@ body {
     font-size: 1rem;
     border: 2px solid #26a69a;
     transition: border-color 0.3s ease;
+    
 }
 
 .form-control:focus {

@@ -41,11 +41,11 @@
         </div>
 
         <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea name="description" id="description" class="form-control" rows="4" placeholder="Enter course description" required></textarea>
+          <label for="description" class="form-label" >Description</label>
+          <textarea  name="description" id="description" class="form-control" rows="4" placeholder="Enter course description" required></textarea>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3" >
           <label for="category" class="form-label">Category</label>
           <input type="text" name="category" id="category" class="form-control" placeholder="e.g., Programming, Design" required />
         </div>
