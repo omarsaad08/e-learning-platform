@@ -1,0 +1,8 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Master programming from beginner to advanced with interactive online courses in Python, JavaScript, web development, data science, and more. Learn at your own pace with real-world projects and expert instructors.">
+<meta name="keywords" content="learn programming, online coding courses, programming for beginners, advanced coding tutorials, Python course, JavaScript training, HTML CSS course, web development bootcamp, data science classes, machine learning tutorials, full stack development, front end development, back end programming, coding interview prep, software engineering course, mobile app development, React course, Node.js training, coding for kids, self-paced coding lessons, interactive coding platform, build real-world projects, computer science fundamentals, AI programming course, online coding certification, remote coding school, code with projects, programming mentorship, tech career training, coding challenges, algorithm tutorials, css, js, html,c++, data structure ,oop, computer ,programming,courses">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />

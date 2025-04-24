@@ -1,7 +1,7 @@
 <?php
 
 require_once '../../models/Article.php';
-require_once '../../includes/dbh.inc.php';
+require_once __DIR__ . '/../core/db.php';
 
 class ArticleController
 {
@@ -9,7 +9,7 @@ class ArticleController
 
     public function __construct()
     {
-        $this->articleModel = new Article($GLOBALS['pdo']);
+        $this->articleModel = new Article();
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -43,5 +43,10 @@ class ArticleController
     public function getLatestArticles($limit = 3)
     {
         return $this->articleModel->getLatestArticles($limit);
+    }
+
+    public function getArticleById($id)
+    {
+        return $this->articleModel->getArticleById($id);
     }
 }

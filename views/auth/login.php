@@ -33,13 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                     <label for="password">Password</label>
                 </div>
-                <div class="d-flex justify-content-between mb-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                    </div>
-                    <a href="#" class="text-white text-decoration-none">Forgot Password?</a>
-                </div>
                 <button type="submit" class="btn btn-light w-100 mb-3">Login</button>
                 <p>Don't have an account? <a href="signup.php" class="text-white fw-bold">Register</a></p>
             </form>

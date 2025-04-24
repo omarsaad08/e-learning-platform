@@ -1,8 +1,7 @@
 <?php
-
-require_once '../models/Enrollment.php'; // Assuming your Enrollment model exists
-require_once '../models/User.php'; // Assuming you have a User model
-require_once '../models/Course.php'; // Assuming you have a Course model
+require_once __DIR__ . '/../models/Enrollment.php';
+require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../models/Course.php';
 
 class EnrollmentsController
 {
@@ -12,7 +11,8 @@ class EnrollmentsController
     {
         // Check if the student is already enrolled
         if ($this->isEnrolled($courseId, $studentId)) {
-            header("Location: /courses.php?message=You are already enrolled in this course.");
+            header("Location: http://localhost/e-learning-platform/views/student/courses.php?message=You are already enrolled in this course.");
+
             exit();
         }
 
@@ -21,12 +21,12 @@ class EnrollmentsController
         $enrollment->enrollStudent($courseId, $studentId);
 
         // Redirect with success message
-        header("Location: /courses.php?message=Successfully enrolled in the course.");
+        header("Location: http://localhost/e-learning-platform/views/student/courses.php?message=Successfully enrolled in the course.");
         exit();
     }
 
     // Check if the student is already enrolled in the course
-    private function isEnrolled($courseId, $studentId)
+    public function isEnrolled($courseId, $studentId)
     {
         $enrollment = new Enrollment();
         return $enrollment->checkEnrollment($courseId, $studentId);

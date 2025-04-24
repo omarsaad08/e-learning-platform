@@ -7,7 +7,9 @@ class AuthController
 
     public function __construct()
     {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $this->userModel = new User();
     }
 
@@ -49,6 +51,10 @@ class AuthController
         exit;
     }
 
+    public function getUserById($id)
+    {
+        return $this->userModel->getUserById($id);
+    }
 
     private function redirectToDashboard($role)
     {

@@ -1,5 +1,5 @@
 <?php
-require_once '../core/db.php';
+require_once __DIR__ . '/../core/db.php';
 
 class Enrollment
 {
@@ -24,9 +24,9 @@ class Enrollment
     // Enroll a student in a course
     public function enrollStudent($courseId, $studentId)
     {
-        $sql = "INSERT INTO enrollments (student_id, course_id) VALUES (?, ?)";
+        $sql = "INSERT INTO enrollments (course_id, student_id) VALUES (?, ?)";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute([$studentId, $courseId]);
+        $stmt->execute([$courseId, $studentId]);
     }
 
     // Remove a student's enrollment from a course

@@ -51,4 +51,8 @@ class CourseController
     {
         return $this->courseModel->getRandomCourses($limit);
     }
+    public function getAllCourses()
+    {
+        return $this->courseModel->getAllCourses();
+    }
 }

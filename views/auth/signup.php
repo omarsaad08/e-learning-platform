@@ -43,13 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <option value="teacher">Teacher</option>
                     </select>
                 </div>
-                <div class="d-flex justify-content-between mb-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                    </div>
-                    <a href="#" class="text-white text-decoration-none">Forgot Password?</a>
-                </div>
                 <button type="submit" class="btn btn-light w-100 mb-3">Signup</button>
                 <p>Already have an account? <a href="login.php" class="text-white fw-bold">Login</a></p>
             </form>

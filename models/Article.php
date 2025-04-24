@@ -16,12 +16,14 @@ class Article
         return $stmt->fetchAll();
     }
 
-    public function getById($id)
+    public function getArticleById($id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM articles WHERE id = ?");
-        $stmt->execute([$id]);
-        return $stmt->fetch();
+        $sql = "SELECT * FROM articles WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
 
     public function getAllByTeacher($teacherId)
     {

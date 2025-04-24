@@ -1,9 +1,9 @@
 .navbar {
-    background: #1A1A1D;
+    background: #6A1E55;
     padding: 1rem 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     animation: slideDown 1s ease-in-out;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -22,15 +22,22 @@
     text-decoration: none;
     color: white;
     font-weight: 400;
-    transition: color 0.3s;
+    transition: all 0.3s;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin-bottom: 0;
+    font-size: 18px;
 }
 
 .nav-links a:hover {
-    color: #A64D79;
+    color: white;
+    background-color: #1A1A1D;
 }
 
 .logo {
     color: white;
     font-weight: 600;
     font-size: 1.5rem;
+
+    font-family: 'Raleway';
 }

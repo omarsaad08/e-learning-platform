@@ -5,23 +5,17 @@
 }
 
 body {
-    font-family: 'Raleway';
+    font-family: 'Rubik';
     background: linear-gradient(to right, #ece9e6, #ffffff);
     line-height: 1.6;
 }
 
 
-.navbar {
-    background: #6A1E55;
-    padding: 1rem 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: slideDown 1s ease-in-out;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
 
+.main {
+    background-image: url('../../public/images/home-background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .container {
@@ -32,47 +26,25 @@ body {
     align-items: center;
 }
 
-.logo {
-    color: white;
-    font-weight: 600;
-    font-size: 1.5rem;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: 400;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #ffd700;
-}
 
 
 .hero {
     text-align: center;
     padding: 80px 20px;
     animation: fadeIn 2s ease;
-    margin-top: 70px;
+    color: white;
 }
 
 .hero h2 {
     font-size: 2.5rem;
     font-weight: 600;
     margin-bottom: 10px;
+    font-family: 'Raleway';
 }
 
 .hero p {
     font-size: 1.2rem;
     font-weight: 300;
-    color: #555;
 }
 
 
@@ -84,6 +56,10 @@ body {
     padding: 50px 20px;
 }
 
+.cards h2 {
+    color: white;
+}
+
 .card {
     background-color: white;
     padding: 20px;
@@ -92,6 +68,8 @@ body {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s, box-shadow 0.3s;
     animation: fadeInUp 1s ease;
+    background-color: #1A1A1D;
+    color: white;
 }
 
 .card:hover {
@@ -101,12 +79,16 @@ body {
 
 .card h3 {
     font-weight: 600;
-    margin-bottom: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 16px;
 }
 
 .card p {
     font-weight: 300;
-    color: #666;
+    color: #eee;
+    text-align: center;
+    text-transform: capitalize;
 }
 
 
@@ -118,6 +100,10 @@ body {
     margin-bottom: 15px;
 }
 
+.card a {
+    background: #6A1E55;
+    color: white;
+}
 
 @keyframes slideDown {
     0% {

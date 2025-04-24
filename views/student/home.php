@@ -2,17 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <?php
+    include('../components/headImports.php');
+    ?>
     <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/home.css">
 </head>
 
 <body>
@@ -29,9 +23,7 @@
     ?>
 
 
-    <div class="main" style="background-image: url('../../public/images/home-background.svg');
-    background-size: cover;
-    background-repeat: no-repeat;">
+    <div class="main">
         <section class="hero">
             <h2>Welcome to MyCourses</h2>
             <p>Learn, explore, and grow your skills in tech!</p>
@@ -39,6 +31,9 @@
 
 
         <section class="cards">
+            <h2 style="width: 100%; text-align: center;">
+                Some Featured Courses
+            </h2>
             <?php foreach ($randomCourses as $course): ?>
                 <div class="card">
                     <h3><?= htmlspecialchars($course['title']) ?></h3>

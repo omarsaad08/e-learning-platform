@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../public/css/footer.css">
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-about">
@@ -15,7 +16,7 @@
             </ul>
         </div>
 
-        <div class="footer-social">
+        <!-- <div class="footer-social">
             <h4>Follow Us</h4>
             <div class="social-icons">
                 <a href="#"><img src="facebook_black_logo_icon_147136.png" alt="Facebook" /></a>
@@ -23,7 +24,7 @@
 
                 <a href="#"><img src="linkedin_black_logo_icon_147114.png" alt="linkedin" /></a>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="footer-bottom">
