@@ -67,4 +67,14 @@ class AuthController
         }
         exit();
     }
+
+    public function uploadProfileImage($userId, $imageFile)
+    {
+        return $this->userModel->uploadProfileImage($userId, $imageFile);
+    }
+
+    public function getProfileImage($userId)
+    {
+        return $this->userModel->getProfileImage($userId);
+    }
 }
