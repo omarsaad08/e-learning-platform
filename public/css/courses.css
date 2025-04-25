@@ -117,6 +117,7 @@ body {
 
 .page {
     display: flex;
+    margin-bottom: 40px;
 }
 
 /* Sidebar Layout */
@@ -134,6 +135,8 @@ body {
     position: sticky;
     top: 70px;
     border-right: 3px solid #3B1C32;
+
+
 }
 
 .sidebar>div {
@@ -153,10 +156,16 @@ body {
 }
 
 
-/* Sidebar content should remain fixed */
-.sidebarcontent {
+Sidebar content should remain fixed .sidebarcontent {
     position: fixed;
 }
+
+
+.filter-toggle {
+    display: none;
+    /* Hide by default on larger screens */
+}
+
 
 /* Make sidebar hidden on small screens */
 @media (max-width: 768px) {
@@ -185,18 +194,27 @@ body {
         display: block;
         /* Show filter toggle button on small screens */
         position: fixed;
-        top: 80px;
+        top: 110px;
+
         /* Adjust according to navbar height */
         right: 10px;
-        background-color: #4b91a2;
+        background-color: #6A1E55;
         color: white;
         padding: 10px 20px;
         font-size: 16px;
         border: none;
         cursor: pointer;
+        border-radius: 12px;
         z-index: 1100;
+        font-weight: 500;
+        transition: transform 0.3s ease-in-out;
         /* Ensure the button is above other elements */
     }
+}
+
+.filter-toggle:hover {
+    transform: scale(1.05);
+    ;
 }
 
 /* Toggle the sidebar visibility */
@@ -227,7 +245,7 @@ body {
     padding: 8px;
     max-width: 300px;
     box-sizing: border-box;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     border: 2px solid #6A1E55;
     background: #1a1a1d;
     border-radius: 30px;
@@ -248,8 +266,8 @@ body {
 .topbar {
     display: flex;
     justify-content: space-between;
-    margin-top: 70px;
-    margin-bottom: 30px;
+
+    margin-bottom: 15px;
     flex-wrap: wrap;
     /* Ensure items can wrap on smaller screens */
 }
@@ -347,4 +365,12 @@ div.main {
     background-image: url('../images/home-background.svg');
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+    .card {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
 }

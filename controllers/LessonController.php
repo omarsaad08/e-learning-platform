@@ -1,7 +1,7 @@
 <?php
 
 require_once '../../models/Lesson.php';
-require_once '../../includes/dbh.inc.php';
+require_once '../../core/db.php';
 
 class LessonController
 {
@@ -9,7 +9,7 @@ class LessonController
 
     public function __construct()
     {
-        $this->lessonModel = new Lesson($GLOBALS['pdo']);
+        $this->lessonModel = new Lesson();
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }

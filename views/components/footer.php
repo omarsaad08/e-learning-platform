@@ -9,10 +9,10 @@
         <div class="footer-links">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">Articles</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="courses.php">Courses</a></li>
+                <li><a href="view_article">Articles</a></li>
+                <li><a href="#">Profile</a></li>
             </ul>
         </div>
 

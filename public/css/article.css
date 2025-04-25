@@ -104,6 +104,7 @@ textarea {
   transition: border 0.3s ease;
   animation: fadeInTextarea 1s ease-in-out;
   font-family: 'Rubik';
+  resize: vertical;
 }
 
 @keyframes fadeInTextarea {

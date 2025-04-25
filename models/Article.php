@@ -43,7 +43,7 @@ class Article
 
     public function create($title, $content, $author_id)
     {
-        $stmt = $this->db->prepare("INSERT INTO articles (title, content, author_id) VALUES (?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO articles (title, content, teacher_id) VALUES (?, ?, ?)");
         return $stmt->execute([$title, $content, $author_id]);
     }
 

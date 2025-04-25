@@ -1,12 +1,9 @@
 <?php
-include('../../includes/dbh.inc.php');
+include('../../controllers/LessonController.php');
 
 $course_id = isset($_GET['course_id']) ? intval($_GET['course_id']) : 0;
-
-$sql = "SELECT id, title, video_url FROM lessons WHERE course_id = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$course_id]);
-$lessons = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$controller = new LessonController();
+$lessons = $LessonController->fetchCourseLessons($course_id);
 ?>
 
 

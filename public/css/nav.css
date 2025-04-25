@@ -1,43 +1,120 @@
 .navbar {
     background: #6A1E55;
-    padding: 1rem 0;
+    padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: slideDown 1s ease-in-out;
     position: sticky;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
-    height: 70px;
+    z-index: 150;
+    height: 100px;
+    animation: slideDown 1s ease-in-out;
+}
 
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: #3B1C32;
+    font-size: 2.2rem;
+    font-weight: 900;
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    text-decoration: none;
+}
+
+.mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.mobile-menu-button:hover {
+    background: rgba(26, 26, 29, 0.2);
+    border-radius: 4px;
 }
 
 .nav-links {
     list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    gap: 20px;
+    gap: 1.5rem;
 }
 
 .nav-links a {
-    text-decoration: none;
     color: white;
-    font-weight: 400;
-    transition: all 0.3s;
-    padding: 8px 12px;
-    border-radius: 20px;
-    margin-bottom: 0;
-    font-size: 18px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    margin-top: 500px;
+    transition: background-color 0.2s;
+    font-weight: 600;
 }
 
 .nav-links a:hover {
-    color: white;
     background-color: #1A1A1D;
 }
 
-.logo {
-    color: white;
-    font-weight: 600;
-    font-size: 1.5rem;
+.mobile-nav {
+    display: none;
+}
 
-    font-family: 'Raleway';
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-button {
+        display: block;
+    }
+
+    .nav-links.desktop {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #6A1E55;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: slideDown 0.3s ease-in-out;
+        z-index: 40;
+    }
+
+    .mobile-nav.active {
+        display: block;
+    }
+
+    .nav-links.mobile {
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+    }
+
+    .nav-links.mobile a {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0;
+    }
 }

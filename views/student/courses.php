@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Main Content -->
     <main class="content">
       <div class="topbar">
-        <h1>All Courses</h1>
+        <h1 style="font-weight:700;">All Courses</h1>
         <input type="text" placeholder="Search courses..." class="search-box">
       </div>
       <div class="container">
@@ -107,11 +107,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "<a class=\"watch-enroll\" href='videos.php?course_id= {$course['id']} ?>'>Watch Course</a>";
               } else {
                 echo "
-    <form action=\"\" method=\"POST\">
-        <input type=\"hidden\" name=\"course_id\" value=\"{$course['id']}\">
-        <button type=\"submit\" class=\"watch-enroll\">Enroll</button>
-    </form>
-";
+                    <form action=\"\" method=\"POST\">
+                        <input type=\"hidden\" name=\"course_id\" value=\"{$course['id']}\">
+                        <button type=\"submit\" class=\"watch-enroll\">Enroll</button>
+                    </form>
+                    ";
               }
               echo "</div></div></div>";
             }
@@ -121,14 +121,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           ?>
         </div>
       </div>
+    </main>
+  </div>
+  <!-- END: Articles Page -->
+  <?php
+  include('../components/footer.php');
+  ?>
 
-      <!-- END: Articles Page -->
-      <?php
-      include('../components/footer.php');
-      ?>
 
-
-      <script src="../../public/js/courses.js"></script>
+  <script src="../../public/js/script.js"></script>
 </body>
 
 </html>

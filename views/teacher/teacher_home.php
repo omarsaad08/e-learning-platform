@@ -25,12 +25,15 @@ $articles = $controller->getArticlesByTeacher();
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <?php
+    include('../components/headImports.php');
+    ?>
     <title>Teacher Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../public/css/teacher_home.css">
 </head>
 
-<body class="bg-light">
+<body>
     <?php include('../components/navbar.php'); ?>
     <div class="container mt-5">
         <h2>Welcome, Teacher!</h2>
@@ -57,7 +60,7 @@ $articles = $controller->getArticlesByTeacher();
                                 + Add Lesson
                             </a>
                             <a href="view_course.php?course_id=<?= $course['id'] ?>" class="btn btn-sm btn-outline-secondary mt-2 ms-2">
-                                👁️ View Course
+                                View Course
                             </a>
                         </div>
                     </div>
@@ -79,6 +82,11 @@ $articles = $controller->getArticlesByTeacher();
             <?php endforeach; ?>
         </ul>
     </div>
+    <!-- END: Articles Page -->
+    <?php
+    include('../components/footer.php');
+    ?>
+
 </body>
 
 </html>
