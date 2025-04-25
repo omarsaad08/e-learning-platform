@@ -1,23 +1,8 @@
 <?php
 session_start();
-require '../../includes/dbh.inc.php';
-require '../../includes/teacher/get_lessons.php';
+require_once '../../controllers/LessonController.php';
+require_once '../../controllers/CourseController.php';
 
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'teacher') {
-    header("Location: ../auth/login.php");
-    exit();
-}
-
-if (!isset($_GET['course_id'])) {
-    echo "Course ID is missing.";
-    exit();
-}
-
-$course_id = $_GET['course_id'];
-
-// Optional: You could verify ownership of the course here
-
-$lessons = getCourseLessons($course_id, $pdo);
 ?>
 
 <!DOCTYPE html>

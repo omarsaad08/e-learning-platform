@@ -1,0 +1,378 @@
+:root {
+    --color-bg: linear-gradient(to right, #ece9e6, #ffffff);
+
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rubik';
+    color: white;
+    line-height: 1.6;
+    background-color: #1A1A1D;
+}
+
+
+
+
+.container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    animation: fadeIn 2s ease;
+    margin-top: 70px;
+}
+
+
+.hero h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-weight: 300;
+    color: #666;
+}
+
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.page {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+/* Sidebar Layout */
+.sidebar {
+    width: 250px;
+    padding: 20px;
+    background-color: #1A1A1D;
+    border-right: 1px solid #ddd;
+    height: 100vh;
+    overflow-y: auto;
+    /* margin-top: 80px; */
+    display: block;
+    transition: transform 0.3s ease-in-out;
+    height: calc(100vh - 70px);
+    position: sticky;
+    top: 70px;
+    border-right: 3px solid #3B1C32;
+
+
+}
+
+.sidebar>div {
+    margin-bottom: 16px;
+}
+
+.sidebar h2 {
+    margin-bottom: 16px;
+}
+
+.sidebar h4 {
+    margin-bottom: 8px;
+}
+
+.sidebar label {
+    display: block;
+}
+
+
+Sidebar content should remain fixed .sidebarcontent {
+    position: fixed;
+}
+
+
+.filter-toggle {
+    display: none;
+    /* Hide by default on larger screens */
+}
+
+
+/* Make sidebar hidden on small screens */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+        /* Hide the sidebar on small screens */
+        position: fixed;
+        /* Position it fixed for sliding effect */
+        top: 0;
+        /* Make sure it starts at the top */
+        left: 0;
+        /* Align it to the left */
+        width: 100%;
+        /* Full width on small screens */
+        height: 100%;
+        /* Full height on small screens */
+        background-color: #fff;
+        padding: 10px;
+        margin-top: 70px;
+        /* Adjust according to the navbar height */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Button to toggle sidebar visibility on small screens */
+    .filter-toggle {
+        display: block;
+        /* Show filter toggle button on small screens */
+        position: fixed;
+        top: 110px;
+
+        /* Adjust according to navbar height */
+        right: 10px;
+        background-color: #6A1E55;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 12px;
+        z-index: 1100;
+        font-weight: 500;
+        transition: transform 0.3s ease-in-out;
+        /* Ensure the button is above other elements */
+    }
+}
+
+.filter-toggle:hover {
+    transform: scale(1.05);
+    ;
+}
+
+/* Toggle the sidebar visibility */
+.sidebar.active {
+    display: block;
+    /* Display sidebar when active class is added */
+    transform: translateX(0);
+    /* Slide it in */
+}
+
+/* Hide sidebar if not active */
+.sidebar.inactive {
+    display: none;
+    transform: translateX(-100%);
+    /* Slide it out of view */
+}
+
+
+.content {
+    flex: 1;
+    padding: 30px;
+    background-image: url('../../public/images/home-background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.search-box {
+    padding: 8px;
+    max-width: 300px;
+    box-sizing: border-box;
+    margin-bottom: 0px;
+    border: 2px solid #6A1E55;
+    background: #1a1a1d;
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: white;
+    flex-grow: 1;
+    /* Allow search box to grow to take up available space */
+    margin-right: 20px;
+    /* Space between search box and other elements */
+    margin-left: 0;
+    /* Optionally adjust as needed */
+}
+
+.search-box:focus {
+    border-color: #6A1E55;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    /* Ensure items can wrap on smaller screens */
+}
+
+
+@media (max-width: 768px) {
+    .search-box {
+        width: 80%;
+        /* On smaller screens, reduce the width */
+        max-width: none;
+        /* Remove max-width for more flexibility */
+    }
+}
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Default card styles */
+/* Default card styles */
+
+
+.card {
+    padding: 20px;
+    max-width: 280px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 1s ease;
+    padding: 20px;
+    text-align: center;
+    height: 200px;
+    background-color: #1A1A1D;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #A64D79;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.card h5 {
+    color: white;
+    text-transform: uppercase;
+}
+
+.card .rating {
+    color: #f5a623;
+}
+
+.card .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    margin-top: 5px;
+    background-color: #eee;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.card span {
+    background-color: #A64D79 !important;
+}
+
+.card .watch-enroll {
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    background: #3B1C32;
+    border: none;
+    padding: 8px 0;
+    font-weight: bold;
+    font-family: 'Rubik';
+    display: block;
+    text-decoration: none;
+
+}
+
+
+.beginner {
+    background-color: #c2f0c2;
+}
+
+
+div.main {
+    background-image: url('../images/home-background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+    .card {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+}

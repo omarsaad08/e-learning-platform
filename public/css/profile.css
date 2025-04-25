@@ -1,10 +1,32 @@
 /* Profile Image Container - Improved */
+body {
+
+    background-image: url('../../public/images/home-background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body .card {
+    background-color: #1A1A1D;
+    border-radius: 12px;
+    border: 2px solid #6A1E55;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+body .card-body {
+    background-color: #1A1A1D;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 24px;
+}
+
 .profile-image-container {
     width: 150px;
     height: 150px;
     margin: 0 auto 1.5rem;
     position: relative;
     transition: transform 0.3s ease;
+
 }
 
 .profile-image-container:hover {
@@ -38,8 +60,10 @@
     background: #0d6efd;
     color: white;
     border-radius: 10%;
-    /*Changedtocircle*/width: 50px;
-    /*Morebalancedsize*/height: 30px;
+    /*Changedtocircle*/
+    width: 50px;
+    /*Morebalancedsize*/
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,35 +75,6 @@
     -o-border-radius: 10%;
 }
 
-/* Remove the duplicate progress bar styles and keep only this one */
-.progress {
-    height: 12px;
-    background-color: #f0f0f0;
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1rem;
-}
-
-.progress-bar {
-    background-color: #0d6efd;
-    height: 100%;
-    border-radius: 6px;
-    position: relative;
-    animation: progressAnimation 2s linear infinite;
-    background-image: linear-gradient(
-        45deg,
-        rgba(255, 255, 255, 0.3) 25%,
-        transparent 25%,
-        transparent 50%,
-        rgba(255, 255, 255, 0.3) 50%,
-        rgba(255, 255, 255, 0.3) 75%,
-        transparent 75%,
-        transparent
-    );
-    background-size: 20px 20px;
-    will-change: background-position; /* Improves animation performance */
-}
 
 /* Add focus styles for accessibility */
 .profile-image-container label:focus {
@@ -93,16 +88,16 @@
         width: 130px;
         height: 130px;
     }
-    
+
     /* Combine all mobile styles here */
     .user-info {
         padding: 1.25rem;
     }
-    
+
     .user-info ul#coursesCompleted {
         gap: 0.5rem;
     }
-    
+
     .user-info ul#coursesCompleted li {
         padding: 0.4rem 0.9rem;
     }
@@ -113,7 +108,7 @@
         width: 110px;
         height: 110px;
     }
-    
+
     .username-container {
         flex-direction: column;
         gap: 0.25rem;

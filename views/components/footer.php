@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../../public/css/footer.css">
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-about">
@@ -8,14 +9,14 @@
         <div class="footer-links">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">Articles</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="courses.php">Courses</a></li>
+                <li><a href="view_article">Articles</a></li>
+                <li><a href="#">Profile</a></li>
             </ul>
         </div>
 
-        <div class="footer-social">
+        <!-- <div class="footer-social">
             <h4>Follow Us</h4>
             <div class="social-icons">
                 <a href="#"><img src="facebook_black_logo_icon_147136.png" alt="Facebook" /></a>
@@ -23,7 +24,7 @@
 
                 <a href="#"><img src="linkedin_black_logo_icon_147114.png" alt="linkedin" /></a>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="footer-bottom">

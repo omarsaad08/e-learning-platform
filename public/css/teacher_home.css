@@ -1,0 +1,57 @@
+body {
+    font-family: 'Rubik';
+    background-image: url('../../public/images/home-background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    line-height: 1.6;
+    color: white;
+}
+
+.container>div:first-of-type a {
+    background-color: #A64D79;
+    border: none;
+}
+
+.container .row .card {
+    background: #1A1A1D;
+    color: white;
+}
+
+.container .row .card img {
+    height: 200px;
+}
+
+.container .row .card h5 {
+    text-transform: uppercase;
+}
+
+.container .row a:first-of-type {
+    background-color: #1A1A1D;
+    color: #A64D79;
+    border-color: #A64D79;
+}
+
+.container .row a:not(:first-of-type) {
+    background-color: #6A1E55;
+    color: white;
+    border-color: #6A1E55;
+}
+
+.list-group .list-group-item {
+    background-color: #1A1A1D;
+    color: white;
+    margin-bottom: 10px;
+    border: 2px solid #6A1E55;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+.list-group .list-group-item a {
+    border-color: #A64D79;
+    color: #A64D79;
+}
+
+.list-group .list-group-item a:hover {
+    background-color: #A64D79;
+    color: white;
+}
