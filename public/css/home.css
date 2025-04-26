@@ -6,17 +6,16 @@
 
 body {
     font-family: 'Rubik';
-    background: #2c1a47;
+    background: linear-gradient(to right, #0e0801, #160101);
     line-height: 1.6;
 }
 
 
 
 .main {
-    /* background-image: url('../../public/images/home-background.svg');
+    background-image: url('../../public/images/ChatGPT Image Apr 27, 2025, 02_33_24 AM.png');
     background-size: cover;
-    background-repeat: no-repeat; */
-    background: #2c1a47;
+    background-repeat: no-repeat;
 }
 
 .container {
