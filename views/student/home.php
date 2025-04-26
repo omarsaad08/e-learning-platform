@@ -7,6 +7,7 @@
     ?>
     <title>Home</title>
     <link rel="stylesheet" href="../../public/css/home.css">
+
 </head>
 
 <body>
