@@ -6,16 +6,17 @@
 
 body {
     font-family: 'Rubik';
-    background: linear-gradient(to right, #ece9e6, #ffffff);
+    background: #2c1a47;
     line-height: 1.6;
 }
 
 
 
 .main {
-    background-image: url('../../public/images/home-background.svg');
+    /* background-image: url('../../public/images/home-background.svg');
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    background: #2c1a47;
 }
 
 .container {
