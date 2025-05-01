@@ -1,10 +1,12 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Rubik', sans-serif;
-  animation: fadeInBody 1s ease-in-out;
-box-sizing: content-box;
 
+  font-family: 'Rubik', sans-serif;
+  flex: 1;
+ 
+  background-image: url('../../public/images/home-background.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* يجعل الخلفية ثابتة عند التمرير */
 }
 
 @keyframes fadeInBody {
@@ -17,164 +19,137 @@ box-sizing: content-box;
   }
 }
 
+/* navbar */
+.navbar {
+  background-color: rgba(0, 0, 0, 0.8); /* خلفية شفافة */
+  z-index: 1000;
+}
+/* إزالة الـ margin الافتراضي في الـ row */
+.row {
+  margin: 0 !important;
+}
+
+/* حذف padding الزائد على الـ container */
+.container-fluid {
+  padding: 0 !important;
+}
 
 .video-player {
-  width: 100%;
-  max-width: 900px; /* خلي أقصى عرض أكبر من الأزرار */
-  margin: 0 auto; /* يخليه في المنتصف */
+  width: 95%; /* تحديد العرض ليكون أقل من 100% */
+  max-width: 1000px; /* تحديد أقصى عرض للفيديو */
   aspect-ratio: 16/9;
+  margin: 0 auto; /* وضعه في المنتصف */
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 0px 12px rgba(53, 2, 33, 0.6);
+  box-shadow: 0 0px 10px rgb(53, 2, 33);
+  padding: 0; /* إزالة الـ padding */
 }
 
-
-.playlist-item {
-  background-color: white;
-
-  padding: 10px 15px ;
-  border: 1px solid rgb(191, 183, 183);
-  border-radius: 8px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-  -webkit-transition: background 0.3s, transform 0.2s;
-  -moz-transition: background 0.3s, transform 0.2s;
-  -ms-transition: background 0.3s, transform 0.2s;
-  -o-transition: background 0.3s, transform 0.2s;
-}
-
-.playlist-item:hover {
-  background-color: gray;
-  transform: translateX(3px);
-  -webkit-transform: translateX(3px);
-  -moz-transform: translateX(3px);
-  -ms-transform: translateX(3px);
-  -o-transform: translateX(3px);
-}
-
-.playlist-active {
-  background-color:#1A1A1D;
-  border-left: 4px solid #0d6efd;
-}
-
-.sidebar {
-  width: 250px;
-  padding: 20px;
-  background-color: #1A1A1D;
-  border-right: 1px solid #ddd;
-  height: 100vh;
-  overflow-y: auto;
-  /* margin-top: 80px; */
-  display: block;
-  transition: transform 0.3s ease-in-out;
-  height: calc(100vh - 70px);
-  position: sticky;
-  top: 70px;
-  border-right: 3px solid #3B1C32;
-color: white;
-font-weight: 700;
-
-}
-
-
-/* استيراد الخط */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
-
-.container_buttons {
+iframe {
   width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+
+/* Sidebar Playlist */
+.sidebar {
+  background-color: #1A1A1D;
+  padding: 20px;
+  color: white;
+  font-weight: 700;
+  border-right: 1px solid #ddd;
+}
+
+/* جعل الأزرار مرنة مع الحجم */
+.container_buttons {
   display: flex;
   justify-content: center;
   padding: 20px 0;
-  direction: rtl;
-}
-
-.buttons {
   width: 100%;
-  max-width: 400px; /* قللناها من 600 */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  padding: 0 10px;
 }
-
-
+/* زر التفاعل */
 .btn {
-  flex: 1;
-  
-  height: 30px;
-  padding: 6px 0;
+  flex: 1; /* توزيع متساوي للمساحة */
+  min-width: 110px; /* الحد الأدنى للعرض */
+  height: 30px; /* تقليل الارتفاع */
+  font-size: 12px; /* تقليل حجم الخط */
+  padding: 6px 10px; /* تقليل الحشو الداخلي */
   border: none;
-  border-radius: 5px;
+  border-radius: 5px; /* تقليل الانحناء */
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   font-family: 'Cairo', sans-serif;
-  font-size: 12px;
   font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* زر Mark As Complete خاص */
 #mark-complete-btn {
-  flex: 2;
+  flex: none;
+  font-size: 12px; /* تقليل حجم الخط */
+  height: 32px; /* ارتفاع أصغر */
+  padding: 8px 12px; /* حشو داخلي أصغر */
   background-color: #3B1C32;
   color: white;
-  height: 30px;
-  font-size: 11px;
-  padding: 6px 8px;
-
 }
 
-#mark-complete-btn:hover{
+#mark-complete-btn:hover {
   background-color: #531642;
 }
+
 .btn:hover {
-transform: translateY(-2px);
-box-shadow: 0 10px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.15);
 }
 
 .btn:active {
-transform: translateY(0);
+  transform: translateY(0);
 }
-#prev-btn,#next-btn{
-  background-color:#dbdbe1;
+
+#prev-btn, #next-btn {
+  background-color: #dbdbe1;
 }
+
+/* جعل الأزرار بجانب بعض */
+.buttons {
+  display: flex; /* لاستخدام flexbox */
+  justify-content: center; /* محاذاة الأزرار في المنتصف */
+  gap: 40px; /* المسافة بين الأزرار */
+  flex-wrap: nowrap; /* منع الأزرار من الانتقال لأسطر جديدة */
+}
+
+
+/* عند تصغير الشاشة */
 @media (max-width: 768px) {
   .sidebar {
-    display: none;
+    display: none; /* إخفاء السايدبار على الشاشات الصغيرة */
   }
 }
+
 @media (max-width: 780px) {
   .buttons {
-    max-width: 300px; /* أصغر على الشاشات الصغيرة */
-    gap: 6px;
+  
+    gap: 8px;
     padding: 0 5px;
   }
 
   .btn {
-    width: 70px;
-    height: 22px;
-    font-size: 10px;
-    padding: 3px 5px;
-    border-radius: 4px;
+    width: 20%;
+    height: 36px; /* تصغير الارتفاع */
+    font-size: 13px; /* تصغير الخط */
+    padding: 8px 0; /* تقليل الحشو الداخلي */
+    border-radius: 6px; /* تقليل الانحناء */
   }
 
   #mark-complete-btn {
-    height: 24px;
-    font-size: 9.5px;
-  }
-}
-@media (max-width: 768px) {
-  .video-player {
-    max-width: 100%;
-    border-radius: 8px;
-  }
-
-  .buttons {
-    max-width: 90%;
+    width: 30%;
+    flex: none;
+    font-size: 12.5px;
+    height: 38px;
   }
 }

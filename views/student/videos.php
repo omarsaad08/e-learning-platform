@@ -25,15 +25,16 @@ $lessons = $controller->fetchCourseLessons($course_id);
 <body>
 <?php include '../components/navbar.php'; ?>
 
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid p-0">
+  <div class="row m-0">
+    
     <!-- Sidebar Playlist -->
-    <div class="col-md-3 sidebar  p-3">
+    <div class="col-md-3 sidebar p-3">
       <h5 class="mb-4">Course Playlist</h5>
       <div id="playlist">
         <?php if (!empty($lessons)): ?>
           <?php foreach ($lessons as $index => $lesson): ?>
-            <div class="playlist-item <?php echo $index === 0 ? 'playlist-active' : ''; ?>"
+            <div class="playlist-item <?php echo $index === 0 ? 'playlist-active' : ''; ?>" 
                  data-video="<?php echo htmlspecialchars($lesson['video_url']); ?>">
               <?php echo htmlspecialchars($lesson['title']); ?>
             </div>
@@ -45,35 +46,31 @@ $lessons = $controller->fetchCourseLessons($course_id);
     </div>
 
     <!-- Video Player + Buttons -->
-
-<!-- Video Player + Buttons -->
- 
-<div class="col-md-9 col-12 py-4 px-5 position-relative">
-
-      
-    <div class="container_buttons">
+    <div class="col-md-9 col-12 py-4 px-4 position-relative">
+      <div class="container_buttons">
         <div class="buttons">
           <button class="btn" id="next-btn"><span>Next</span></button>
-          <button class="btn" id="mark-complete-btn" >
-            <span>Mark As Complete</span>
-          </button>
+          <button class="btn" id="mark-complete-btn"><span>Complete</span></button>
           <button class="btn" id="prev-btn"><span>Previous</span></button>
         </div>
       </div>
 
+      <!-- Container for the video -->
       <div class="video-player mb-4" style="aspect-ratio: 16/9;">
-        <div id="mainVideo"></div>
-      </div>
+      <iframe id="mainVideo" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+      </div>
     </div>
+    
   </div>
 </div>
-        </div>
+
 <?php include('../components/footer.php'); ?>
 
 <!-- Scripts -->
+<script src=""></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://www.youtube.com/iframe_api"></script>
-<script src="../../public/js/videos.js"></script>
+
+
 </body>
 </html>
