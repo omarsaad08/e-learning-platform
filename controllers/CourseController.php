@@ -55,4 +55,12 @@ class CourseController
     {
         return $this->courseModel->getAllCourses();
     }
+    public function getCourseById($id)
+    {
+        return $this->courseModel->getCourseById($id);
+    }
+    public function getAllCategories()
+    {
+        return $this->courseModel->getAllCategories();
+    }
 }

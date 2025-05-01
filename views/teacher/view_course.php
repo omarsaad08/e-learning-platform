@@ -2,7 +2,9 @@
 session_start();
 require_once '../../controllers/LessonController.php';
 require_once '../../controllers/CourseController.php';
-
+$lessonController = new LessonController();
+$courseController = new CourseController();
+$lessons = $lessonController->fetchCourseLessons($_GET['course_id']);
 ?>
 
 <!DOCTYPE html>

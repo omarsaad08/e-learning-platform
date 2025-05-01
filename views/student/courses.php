@@ -1,4 +1,9 @@
 <?php
+
+include('../../controllers/CourseController.php');
+include('../../controllers/EnrollmentController.php');
+$coursesController = new CourseController();
+$enrollmentController = new EnrollmentsController();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   session_start();
   require_once '../../controllers/EnrollmentController.php';
@@ -36,12 +41,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Sidebar Filters -->
     <aside class="sidebar" id="sidebar">
       <h2>Filter Courses</h2>
+      <?php
+      $categories = $coursesController->getAllCategories(); // Add this above the sidebar
+      ?>
+
       <div class="filter-group">
         <h4>Category</h4>
-        <label><input type="checkbox" value="web"> Web Development</label>
-        <label><input type="checkbox" value="data"> Data Science</label>
-        <label><input type="checkbox" value="ai"> AI & ML</label>
+        <?php foreach ($categories as $cat): ?>
+          <label>
+            <input type="checkbox" class="category-filter" value="<?= strtolower($cat['name']) ?>">
+            <?= htmlspecialchars($cat['name']) ?>
+          </label>
+        <?php endforeach; ?>
       </div>
+
       <div class="filter-group">
         <h4>Level</h4>
         <label><input type="checkbox" value="beginner"> Beginner</label>
@@ -65,10 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <?php endif; ?>
 
           <?php
-          include('../../controllers/CourseController.php');
-          include('../../controllers/EnrollmentController.php');
-          $coursesController = new CourseController();
-          $enrollmentController = new EnrollmentsController();
           $courses = $coursesController->getAllCourses();
 
           if (count($courses) > 0) {
@@ -129,7 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   ?>
 
 
-  <script src="../../public/js/script.js"></script>
+  <script src="../../public/js/courses.js"></script>
 </body>
 
 </html>

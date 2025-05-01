@@ -7,7 +7,7 @@ body {
     color: white;
 }
 
-.container>div:first-of-type a {
+.container:not(:first-child)>div:first-of-type a {
     background-color: #A64D79;
     border: none;
 }
