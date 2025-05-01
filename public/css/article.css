@@ -102,26 +102,17 @@ textarea {
   border-radius: 10px;
   font-size: 1rem;
   transition: border 0.3s ease;
-  animation: fadeInTextarea 1s ease-in-out;
+
   font-family: 'Rubik';
   resize: vertical;
 }
 
-@keyframes fadeInTextarea {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
 
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
 textarea:focus {
-  border-color: #6A1E55;
+  border-color: #4c0c3a;
   outline: none;
+  border: 3px solid #6A1E55;
 }
 
 input[type="text"] {
@@ -131,29 +122,18 @@ input[type="text"] {
   padding: 15px;
   border: 2px solid #6A1E55;
   border-radius: 10px;
-  font-size: 1rem;
+
   transition: border 0.3s ease;
   margin-bottom: 15px;
-  animation: fadeInInput 1s ease-in-out;
   font-family: 'Rubik';
+  -webkit-transition: border 0.3s ease;
+  -moz-transition: border 0.3s ease;
+  -ms-transition: border 0.3s ease;
+  -o-transition: border 0.3s ease;
 }
 
-@keyframes fadeInInput {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
 
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
-input[type="text"]:focus {
-  border-color: #6A1E55;
-  outline: none;
-}
 
 /* Submit Button */
 .submit-btn {

@@ -1,74 +1,32 @@
-/* Global */
+/* article.css */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
-    background: linear-gradient(20deg, #f2f6ff, #e4ecf7);
-    padding-top: 100px;
     animation: fadeInBody 1s ease-in-out;
-}
+  
+    background-image: url('../../public/images/background2.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  @keyframes fadeInBody {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
 
-/* Body Animation */
-@keyframes fadeInBody {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Navbar */
-.navbar {
-    background: linear-gradient(90deg, #7184da, #4b91a2);
-    padding: 1rem 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: fadeInNavbar 1s ease-in-out forwards;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    height: 100px;
-    opacity: 0;
-}
-
-@keyframes fadeInNavbar {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.container {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    white-space: nowrap;
-}
-
-.logo {
-    color: white;
-    font-weight: 600;
-    font-size: 1.5rem;
-    flex-shrink: 0;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: 400;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #ffd700;
-}
-
+  h1 {
+    text-align: center;
+    color: #A64D79;
+    margin-bottom: 20px;
+    animation: fadeInHeading 1s ease-in-out;
+  
+  }
 /* Create Course Name */
 .createCourseName {
     text-align: center;
@@ -82,150 +40,78 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.createCourseName h2 {
-    font-size: 4rem;
-    font-weight: bold;
-    color: #00796b;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-}
+
 
 /* Course Form Box */
 .course-form-box {
     width: 90%;
     max-width: 700px;
-    background-color: #ffffffcc;
-    padding: 30px;
+    background-color: #1A1A1D;
+    padding: 30px 60px;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    animation: fadeInForm 1s ease-in-out;
+    box-shadow: 0 10px 50px #3B1C32;
+ 
     margin: 100px auto 40px;
+    text-align: center;
+
 }
 
-@keyframes fadeInForm {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
 
-/* Form Elements */
-.form-label {
-    font-weight: 500;
-    color: #333;
-}
 
 .form-control {
     border-radius: 10px;
     padding: 12px;
-    font-size: 1rem;
-    border: 2px solid #26a69a;
+
+    border: 2px solid  #3B1C32;
     transition: border-color 0.3s ease;
+    border: 2px solid #6A1E55;
+    font-weight: 600;
+
+    font-family: 'Rubik';
     
 }
-
 .form-control:focus {
-    border-color: #00796b;
+    border-color: #6A1E55;
+    box-shadow: none !important; /* <=== هذا يمنع التركيز الأزرق */
     outline: none;
+    border: 3px solid #9b307d;
 }
+
 
 #previewImage {
     max-height: 200px;
     display: none;
     margin-top: 10px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+   
+
 }
 
 .btn-primary {
-    background-color: #43a047;
-    border: none;
+    display: block;
+    margin: 20px auto 0;
+    background-color: #6A1E55;
+    color: white;
     padding: 10px 25px;
+    border: none;
     border-radius: 8px;
+    cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s ease;
+    animation: fadeInSubmitBtn 1s ease-in-out;
+    -webkit-animation: fadeInSubmitBtn 1s ease-in-out;
 }
+
 
 .btn-primary:hover {
-    background-color: #2e7d32;
+    background-color: #A64D79;
 }
 
-/* Footer */
-.footer {
-    background-color: #1e1e1e;
-    color: #fff;
-    padding: 40px 20px 20px;
-    font-family: 'Roboto', sans-serif;
-    animation: fadeInFooter 1s ease-in-out;
-}
-
-@keyframes fadeInFooter {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 40px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.footer-about,
-.footer-links,
-.footer-social {
-    flex: 1 1 250px;
-}
-
-.footer-about h3,
-.footer-links h4,
-.footer-social h4 {
-    margin-bottom: 15px;
-    color: #f1c40f;
-}
-
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links ul li {
-    margin-bottom: 10px;
-}
-
-.footer-links a {
-    text-decoration: none;
-    color: #ccc;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #fff;
-}
-
-.social-icons a {
-    margin-right: 10px;
-    display: inline-block;
-}
-
-.social-icons img {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1);
-    transition: transform 0.3s;
-}
-
-.social-icons a:hover img {
-    transform: scale(1.1);
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 14px;
-    color: #aaa;
-    border-top: 1px solid #444;
-    padding-top: 15px;
-}
 
 /* Responsive Fixes (Everything but Navbar) */
 @media (max-width: 768px) {
@@ -250,9 +136,4 @@ body {
         font-size: 0.95rem;
     }
 
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
 }
