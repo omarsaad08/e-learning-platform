@@ -7,7 +7,7 @@
   
   body {
     height: 100vh;
-    background: linear-gradient(135deg, #d3cce3, #e9e4f0);
+    background: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,7 +78,7 @@
   }
   
   .call-btn {
-    background-color: rgba(206, 18, 18, 0.704);
+    background-color: rgba(98, 13, 13, 0.704);
     
     animation-delay: 1s;
   }

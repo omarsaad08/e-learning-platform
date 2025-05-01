@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 150;
+    z-index: 170;
     height: 100px;
     animation: slideDown 1s ease-in-out;
 }
@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: #6b2a59;
 }
 
 .logo {
@@ -43,11 +44,13 @@
 }
 
 .nav-links {
+
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     gap: 1.5rem;
+    z-index:150;
 }
 
 .nav-links a {

@@ -6,8 +6,11 @@
   }
   
   body {
-    height: 100vh;
-    background: linear-gradient(to right, #79c2f2, #c2a6f5);
+    background: #1A1A1D;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Raleway';
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;

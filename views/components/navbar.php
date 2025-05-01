@@ -7,7 +7,8 @@ $userType = $_SESSION['role'] ?? 'student';
 ?>
 <link rel="stylesheet" href="../../public/css/nav.css">
 <nav class="navbar">
-    <div class="container">
+
+    <div class="container" stlye="background: #6b2a59;">
         <h1 class="logo">MyCourses</h1>
         <ul class="nav-links">
             <?php
