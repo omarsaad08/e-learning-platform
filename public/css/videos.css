@@ -135,3 +135,25 @@ body {
         gap: 10px;
       }
     }
+    .playlist-item.completed {
+      background-color: #322330; /* لون رايق يتماشى مع الخلفية */
+      border-left: 4px solid #0d6efd; /* خط جانبي */
+      color: #ccc; /* لون النص */
+      position: relative;
+    }
+    
+    .playlist-item.completed::after {
+      content: '✓';
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #28a745;
+    }
+    
+    .playlist-item.completed:hover {
+      background-color: #3a2a3a;
+      transform: translateX(3px);
+    }
+    
