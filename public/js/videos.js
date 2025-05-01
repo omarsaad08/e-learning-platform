@@ -1,153 +1,106 @@
-let player;
-let currentIndex = 0;
-let progressInterval;
 
-const videoItems = [...document.querySelectorAll('.playlist-item')];
-const progressBar = document.getElementById('progressBar');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-const markCompleteBtn = document.getElementById('mark-complete-btn');
+  const playlistItems = document.querySelectorAll('.playlist-item');
+  const iframe = document.getElementById('mainVideo');
+  const markBtn = document.getElementById('mark-complete-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const prevBtn = document.getElementById('prev-btn');
 
-const savedProgress = JSON.parse(localStorage.getItem('videoProgress')) || {};
+  let currentIndex = 0;
+  const completedLessons = new Set(JSON.parse(localStorage.getItem('completedLessons') || '[]'));
 
-const videos = videoItems.map((item, index) => ({
-  id: index,
-  url: item.getAttribute('data-video'),
-  completed: savedProgress[index] || false
-}));
-
-// دالة تحميل فيديو حسب الفهرس
-function loadVideo(index) {
-  if (index < 0 || index >= videos.length) return;
-
-  currentIndex = index;
-  const videoId = extractVideoId(videos[index].url);
-  if (player) {
-    player.loadVideoById(videoId);
-  }
-
-  updateUI();
-}
-
-// دالة استخراج ID الفيديو من الرابط
-function extractVideoId(url) {
-  const regExp = /^.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-  const match = url.match(regExp);
-  return match && match[1].length === 11 ? match[1] : null;
-}
-
-// دالة التحديث الكامل للواجهة
-function updateUI() {
-  updatePlaylistUI();
-  updateMarkCompleteButton();
-  updateProgressBar();
-}
-
-function updatePlaylistUI() {
-  videoItems.forEach((item, index) => {
-    item.classList.toggle('playlist-active', index === currentIndex);
-    item.classList.toggle('completed', videos[index].completed);
-  });
-}
-
-function updateMarkCompleteButton() {
-  const isCompleted = videos[currentIndex].completed;
-  markCompleteBtn.innerHTML = isCompleted ? '<span>Completed ✓</span>' : '<span>Mark As Complete</span>';
-  markCompleteBtn.style.backgroundColor = isCompleted ? '#28a745' : '#4f5ee6';
-}
-
-function updateProgressBar() {
-  if (videos[currentIndex].completed) {
-    progressBar.style.width = "100%";
-    progressBar.classList.add('completed');
-    clearInterval(progressInterval);
+  // تحميل آخر درس تم عرضه
+  const savedIndex = localStorage.getItem('currentLessonIndex');
+  if (savedIndex !== null) {
+    currentIndex = parseInt(savedIndex);
+    loadVideo(currentIndex);
   } else {
-    progressBar.classList.remove('completed');
-    resetProgressBar();
+    loadVideo(0); // تحميل أول فيديو افتراضياً
   }
-}
 
-function resetProgressBar() {
-  progressBar.style.width = "0%";
-  clearInterval(progressInterval);
-}
+  // تحميل فيديو وتحديث الشكل النشط
+  function loadVideo(index) {
+    const selected = playlistItems[index];
+    if (!selected) return;
 
-// حفظ التقدم في localStorage
-function saveProgress() {
-  const progress = {};
-  videos.forEach(video => {
-    progress[video.id] = video.completed;
+    const url = selected.getAttribute('data-video');
+    iframe.src = url;
+
+    playlistItems.forEach(i => i.classList.remove('playlist-active'));
+    selected.classList.add('playlist-active');
+
+    currentIndex = index;
+    localStorage.setItem('currentLessonIndex', currentIndex);
+
+    updateMarkButton();
+  }
+  const playlistItems = document.querySelectorAll('.playlist-item');
+  const iframe = document.getElementById('mainVideo');
+
+  playlistItems.forEach(item => {
+    item.addEventListener('click', function () {
+      // تحديث الفيديو
+      const videoURL = this.getAttribute('data-video');
+      iframe.src = videoURL;
+
+      // تحديث الشكل النشط
+      playlistItems.forEach(i => i.classList.remove('playlist-active'));
+      this.classList.add('playlist-active');
+    });
   });
-  localStorage.setItem('videoProgress', JSON.stringify(progress));
-}
+  // تحديث شكل زر "تم إنهاؤه"
+  function updateMarkButton() {
+    const currentId = currentIndex;
+    if (completedLessons.has(currentId)) {
+      markBtn.innerText = '✓ مكتمل';
+      markBtn.classList.add('btn-success');
+    } else {
+      markBtn.innerText = 'Mark As Complete';
+      markBtn.classList.remove('btn-success');
+    }
+  }
 
-// يتم استدعاء هذه تلقائيًا عند تحميل YouTube API
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('mainVideo', {
-    height: '100%',
-    width: '100%',
-    videoId: extractVideoId(videos[currentIndex].url),
-    playerVars: {
-      'autoplay': 0,
-      'controls': 1,
-      'rel': 0,
-      'modestbranding': 1
-    },
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
+  // التعامل مع الضغط على عنصر من قائمة التشغيل
+  playlistItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      loadVideo(index);
+    });
+  });
+
+  // زر "التالي"
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < playlistItems.length - 1) {
+      loadVideo(currentIndex + 1);
     }
   });
-}
 
-function onPlayerReady() {
-  loadVideo(currentIndex);
-}
+  // زر "السابق"
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      loadVideo(currentIndex - 1);
+    }
+  });
 
-function onPlayerStateChange(event) {
-  if (event.data === YT.PlayerState.PLAYING) {
-    startProgressTimer();
-  } else {
-    clearInterval(progressInterval);
+  // زر "تم إنهاؤه"
+  markBtn.addEventListener('click', () => {
+    if (completedLessons.has(currentIndex)) {
+      completedLessons.delete(currentIndex);
+    } else {
+      completedLessons.add(currentIndex);
+    }
+    localStorage.setItem('completedLessons', JSON.stringify([...completedLessons]));
+    updateMarkButton();
+  });
+
+  // تمييز العناصر المكتملة في القائمة
+  function highlightCompletedLessons() {
+    playlistItems.forEach((item, index) => {
+      if (completedLessons.has(index)) {
+        item.style.opacity = '0.6';
+      } else {
+        item.style.opacity = '1';
+      }
+    });
   }
-}
 
-function startProgressTimer() {
-  clearInterval(progressInterval);
-  if (!videos[currentIndex].completed) {
-    progressInterval = setInterval(updateVideoProgress, 1000);
-  }
-}
+  highlightCompletedLessons();
 
-function updateVideoProgress() {
-  if (player && player.getDuration) {
-    const duration = player.getDuration();
-    const currentTime = player.getCurrentTime();
-    const progressPercent = (currentTime / duration) * 100;
-    progressBar.style.width = `${progressPercent}%`;
-  }
-}
-
-// أزرار التنقل
-nextBtn.addEventListener('click', () => {
-  if (currentIndex < videos.length - 1) {
-    loadVideo(currentIndex + 1);
-  }
-});
-
-prevBtn.addEventListener('click', () => {
-  if (currentIndex > 0) {
-    loadVideo(currentIndex - 1);
-  }
-});
-
-markCompleteBtn.addEventListener('click', () => {
-  videos[currentIndex].completed = !videos[currentIndex].completed;
-  saveProgress();
-  updateUI();
-});
-
-// قائمة التشغيل
-videoItems.forEach((item, index) => {
-  item.addEventListener('click', () => loadVideo(index));
-});

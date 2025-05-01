@@ -34,122 +34,104 @@ body {
   padding: 0 !important;
 }
 
-.video-player {
-  width: 95%; /* تحديد العرض ليكون أقل من 100% */
-  max-width: 1000px; /* تحديد أقصى عرض للفيديو */
-  aspect-ratio: 16/9;
-  margin: 0 auto; /* وضعه في المنتصف */
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0px 10px rgb(53, 2, 33);
-  padding: 0; /* إزالة الـ padding */
-}
-
-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
-}
-
-
-/* Sidebar Playlist */
-.sidebar {
-  background-color: #1A1A1D;
-  padding: 20px;
-  color: white;
-  font-weight: 700;
-  border-right: 1px solid #ddd;
-}
-
-/* جعل الأزرار مرنة مع الحجم */
-.container_buttons {
-  display: flex;
-  justify-content: center;
-  padding: 20px 0;
-  width: 100%;
-}
-/* زر التفاعل */
-.btn {
-  flex: 1; /* توزيع متساوي للمساحة */
-  min-width: 110px; /* الحد الأدنى للعرض */
-  height: 30px; /* تقليل الارتفاع */
-  font-size: 12px; /* تقليل حجم الخط */
-  padding: 6px 10px; /* تقليل الحشو الداخلي */
-  border: none;
-  border-radius: 5px; /* تقليل الانحناء */
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  font-family: 'Cairo', sans-serif;
-  font-weight: 600;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* زر Mark As Complete خاص */
-#mark-complete-btn {
-  flex: none;
-  font-size: 12px; /* تقليل حجم الخط */
-  height: 32px; /* ارتفاع أصغر */
-  padding: 8px 12px; /* حشو داخلي أصغر */
-  background-color: #3B1C32;
-  color: white;
-}
-
-#mark-complete-btn:hover {
-  background-color: #531642;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 8px rgba(0, 0, 0, 0.15);
-}
-
-.btn:active {
-  transform: translateY(0);
-}
-
-#prev-btn, #next-btn {
-  background-color: #dbdbe1;
-}
-
-/* جعل الأزرار بجانب بعض */
-.buttons {
-  display: flex; /* لاستخدام flexbox */
-  justify-content: center; /* محاذاة الأزرار في المنتصف */
-  gap: 40px; /* المسافة بين الأزرار */
-  flex-wrap: nowrap; /* منع الأزرار من الانتقال لأسطر جديدة */
-}
-
-
-/* عند تصغير الشاشة */
-@media (max-width: 768px) {
-  .sidebar {
-    display: none; /* إخفاء السايدبار على الشاشات الصغيرة */
-  }
-}
-
-@media (max-width: 780px) {
-  .buttons {
+    
   
-    gap: 8px;
-    padding: 0 5px;
-  }
 
-  .btn {
-    width: 20%;
-    height: 36px; /* تصغير الارتفاع */
-    font-size: 13px; /* تصغير الخط */
-    padding: 8px 0; /* تقليل الحشو الداخلي */
-    border-radius: 6px; /* تقليل الانحناء */
-  }
+    .sidebar {
+      background-color: #1A1A1D;
+      color: white;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-  #mark-complete-btn {
-    width: 30%;
-    flex: none;
-    font-size: 12.5px;
-    height: 38px;
-  }
-}
+    .playlist-item {
+      background-color: white;
+      color: #1A1A1D;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s;
+      cursor: pointer;
+    }
+
+    .playlist-item:hover {
+      background-color: #e2e2e2;
+    }
+
+    .playlist-active {
+      background-color: #3B1C32;
+      color: white;
+      border-left: 4px solid #0d6efd;
+    }
+
+    .content-area {
+      background-image: url('../../public/images/your-bg.jpg'); /* Replace with your actual image */
+      background-size: cover;
+      background-position: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .video-player {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 30px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    iframe {
+      width: 100%;
+      height: 480px;
+      border: none;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .btn {
+      background-color: #fff;
+      color: #1A1A1D;
+      border: 1px solid #ccc;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #3B1C32;
+      color: white;
+    }
+
+    #mark-complete-btn {
+      background-color: #3B1C32;
+      color: white;
+    }
+
+    #mark-complete-btn:hover {
+      background-color: #571c3f;
+    }
+
+    @media (max-width: 768px) {
+      iframe {
+        height: 260px;
+      }
+
+      .btn {
+        font-size: 11px;
+        padding: 5px 10px;
+      }
+
+      .buttons {
+        gap: 10px;
+      }
+    }
