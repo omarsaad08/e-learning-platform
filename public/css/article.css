@@ -1,69 +1,65 @@
-/* article.css */
+/* إعداد عام لضمان التحكم في المساحات */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Rubik', sans-serif;
   animation: fadeInBody 1s ease-in-out;
-
   background-image: url('../../public/images/background2.svg');
   background-size: cover;
   background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 @keyframes fadeInBody {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .container {
-  width: 90%;
+  width: 100%;
+  max-width: 1200px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+  flex-wrap: wrap;
+  white-space: normal;
   animation: fadeInContainer 1s ease-in-out;
+  padding: 0 10px;
 }
 
 @keyframes fadeInContainer {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Article Container */
 .container_article {
-  width: 90%;
+  flex: 1 1 100%;
+  width: 100%;
   max-width: 700px;
   background-color: #1A1A1D;
   padding: 30px 60px;
   border-radius: 15px;
   box-shadow: 0 10px 50px #3B1C32;
   animation: fadeInArticle 1s ease-in-out;
-  margin: 100px auto 40px;
+  margin: 60px auto;
   text-align: center;
 }
 
 @keyframes fadeInArticle {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
@@ -71,71 +67,45 @@ h1 {
   color: #A64D79;
   margin-bottom: 20px;
   animation: fadeInHeading 1s ease-in-out;
-
 }
 
 @keyframes fadeInHeading {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
-.container_article>div {
+.container_article > div {
   color: white;
   line-height: 1.7;
 }
 
-/* Textarea and Inputs */
-textarea {
+textarea,
+input[type="text"] {
   background: #1A1A1D;
   color: white;
   width: 100%;
-  height: 250px;
+  max-width: 100%;
   padding: 15px;
   border: 2px solid #6A1E55;
   border-radius: 10px;
   font-size: 1rem;
   transition: border 0.3s ease;
-
-  font-family: 'Rubik';
+  font-family: 'Rubik', sans-serif;
+  margin-bottom: 15px;
   resize: vertical;
+  box-sizing: border-box;
 }
 
+textarea {
+  height: 250px;
+}
 
-
-textarea:focus {
-  border-color: #4c0c3a;
+textarea:focus,
+input[type="text"]:focus {
   outline: none;
   border: 3px solid #6A1E55;
 }
 
-input[type="text"] {
-  color: white;
-  background-color: #1A1A1D;
-  width: 100%;
-  padding: 15px;
-  border: 2px solid #6A1E55;
-  border-radius: 10px;
-
-  transition: border 0.3s ease;
-  margin-bottom: 15px;
-  font-family: 'Rubik';
-  -webkit-transition: border 0.3s ease;
-  -moz-transition: border 0.3s ease;
-  -ms-transition: border 0.3s ease;
-  -o-transition: border 0.3s ease;
-}
-
-
-
-
-/* Submit Button */
 .submit-btn {
   display: block;
   margin: 20px auto 0;
@@ -151,17 +121,55 @@ input[type="text"] {
 }
 
 @keyframes fadeInSubmitBtn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .submit-btn:hover {
   background-color: #A64D79;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .container_article {
+    width: 95%;
+    padding: 20px 25px;
+    margin: 50px auto 30px;
+  }
+
+  textarea,
+  input[type="text"] {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 8px 20px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .container_article {
+    padding: 15px 20px;
+    margin: 40px auto 20px;
+  }
+
+  textarea {
+    height: 150px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .submit-btn {
+    font-size: 0.9rem;
+    padding: 7px 18px;
+  }
 }

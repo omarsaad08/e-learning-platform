@@ -1,6 +1,5 @@
 /* Profile Image Container - Improved */
 body {
-
     background-image: url('../../public/images/home-background.svg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -26,16 +25,11 @@ body .card-body {
     margin: 0 auto 1.5rem;
     position: relative;
     transition: transform 0.3s ease;
-
 }
 
 .profile-image-container:hover {
     transform: scale(1.05);
     will-change: transform;
-    -webkit-transform: scale(1.05);
-    -moz-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    -o-transform: scale(1.05);
 }
 
 .profile-image-container img {
@@ -59,47 +53,72 @@ body .card-body {
     right: 10px;
     background: #0d6efd;
     color: white;
-    border-radius: 10%;
-    /*Changedtocircle*/
-    width: 50px;
-    /*Morebalancedsize*/
-    height: 30px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease;
-    -webkit-border-radius: 10%;
-    -moz-border-radius: 10%;
-    -ms-border-radius: 10%;
-    -o-border-radius: 10%;
 }
 
-
-/* Add focus styles for accessibility */
 .profile-image-container label:focus {
     outline: 2px solid #0a58ca;
     outline-offset: 2px;
 }
 
-/* More consistent media queries */
+/* User Info Container */
+.user-info {
+    padding: 1.5rem;
+}
+
+.user-info ul#coursesCompleted {
+    list-style-type: none;
+    padding: 0;
+    gap: 1rem;
+}
+
+.user-info ul#coursesCompleted li {
+    padding: 0.4rem 0.9rem;
+    background-color: #2C2C2C;
+    border-radius: 8px;
+}
+
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     .profile-image-container {
         width: 130px;
         height: 130px;
     }
 
-    /* Combine all mobile styles here */
-    .user-info {
-        padding: 1.25rem;
+    .card-body {
+        padding: 12px;
     }
 
     .user-info ul#coursesCompleted {
         gap: 0.5rem;
     }
 
+    .username-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .username-container h2 {
+        font-size: 1.25rem;
+    }
+
     .user-info ul#coursesCompleted li {
-        padding: 0.4rem 0.9rem;
+        font-size: 0.9rem;
+        padding: 0.4rem;
+    }
+
+    .profile-image-container label {
+        width: 35px;
+        height: 35px;
     }
 }
 
@@ -109,8 +128,44 @@ body .card-body {
         height: 110px;
     }
 
-    .username-container {
-        flex-direction: column;
-        gap: 0.25rem;
+    .username-container h2 {
+        font-size: 1.1rem;
+    }
+
+    .username-container button {
+        font-size: 0.8rem;
+    }
+
+    .user-info ul#coursesCompleted li {
+        padding: 0.35rem;
+    }
+
+    .user-info {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image-container {
+        width: 100px;
+        height: 100px;
+    }
+
+    .username-container h2 {
+        font-size: 1rem;
+    }
+
+    .user-info ul#coursesCompleted li {
+        font-size: 0.85rem;
+        padding: 0.3rem;
+    }
+
+    .profile-image-container label {
+        width: 30px;
+        height: 30px;
+    }
+
+    .card-body {
+        padding: 8px;
     }
 }

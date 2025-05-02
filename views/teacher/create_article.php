@@ -31,6 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
+
+
   <div class="container_article">
     <h1>Write Your Article</h1>
 
@@ -47,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <button type="submit" class="submit-btn">Submit</button>
     </form>
   </div>
+
 
   <script src="../../public/js/article.js"></script>
 </body>

@@ -89,5 +89,10 @@ markBtn.addEventListener('click', () => {
   highlightCompletedLessons();
 });
 
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  sidebar.classList.toggle('hidden');
+}
+
 // أول تفعيل
 highlightCompletedLessons();

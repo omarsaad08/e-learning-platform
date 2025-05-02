@@ -1,105 +1,115 @@
+/* Reset and base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Glassy card */
+.card {
+  background: #1A1A1D;
+  color: white;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  padding: 40px 30px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  animation: slideFadeIn 1s ease forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #A64D79;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Common button style */
+button {
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInBtn 1s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.email-btn {
+  background-color: #f69fdd;
+  animation-delay: 0.6s;
+}
+
+.whatsapp-btn {
+  background-color: #A64D79;
+  animation-delay: 0.8s;
+}
+
+.call-btn {
+  background-color: #dec5d7;
+  animation-delay: 1s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Animations */
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+html, body {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Responsive for small screens */
+@media (max-width: 480px) {
   body {
-    height: 100vh;
-    background: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  
-  /* Glassy card */
-  .card {
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    padding: 40px 30px;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    animation: slideFadeIn 1s ease forwards;
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  
-  .title {
-    font-size: 28px;
-    font-weight: bold;
-    color: #2d2d2d;
-    margin-bottom: 10px;
-  }
-  
-  .subtitle {
-    font-size: 16px;
-    color: #444;
-    margin-bottom: 30px;
-  }
-  
-  .buttons {
-    display: flex;
     flex-direction: column;
-    gap: 15px;
+    align-items: stretch;
   }
-  
-  /* Common button style */
-  button {
-    padding: 14px 20px;
-    font-size: 15px;
-    font-weight: 600;
-    border: none;
-    border-radius: 30px;
-    color: white;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeInBtn 1s ease forwards;
-    opacity: 0;
-    transform: translateY(20px);
+
+  .card {
+    padding: 20px 15px;
+    margin: 30px auto;
+    width: 100%;
   }
-  
-  /* Glowing and gradient buttons */
-  .email-btn {
-    background-color: rgba(6, 6, 139, 0.671);
-    
-    animation-delay: 0.6s;
-  }
-  
-  .whatsapp-btn {
-    background-color: rgba(8, 104, 8, 0.64);
-    
-    animation-delay: 0.8s;
-  }
-  
-  .call-btn {
-    background-color: rgba(98, 13, 13, 0.704);
-    
-    animation-delay: 1s;
-  }
-  
-  button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Animations */
-  @keyframes slideFadeIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes fadeInBtn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+}

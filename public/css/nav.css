@@ -44,7 +44,6 @@
 }
 
 .nav-links {
-
     list-style: none;
     margin: 0;
     padding: 0;
@@ -60,12 +59,13 @@
     padding: 0.5rem 0.75rem;
     border-radius: 12px;
     margin-top: 500px;
-    transition: background-color 0.2s;
+    transition: transform 0.2s ease-in-out, background-color 0.2s;
     font-weight: 600;
 }
 
 .nav-links a:hover {
     background-color: #1A1A1D;
+    transform: scale(0.9); /* تصغير الحجم عند التمرير */
 }
 
 .mobile-nav {
@@ -119,5 +119,12 @@
         display: block;
         padding: 0.75rem 1.5rem;
         border-radius: 0;
+    }
+
+    /* تصغير الحجم عند hover باستخدام scale في الشاشات الصغيرة */
+    .nav-links a:hover {
+        background-color: #1A1A1D;
+        transform: scale(0.7);
+        width:60%; /* تصغير الحجم بشكل أكبر في الشاشات الصغيرة */
     }
 }
