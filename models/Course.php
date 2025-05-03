@@ -17,10 +17,11 @@ class Course
         return $stmt->fetchAll();
     }
 
-    public function getCourseById($id)
+    public function getCourseById($courseId)
     {
-        $stmt = $this->db->prepare("SELECT * FROM courses WHERE id = ?");
-        $stmt->execute([$id]);
+        $stmt = $this->db->prepare("SELECT * FROM courses WHERE id = :id");
+        $stmt->execute(['id' => $courseId]);
+        return $stmt->fetch(PDO::FETCH_ASSOC); // This returns an associative array or false
     }
 
     public function getTeacherCourses($teacher_id)
@@ -54,5 +55,11 @@ class Course
     {
         $stmt = $this->db->prepare("DELETE FROM courses WHERE id = ?");
         return $stmt->execute([$id]);
+    }
+    public function getAllCategories()
+    {
+        $stmt = $this->db->prepare("SELECT DISTINCT category as name FROM courses");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

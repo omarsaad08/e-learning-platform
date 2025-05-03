@@ -49,11 +49,11 @@
     padding: 0;
     display: flex;
     gap: 1.5rem;
-    z-index:150;
+    z-index: 150;
 }
 
 .nav-links a {
-    color: white;
+    color: white !important;
     text-decoration: none;
     font-size: 1.1rem;
     padding: 0.5rem 0.75rem;
@@ -84,6 +84,27 @@
     }
 }
 
+
+nav ul {
+    display: flex;
+    gap: 1rem
+}
+
+nav ul li {
+    background-color: transparent;
+}
+
+nav ul li .nav-link:hover {
+    background-color: #1A1A1D;
+    color: white;
+}
+
+nav ul li .nav-link {
+    border-radius: 20px;
+    color: white;
+    background-color: transparent;
+}
+
 @media (max-width: 768px) {
     .mobile-menu-button {
         display: block;
@@ -96,7 +117,7 @@
     .mobile-nav {
         display: none;
         position: fixed;
-        top: 70px;
+        top: 100px;
         left: 0;
         width: 100%;
         background: #6A1E55;
@@ -107,6 +128,8 @@
 
     .mobile-nav.active {
         display: block;
+        animation: slideDown 0.3s ease-in-out;
+        /* opacity: 0.8; */
     }
 
     .nav-links.mobile {
@@ -119,12 +142,5 @@
         display: block;
         padding: 0.75rem 1.5rem;
         border-radius: 0;
-    }
-
-    /* تصغير الحجم عند hover باستخدام scale في الشاشات الصغيرة */
-    .nav-links a:hover {
-        background-color: #1A1A1D;
-        transform: scale(0.7);
-        width:60%; /* تصغير الحجم بشكل أكبر في الشاشات الصغيرة */
     }
 }

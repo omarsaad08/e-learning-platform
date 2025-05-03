@@ -36,13 +36,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
   <div class="container mt-5">
-   
+
 
     <div class="course-form-box mt-4">
-    <div class="createCourseName">
-      <h1>Write Your Course</h1>
-    </div>
-      <form method="POST" enctype="multipart/form-data" id="courseForm">
+      <div class="createCourseName">
+        <h1>Write Your Course</h1>
+      </div>
+      <form method="POST" action="" enctype="multipart/form-data" id="courseForm">
         <div class="mb-3">
           <input type="text" name="title" id="title" class="form-control" placeholder="Enter course name" required />
         </div>
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <img id="previewImage" class="mt-3 img-thumbnail" style="max-height: 200px; display: none;" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Create Course</button>
+        <input type="submit" class="btn btn-primary">Create Course</input>
       </form>
     </div>
   </div>
@@ -77,4 +77,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   
   <script src="../../public/js/course.js"></script>
 </body>
+
 </html>

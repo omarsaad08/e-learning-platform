@@ -12,9 +12,24 @@ class Article
 
     public function getAll()
     {
-        $stmt = $this->db->query("SELECT * FROM articles");
-        return $stmt->fetchAll();
+        $sql = "
+            SELECT 
+                articles.*, 
+                users.name AS teacher_name, 
+                users.email AS teacher_email
+            FROM 
+                articles
+            INNER JOIN 
+                users ON articles.teacher_id = users.id
+            ORDER BY 
+                articles.created_at DESC
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     public function getArticleById($id)
     {

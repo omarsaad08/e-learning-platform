@@ -1,7 +1,33 @@
 <?php
-
 require_once '../../controllers/LessonController.php';
 session_start();
+
+// Check if the user is logged in and is a teacher
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'teacher') {
+    header("Location: ../auth/login.php");
+    exit();
+}
+
+$teacher_id = $_SESSION['user_id'];
+
+// Validate course_id from GET
+if (!isset($_GET['course_id']) || !is_numeric($_GET['course_id'])) {
+    header("Location: dashboard.php");
+    exit();
+}
+
+$course_id = $_GET['course_id'];
+
+// TODO: Fetch course title (for display). Replace with actual DB logic.
+require_once '../../controllers/CourseController.php';
+$courseController = new CourseController();
+$course = $courseController->getCourseById($course_id);
+if (!$course) {
+    echo "Course not found.";
+    exit();
+}
+
+// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (
         isset($_FILES['lesson_video']) &&
@@ -23,43 +49,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../../views/teacher/teacher_home.php");
             exit();
         } else {
-            echo "Error: " . $result['error'];
+            $errorMessage = $result['error'];
         }
     } else {
-        echo "Missing fields.";
+        $errorMessage = "Missing required fields.";
     }
-}
-
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'teacher') {
-    var_dump($_SESSION);
-    header("Location: ../auth/login.php");
-    exit();
-}
-
-$teacher_id = $_SESSION['user_id'];
-
-// Check if course_id is passed
-if (!isset($_GET['course_id']) || !is_numeric($_GET['course_id'])) {
-    header("Location: dashboard.php");
-    exit();
-}
-
-$course_id = $_GET['course_id'];
-
-// Fetch course details (optional, for confirmation on the page)
-$stmt = $pdo->prepare("SELECT * FROM courses WHERE id = ? AND teacher_id = ?");
-$stmt->execute([$course_id, $teacher_id]);
-$course = $stmt->fetch();
-
-if (!$course) {
-    header("Location: dashboard.php");
-    exit();
-}
-
-// Handle form submission to add lesson
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Include the backend logic for lesson upload
-    require '../../includes/teacher/lesson_upload_handler.php';
 }
 ?>
 
@@ -76,8 +70,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container mt-5">
         <h2>Create New Lesson for Course: <?= htmlspecialchars($course['title']) ?></h2>
 
-        <!-- Lesson Upload Form -->
+        <?php if (isset($errorMessage)): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($errorMessage) ?></div>
+        <?php endif; ?>
+
         <form method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="course_id" value="<?= htmlspecialchars($course_id) ?>">
+
             <div class="mb-3">
                 <label for="lesson_title" class="form-label">Lesson Title</label>
                 <input type="text" class="form-control" id="lesson_title" name="lesson_title" required>
@@ -90,17 +89,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="mb-3">
                 <label for="lesson_content" class="form-label">Lesson Content</label>
-                <textarea class="form-control" id="lesson_content" name="lesson_content" rows="4" placeholder="Enter lesson description or notes..."></textarea>
+                <textarea class="form-control" id="lesson_content" name="lesson_content" rows="4"></textarea>
             </div>
 
-            <div class="mb-3">
-                <label for="lesson_position" class="form-label">Lesson Position (Optional)</label>
-                <input type="number" class="form-control" id="lesson_position" name="lesson_position" placeholder="Position in course">
-            </div>
 
             <button type="submit" class="btn btn-primary">Save Lesson</button>
         </form>
-
 
         <a href="teacher_home.php" class="btn btn-secondary mt-3">Back to Dashboard</a>
     </div>
