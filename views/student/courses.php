@@ -78,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <?php endif; ?>
 
           <?php
+ 
           $courses = $coursesController->getAllCourses();
 
           if (count($courses) > 0) {
@@ -88,11 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               $level = htmlspecialchars($course['level']);
               $category = htmlspecialchars($course['category']);
               $image = htmlspecialchars($course['thumbnail']);
-              $rating = floatval($course['rating']);
-              $stars = str_repeat("⭐️", floor($rating));
-              if (fmod($rating, 1) >= 0.5) {
-                $stars .= "✨";
-              }
 
 
               // Check if the user is enrolled in this course

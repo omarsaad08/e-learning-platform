@@ -1,6 +1,6 @@
 # Team Names:
 
-- عمر محمد
-- ياسمين وليد
-- مريم خالد
-- جهاد سعيد
+-omar muhammed saad
+-Gehad Said
+-Maryam khaled
+-Yasmeen Waleed
