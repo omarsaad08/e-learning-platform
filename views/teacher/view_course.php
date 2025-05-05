@@ -14,9 +14,10 @@ $lessons = $lessonController->fetchCourseLessons($_GET['course_id']);
     <meta charset="UTF-8">
     <title>View Course</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../public/css/view_course.css">
 </head>
 
-<body class="bg-light">
+<body >
     <div class="container mt-5">
         <h2>Course Lessons</h2>
         <a href="teacher_home.php" class="btn btn-secondary mb-3">← Back to Dashboard</a>

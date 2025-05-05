@@ -64,9 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Create Lesson</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../public/css/create_lesson.css">
 </head>
 
-<body class="bg-light">
+<body >
     <div class="container mt-5">
         <h2>Create New Lesson for Course: <?= htmlspecialchars($course['title']) ?></h2>
 

@@ -67,8 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main class="content">
       <div class="topbar">
         <h1 style="font-weight:700;">All Courses</h1>
-        <input type="text" placeholder="Search courses..." class="search-box">
-      </div>
+        <input type="text" placeholder="Search articles..." class="search-box">      </div>
       <div class="container">
         <div class="row">
           <?php if (isset($_GET['message'])): ?>
@@ -88,12 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               $level = htmlspecialchars($course['level']);
               $category = htmlspecialchars($course['category']);
               $image = htmlspecialchars($course['thumbnail']);
-              $rating = floatval($course['rating']);
-              $stars = str_repeat("⭐️", floor($rating));
-              if (fmod($rating, 1) >= 0.5) {
-                $stars .= "✨";
-              }
-
+           
 
               // Check if the user is enrolled in this course
               $isEnrolled = false;
@@ -108,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class='card-body'>
             <h5 class='card-title'>$title</h5>
             <p class='card-text'>Instructor: $instructor</p>
-            <div class='rating'>$stars</div>
+    
             <span class='badge bg-secondary'>$level</span>
           </div>
       <div class='card-footer text-center'>";

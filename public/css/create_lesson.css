@@ -1,0 +1,72 @@
+body {
+    background-color: #121212; /* أغمق شوية من الكونتينر */
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #2E2E31;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 60px auto;
+    box-shadow: 0 10px 50px #3B1C32;
+}
+
+
+h2 {
+    color: #A64D79;
+    margin-bottom: 30px;
+}
+
+label {
+    font-weight: 500;
+    color: #F0F0F0;
+}
+
+.form-control {
+    background-color: #1A1A1D;
+    border: 2px solid #6A1E55;
+    color: white;
+}
+
+.form-control:focus {
+    border-color: #A64D79;
+    box-shadow: none;
+    background-color: #1A1A1D;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #6A1E55;
+    border-color: #6A1E55;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+.btn-primary:hover {
+    background-color: #A64D79;
+    border-color: #A64D79;
+}
+
+.btn-secondary {
+    background-color: #3B1C32;
+    border-color: #3B1C32;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+.btn-secondary:hover {
+    background-color: #A64D79;
+    border-color: #A64D79;
+}
+
+.alert-danger {
+    background-color: #6A1E55;
+    border-color: #3B1C32;
+    color: white;
+}

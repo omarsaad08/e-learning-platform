@@ -9,16 +9,9 @@
     z-index: 170;
     height: 100px;
     animation: slideDown 1s ease-in-out;
+    font-weight: 700;
 }
 
-.nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #6b2a59;
-}
 
 .logo {
     color: #3B1C32;
@@ -29,48 +22,7 @@
     text-decoration: none;
 }
 
-.mobile-menu-button {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 0.5rem;
-}
 
-.mobile-menu-button:hover {
-    background: rgba(26, 26, 29, 0.2);
-    border-radius: 4px;
-}
-
-.nav-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 1.5rem;
-    z-index: 150;
-}
-
-.nav-links a {
-    color: white !important;
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 0.5rem 0.75rem;
-    border-radius: 12px;
-    margin-top: 500px;
-    transition: transform 0.2s ease-in-out, background-color 0.2s;
-    font-weight: 600;
-}
-
-.nav-links a:hover {
-    background-color: #1A1A1D;
-    transform: scale(0.9); /* تصغير الحجم عند التمرير */
-}
-
-.mobile-nav {
-    display: none;
-}
 
 @keyframes slideDown {
     from {
@@ -97,50 +49,13 @@ nav ul li {
 nav ul li .nav-link:hover {
     background-color: #1A1A1D;
     color: white;
+    
 }
 
 nav ul li .nav-link {
     border-radius: 20px;
     color: white;
-    background-color: transparent;
-}
+    background-color:  #6b2a59;
 
-@media (max-width: 768px) {
-    .mobile-menu-button {
-        display: block;
-    }
-
-    .nav-links.desktop {
-        display: none;
-    }
-
-    .mobile-nav {
-        display: none;
-        position: fixed;
-        top: 100px;
-        left: 0;
-        width: 100%;
-        background: #6A1E55;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        animation: slideDown 0.3s ease-in-out;
-        z-index: 40;
-    }
-
-    .mobile-nav.active {
-        display: block;
-        animation: slideDown 0.3s ease-in-out;
-        /* opacity: 0.8; */
-    }
-
-    .nav-links.mobile {
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem 0;
-    }
-
-    .nav-links.mobile a {
-        display: block;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0;
-    }
+    width: 100%;
 }
