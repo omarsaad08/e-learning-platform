@@ -23,12 +23,24 @@ class AuthController
 
             $this->redirectToDashboard($user['role']);
         } else {
-            echo "Invalid email or password.";
+            return "Invalid email or password.";
         }
     }
 
     public function signup($name, $email, $password, $role)
     {
+        // Check if email is already in use
+        $existingUser = $this->userModel->getUserByEmail($email);
+        if ($existingUser) {
+            return "Email is already in use.";
+        }
+
+        // Check if password is weak
+        $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/';
+        if (!preg_match($passwordRegex, $password)) {
+            return "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.";
+        }
+
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $userId = $this->userModel->create($name, $email, $hashedPassword, $role);
 
@@ -38,7 +50,7 @@ class AuthController
 
             $this->redirectToDashboard($role);
         } else {
-            echo "Signup failed.";
+            return "Signup failed.";
         }
     }
 

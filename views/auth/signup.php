@@ -3,7 +3,7 @@ require_once  '../../controllers/AuthController.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $auth = new AuthController();
-    $auth->signup($_POST['name'], $_POST['email'], $_POST['password'], $_POST['role']);
+    $response = $auth->signup($_POST['name'], $_POST['email'], $_POST['password'], $_POST['role']);
 }
 ?>
 <!DOCTYPE html>
@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <button type="submit" class="btn btn-light w-100 mb-3">Signup</button>
                 <p>Already have an account? <a href="login.php" class="text-white fw-bold">Login</a></p>
+                <span class="error <?= isset($response) ? 'd-block' : ''; ?>"><?php echo isset($response) ? $response : ''; ?></span>
             </form>
 
         </div>

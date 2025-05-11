@@ -24,9 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Create Course</title>
+  <?php include('../components/headImports.php'); ?>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../../public/css/course.css" />
 </head>
@@ -44,19 +42,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
       <form method="POST" action="" enctype="multipart/form-data" id="courseForm">
         <div class="mb-3">
-          <input type="text" name="title" id="title" class="form-control" placeholder="Enter course name" required />
+          <input type="text" name="title" id="title" class="form-control" placeholder="Enter course name" />
         </div>
 
         <div class="mb-3">
-          <textarea name="description" id="description" class="form-control" rows="4" placeholder="Enter course description" required></textarea>
+          <textarea name="description" id="description" class="form-control" rows="4" placeholder="Enter course description"></textarea>
         </div>
 
         <div class="mb-3">
-          <input type="text" name="category" id="category" class="form-control" placeholder="e.g., Programming, Design" required />
+          <input type="text" name="category" id="category" class="form-control" placeholder="e.g., Programming, Design" />
         </div>
 
         <div class="mb-3">
-          <select name="level" id="level" class="form-control" required>
+          <select name="level" id="level" class="form-control">
             <option value="" disabled selected>Select level</option>
             <option value="Beginner">Beginner</option>
             <option value="Intermediate">Intermediate</option>
@@ -65,11 +63,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
 
         <div class="mb-3">
-          <input type="file" name="thumbnail" id="thumbnail" class="form-control" accept="image/*" required />
+          <input type="file" name="thumbnail" id="thumbnail" class="form-control" accept="image/*" />
           <img id="previewImage" class="mt-3 img-thumbnail" style="max-height: 200px; display: none;" />
         </div>
 
-        <input type="submit" class="btn btn-primary">Create Course</input>
+        <input type="submit" class="btn btn-primary">
+
+        <span class="error <?= isset($result['error']) ? 'd-block' : ''; ?>"><?php echo isset($result['error']) ? $result['error'] : ''; ?></span>
       </form>
     </div>
   </div>

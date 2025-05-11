@@ -12,8 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($result['success']) {
     header("Location: ../../views/teacher/teacher_home.php");
     exit;
-  } else {
-    echo "Error: " . $result['error'];
   }
 }
 ?>
@@ -21,11 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <?php
+  include('../components/headImports.php');
+  ?>
   <title>Write Article</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../public/css/article.css">
 </head>
 
@@ -36,15 +33,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form action="" method="POST">
       <div class="mb-3">
-        <input type="text" name="title" id="title" class="form-control" placeholder="Article Title" required>
+        <input type="text" name="title" id="title" class="form-control" placeholder="Article Title">
       </div>
 
 
       <div class="mb-3">
-        <textarea name="content" id="article" placeholder="Start writing your article..." required></textarea>
+        <textarea name="content" id="article" placeholder="Start writing your article..."></textarea>
       </div>
 
       <button type="submit" class="submit-btn">Submit</button>
+
+      <span class="error <?= isset($result['error']) ? 'd-block' : ''; ?>"><?php echo isset($result['error']) ? $result['error'] : ''; ?></span>
     </form>
   </div>
 

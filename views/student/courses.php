@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <?php endif; ?>
 
           <?php
- 
+
           $courses = $coursesController->getAllCourses();
 
           if (count($courses) > 0) {
@@ -98,16 +98,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               }
 
               echo "
-      <div class='col-lg-4 col-md-6 col-12 mb-4'>
-        <div class='card h-100' data-category='$category' data-level='$level'>
-          <img src='$image' class='card-img-top' alt='$title' />
-          <div class='card-body'>
-            <h5 class='card-title'>$title</h5>
-            <p class='card-text'>Instructor: $instructor</p>
-            <div class='rating'>$stars</div>
-            <span class='badge bg-secondary'>$level</span>
-          </div>
-      <div class='card-footer text-center'>";
+                    <div class='col-lg-4 col-md-6 col-12 mb-4'>
+                      <div class='card h-100' data-category='$category' data-level='$level'>
+                        <img src='$image' class='card-img-top' alt='$title' />
+                        <div class='card-body'>
+                          <h5 class='card-title'>$title</h5>
+                          <p class='card-text'>Instructor: $instructor</p>
+                          <span class='badge bg-secondary'>$level</span>
+                        </div>
+                    <div class='card-footer text-center'>";
               if ($isEnrolled) {
                 echo "<a class=\"watch-enroll\" href='videos.php?course_id= {$course['id']} ?>'>Watch Course</a>";
               } else {

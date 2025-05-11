@@ -24,7 +24,34 @@ class CourseController
         $teacherId = $_SESSION['user_id'];
         $thumbnailPath = null;
 
+        if (empty($title)) {
+            return ['success' => false, 'error' => 'Title is required'];
+        }
+
+        if (empty($description)) {
+            return ['success' => false, 'error' => 'Description is required'];
+        }
+
+        if (empty($category)) {
+            return ['success' => false, 'error' => 'Category is required'];
+        }
+
+        if (empty($level)) {
+            return ['success' => false, 'error' => 'Level is required'];
+        }
+
         if ($thumbnailFile && $thumbnailFile['error'] === UPLOAD_ERR_OK) {
+            $fileSize = $thumbnailFile['size'];
+            $fileType = $thumbnailFile['type'];
+
+            if ($fileSize > 2000000) {
+                return ['success' => false, 'error' => 'Thumbnail is too big (max 2MB)'];
+            }
+
+            if ($fileType !== 'image/jpeg' && $fileType !== 'image/png') {
+                return ['success' => false, 'error' => 'Thumbnail must be a JPEG or PNG'];
+            }
+
             $uploadDir = '../../uploads/thumbnails/';
             if (!file_exists($uploadDir)) {
                 mkdir($uploadDir, 0777, true);
@@ -34,12 +61,18 @@ class CourseController
             $newFilename = uniqid() . '.' . $ext;
             $thumbnailPath = $uploadDir . $newFilename;
 
-            move_uploaded_file($thumbnailFile['tmp_name'], $thumbnailPath);
+            if (!move_uploaded_file($thumbnailFile['tmp_name'], $thumbnailPath)) {
+                return ['success' => false, 'error' => 'Error uploading thumbnail'];
+            }
         }
 
         $success = $this->courseModel->create($title, $description, $category, $level, $teacherId, $thumbnailPath);
 
-        return ['success' => $success];
+        if (!$success) {
+            return ['success' => false, 'error' => 'Error creating course'];
+        }
+
+        return ['success' => true];
     }
 
     public function getTeacherCourses($teacherId)

@@ -18,3 +18,13 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #6A1E55;
 }
+
+.error {
+    background-color: #dc3545;
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
