@@ -1,0 +1,55 @@
+body {
+    background-color: #121212; /* أغمق شوية من الكونتينر */
+    color: white;
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #2E2E31;
+    padding: 40px;
+    border-radius: 12px;
+
+    max-width: 800px;
+    box-shadow: 0 10px 50px #3B1C32;
+}
+
+h2 {
+    color: #A64D79;
+    margin-bottom: 20px;
+}
+
+.btn-secondary {
+    background-color: #6A1E55;
+    border-color: #6A1E55;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #A64D79;
+    border-color: #A64D79;
+}
+
+.list-group-item {
+    background-color: #1F1F21;
+    border: 2px solid #6A1E55;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 20px;
+}
+
+.list-group-item h5 {
+    color: #E4B8F4;
+    margin-bottom: 10px;
+}
+
+video {
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+small.text-muted {
+    color: #999;
+}

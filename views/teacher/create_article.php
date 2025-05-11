@@ -28,6 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
+
+
   <div class="container_article">
     <h1>Write Your Article</h1>
 
@@ -46,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <span class="error <?= isset($result['error']) ? 'd-block' : ''; ?>"><?php echo isset($result['error']) ? $result['error'] : ''; ?></span>
     </form>
   </div>
+
 
   <script src="../../public/js/article.js"></script>
 </body>

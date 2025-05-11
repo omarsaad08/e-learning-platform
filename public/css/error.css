@@ -1,78 +1,107 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  body {
-    background: #1A1A1D;
-    background-size: cover;
-    background-position: center;
-    font-family: 'Raleway';
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .container {
-    background: white;
-    text-align: center;
-    padding: 50px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  }
-  
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #1A1A1D;
+  background-size: cover;
+  background-position: center;
+  font-family: 'Raleway', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; /* لحماية المحتوى في الشاشات الصغيرة */
+  min-height: 100vh;
+}
+
+.container {
+  background: #2C2C2E;
+  text-align: center;
+  padding: 50px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  width: 100%;
+}
+
+.error-code {
+  font-size: 120px;
+  font-weight: bold;
+  color: #A64D79;
+}
+
+.error-text {
+  margin-top: 10px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.description {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #bbb;
+}
+
+.buttons {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Primary Button */
+button:first-child {
+  background-color: #6A1E55;
+  color: white;
+}
+
+button:first-child:hover {
+  background-color: #A64D79;
+}
+
+/* Secondary Button */
+button:last-child {
+  background-color: transparent;
+  border: 2px solid #A64D79;
+  color: #A64D79;
+}
+
+button:last-child:hover {
+  background-color: #3B1C32;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
   .error-code {
-    font-size: 120px;
-    font-weight: bold;
-    color: #6fb1fc; /* Use any solid color you prefer */
+    font-size: 80px;
   }
-  
+
   .error-text {
-    margin-top: 10px;
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
+    font-size: 20px;
   }
-  
+
   .description {
-    margin-top: 10px;
-    font-size: 16px;
-    color: #555;
-  }
-  
-  .buttons {
-    margin-top: 30px;
-  }
-  
-  button {
-    margin: 0 10px;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 25px;
     font-size: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
   }
-  
-  button:first-child {
-    background-color: #6fb1fc;
-    color: white;
+
+  button {
+    font-size: 13px;
+    padding: 10px 20px;
   }
-  
-  button:first-child:hover {
-    background-color: #5aa5f8;
-  }
-  
-  button:last-child {
-    background-color: transparent;
-    border: 2px solid #6fb1fc;
-    color: #6fb1fc;
-  }
-  
-  button:last-child:hover {
-    background-color: #e8f4ff;
-  }
+}

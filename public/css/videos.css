@@ -23,6 +23,7 @@ body {
 .navbar {
   background-color: rgba(0, 0, 0, 0.8); /* خلفية شفافة */
   z-index: 1000;
+
 }
 /* إزالة الـ margin الافتراضي في الـ row */
 .row {
@@ -157,3 +158,37 @@ body {
       transform: translateX(3px);
     }
     
+    .toggle-sidebar-btn {
+      display: none;
+      background-color: #3B1C32;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      font-size: 16px;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1100;
+      cursor: pointer;
+    }
+    
+    /* السايد بار مخفية */
+    .sidebar.hidden {
+      display: none;
+    }
+    
+    /* إظهار الزر في الشاشات الصغيرة */
+    @media (max-width: 768px) {
+      .toggle-sidebar-btn {
+        display: block;
+      }
+    }
+    .sidebar {
+      transition: transform 0.3s ease;
+    }
+    
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+        

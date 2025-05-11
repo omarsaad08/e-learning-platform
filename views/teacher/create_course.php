@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <body>
 
-  <?php include('../components/navbar.php'); ?>
+
 
   <div class="container mt-5">
 
@@ -74,8 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
   </div>
 
-  <?php include('../components/footer.php'); ?>
-  <script src="../../public/js/course.js"></script>
+  
+  <!-- <script src="../../public/js/course.js"></script> -->
 </body>
 
 </html>

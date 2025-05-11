@@ -37,7 +37,8 @@ $courses = $data['courses'];
                         <!-- Profile Image and Basic Info -->
                         <div class="text-center mb-4">
                             <div class="profile-image-container mb-3 position-relative">
-                                <img src="https://via.placeholder.com/150" alt="Profile" class="rounded-circle" id="profileImage">
+                                <!-- تعديل مسار الصورة ليتناسب مع الصورة الفعلية للمستخدم -->
+                                <img src="uploads/profile_images/<?= htmlspecialchars($user['profile_image']) ?>" alt="Profile" class="rounded-circle" id="profileImage" width="150" height="150">
                                 <label for="imageUpload" class="btn btn-sm btn-primary position-absolute bottom-0 end-0">
                                     <i class="bi bi-camera"></i> Change
                                 </label>
@@ -52,7 +53,6 @@ $courses = $data['courses'];
                             <p class="text-muted" id="userTitle">
                                 <?= $user['role'] === 'student' ? 'Student' : 'Instructor' ?>
                             </p>
-
                         </div>
 
                         <!-- User Information -->

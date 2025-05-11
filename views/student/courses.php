@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main class="content">
       <div class="topbar">
         <h1 style="font-weight:700;">All Courses</h1>
-        <input type="text" placeholder="Search courses..." class="search-box">
+        <input type="text" placeholder="Search articles..." class="search-box">
       </div>
       <div class="container">
         <div class="row">
@@ -98,7 +98,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               }
 
               echo "
-                    <div class='col-lg-4 col-md-6 col-12 mb-4'>
+      <div class='col-lg-4 col-md-6 col-12 mb-4'>
+        <div class='card h-100' data-category='$category' data-level='$level'>
+          <img src='$image' class='card-img-top' alt='$title' />
+          <div class='card-body'>
+            <h5 class='card-title'>$title</h5>
+            <p class='card-text'>Instructor: $instructor</p>
+    
+            <span class='badge bg-secondary'>$level</span>
+          </div>
+      <div class='card-footer text-center'>";
+              echo "<div class='col-lg-4 col-md-6 col-12 mb-4'>
                       <div class='card h-100' data-category='$category' data-level='$level'>
                         <img src='$image' class='card-img-top' alt='$title' />
                         <div class='card-body'>

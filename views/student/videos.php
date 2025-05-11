@@ -1,11 +1,12 @@
 <?php
-// Mock data مؤقتًا بدل قاعدة البيانات
-$lessons = [
-  ['title' => 'مقدمة الكورس', 'video_url' => 'https://www.youtube.com/embed/ysz5S6PUM-U'],
-  ['title' => 'الدرس الأول: الأساسيات', 'video_url' => 'https://www.youtube.com/embed/ScMzIvxBSi4'],
-  ['title' => 'الدرس الثاني: المتغيرات', 'video_url' => 'https://www.youtube.com/embed/kJQP7kiw5Fk'],
-  ['title' => 'الدرس الثالث: الحلقات', 'video_url' => 'https://www.youtube.com/embed/9bZkp7q19f0'],
-];
+include('../../controllers/LessonController.php');
+
+// Get course ID from the URL
+$course_id = isset($_GET['course_id']) ? intval($_GET['course_id']) : 0;
+
+// Initialize controller and fetch lessons
+$controller = new LessonController();
+$lessons = $controller->fetchCourseLessons($course_id);
 ?>
 
 <!DOCTYPE html>

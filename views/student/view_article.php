@@ -32,9 +32,6 @@ if (!$article) {
 
 <body>
 
-<?php
-  include('../components/navbar.php');
-  ?>
     <div class="container_article" style="padding: 40px 20px;">
         <h1><?= htmlspecialchars($article['title']) ?></h1>
         <p style="color: #888;">Written by <strong><?= htmlspecialchars($user['name']) ?></strong> on <?= date("F j, Y", strtotime($article['created_at'])) ?></p>
@@ -43,9 +40,6 @@ if (!$article) {
             <?= nl2br(htmlspecialchars($article['content'])) ?>
         </div>
     </div>
-    <?php
-  include('../components/footer.php');
-  ?>
 
 </body>
 
