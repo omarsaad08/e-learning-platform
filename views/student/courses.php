@@ -2,8 +2,12 @@
 
 include('../../controllers/CourseController.php');
 include('../../controllers/EnrollmentController.php');
+include('../../controllers/AuthController.php');
+
 $coursesController = new CourseController();
 $enrollmentController = new EnrollmentsController();
+$userController = new AuthController();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   session_start();
   require_once '../../controllers/EnrollmentController.php';
@@ -84,7 +88,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $currentUserId = $_SESSION['user_id'] ?? null;
             foreach ($courses as $course) {
               $title = htmlspecialchars($course['title']);
-              $instructor = htmlspecialchars($course['instructor_name'] ?? 'N/A');
+              $instructorId = $course['teacher_id'] ?? null;
+              $instructor = 'N/A';
+              $instructorEmail = '';
+
+              if ($instructorId) {
+                $instructorData = $userController->getUserById($instructorId);
+                if ($instructorData) {
+                  $instructor = htmlspecialchars($instructorData['name']);
+                }
+              }
+
               $level = htmlspecialchars($course['level']);
               $category = htmlspecialchars($course['category']);
               $image = htmlspecialchars($course['thumbnail']);
