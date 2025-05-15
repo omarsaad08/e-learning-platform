@@ -76,7 +76,7 @@ $articles = $controller->getArticlesByTeacher();
                     <h6><?= htmlspecialchars($article['title']) ?></h6>
                     <p><?= htmlspecialchars(substr($article['content'], 0, 100)) ?>...</p>
                     <a href="edit_article.php?article_id=<?= $article['id'] ?>" class="btn btn-sm btn-outline-primary mt-2">
-                        ✏️ Edit Article
+                        Edit Article
                     </a>
                 </li>
             <?php endforeach; ?>

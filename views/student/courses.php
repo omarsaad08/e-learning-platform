@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <title>Courses</title>
   <link rel="stylesheet" href="../../public/css/courses.css">
 </head>
-</head>
 
 <body>
 
@@ -97,17 +96,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $isEnrolled = $enrollmentController->isEnrolled($course['id'], $currentUserId);
               }
 
-              echo "
-      <div class='col-lg-4 col-md-6 col-12 mb-4'>
-        <div class='card h-100' data-category='$category' data-level='$level'>
-          <img src='$image' class='card-img-top' alt='$title' />
-          <div class='card-body'>
-            <h5 class='card-title'>$title</h5>
-            <p class='card-text'>Instructor: $instructor</p>
-    
-            <span class='badge bg-secondary'>$level</span>
-          </div>
-      <div class='card-footer text-center'>";
               echo "<div class='col-lg-4 col-md-6 col-12 mb-4'>
                       <div class='card h-100' data-category='$category' data-level='$level'>
                         <img src='$image' class='card-img-top' alt='$title' />

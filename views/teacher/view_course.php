@@ -17,7 +17,7 @@ $lessons = $lessonController->fetchCourseLessons($_GET['course_id']);
     <link rel="stylesheet" href="../../public/css/view_course.css">
 </head>
 
-<body >
+<body>
     <div class="container mt-5">
         <h2>Course Lessons</h2>
         <a href="teacher_home.php" class="btn btn-secondary mb-3">← Back to Dashboard</a>
@@ -30,7 +30,7 @@ $lessons = $lessonController->fetchCourseLessons($_GET['course_id']);
                     <div class="list-group-item">
                         <h5><?= htmlspecialchars($lesson['title']) ?></h5>
                         <video width="100%" controls>
-                            <source src="../../<?= htmlspecialchars($lesson['video_url']) ?>" type="video/mp4">
+                            <source src="../../<?= htmlspecialchars($lesson['content']) ?>" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <p class="mt-2"><?= nl2br(htmlspecialchars($lesson['content'])) ?></p>

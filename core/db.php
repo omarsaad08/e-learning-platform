@@ -10,7 +10,7 @@ class Database
         try {
             $dsn = "mysql:host=localhost;dbname=e_learning_platform";
             $username = "root";
-            $password = "01032263033Yy@";
+            $password = "";
 
             $this->pdo = new PDO($dsn, $username, $password);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
