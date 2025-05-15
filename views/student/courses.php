@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h1 style="font-weight:700;">All Courses</h1>
         <input type="text" placeholder="Search articles..." class="search-box">
       </div>
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
           <?php if (isset($_GET['message'])): ?>
             <div class="alert alert-info text-center">

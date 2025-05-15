@@ -1,23 +1,5 @@
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  height: 100vh;
-  background: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 20px;
-}
-
 /* Glassy card */
-.card {
+.contact.card {
   background: #1A1A1D;
   color: white;
   backdrop-filter: blur(10px);
@@ -33,27 +15,27 @@ body {
   transform: translateY(50px);
 }
 
-.title {
+.contact .title {
   font-size: 28px;
   font-weight: bold;
   color: #A64D79;
   margin-bottom: 10px;
 }
 
-.subtitle {
+.contact .subtitle {
   font-size: 16px;
   color: #ccc;
   margin-bottom: 30px;
 }
 
-.buttons {
+.contact .buttons {
   display: flex;
   flex-direction: column;
   gap: 15px;
 
 }
 
-button {
+.contact button {
   padding: 14px 20px;
   font-size: 15px;
   font-weight: 600;
@@ -64,7 +46,7 @@ button {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   transform: translateY(20px);
-  
+
   z-index: 1000;
 }
 
@@ -99,7 +81,8 @@ button:hover {
   }
 }
 
-html, body {
+html,
+body {
   height: 100%;
   overflow-y: auto;
 }

@@ -38,6 +38,16 @@ $courses = $data['courses'];
                     <div class="card-body">
                         <!-- Profile Image and Basic Info -->
                         <div class="text-center mb-4">
+                            <form action="../../controllers/upload_profile_image.php" method="POST" enctype="multipart/form-data" class="position-relative">
+                                <div class="profile-image-container mb-3">
+                                    <img src="../../<?= $user['profile_picture'] ?: 'uploads/profile_images/user.png' ?>" alt="Profile" class="rounded-circle" id="profileImage" width="150" height="150">
+
+                                    <label for="imageUpload" class="btn btn-sm btn-primary position-absolute bottom-0 end-0">
+                                        <i class="bi bi-camera"></i> Change
+                                    </label>
+                                    <input type="file" id="imageUpload" name="profile_image" class="d-none" accept="image/*" onchange="this.form.submit()">
+                                </div>
+                            </form>
                             <div class="username-container">
                                 <h2 class="card-title mb-0" id="userName"><?= htmlspecialchars($user['name']) ?></h2>
                                 <button class="btn btn-link btn-sm text-decoration-none" id="editNameBtn">

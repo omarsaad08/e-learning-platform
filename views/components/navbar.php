@@ -36,7 +36,7 @@ $userType = $_SESSION['role'] ?? 'student';
                     <a class="nav-link" aria-current="page" href="/e-learning-platform/views/student/articles.php">Articles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/e-learning-platform/views/student/profile.php">Profile</a>
+                    <a class="nav-link" aria-current="page" href="/e-learning-platform/views/mutual/profile.php">Profile</a>
                 </li>
             </ul>
         </div>

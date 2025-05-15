@@ -59,11 +59,11 @@ class User
             $imagePath = $uploadDir . $newFilename;
 
             if (move_uploaded_file($imageFile['tmp_name'], $imagePath)) {
-                $sql = "UPDATE users SET profile_image = :profile_image WHERE id = :id";
+                $sql = "UPDATE users SET profile_picture = :profile_picture WHERE id = :id";
                 $stmt = $this->db->prepare($sql);
                 $dbImagePath = 'uploads/profile_images/' . $newFilename;
                 $stmt->execute([
-                    'profile_image' => $dbImagePath,
+                    'profile_picture' => $dbImagePath,
                     'id' => $userId
                 ]);
                 return true;
