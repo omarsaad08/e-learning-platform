@@ -1,4 +1,5 @@
 CREATE DATABASE IF NOT EXISTS e_learning_platform;
+use e_learning_platform;
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),

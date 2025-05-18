@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/../../controllers/auth_check.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +10,7 @@
     ?>
     <title>Home</title>
     <link rel="stylesheet" href="../../public/css/home.css">
+
 </head>
 
 <body>
@@ -59,6 +63,7 @@
     <?php
     include('../components/footer.php');
     ?>
+    <script src="../../public/js/forceReload.js"></script>
 </body>
 
 </html>

@@ -1,43 +1,93 @@
 .navbar {
-    background: #6A1E55;
-    padding: 1rem 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: slideDown 1s ease-in-out;
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    height: 70px;
-
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-weight: 400;
-    transition: all 0.3s;
-    padding: 8px 12px;
-    border-radius: 20px;
-    margin-bottom: 0;
-    font-size: 18px;
-}
-
-.nav-links a:hover {
-    color: white;
-    background-color: #1A1A1D;
+  background: #6b2a59;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 170;
+  height: 100px;
+  animation: slideDown 1s ease-in-out;
+  font-weight: 700;
 }
 
 .logo {
-    color: white;
-    font-weight: 600;
-    font-size: 1.5rem;
+  color: #3b1c32;
+  font-size: 2.2rem;
+  font-weight: 900;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
+  text-decoration: none;
+}
 
-    font-family: 'Raleway';
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+nav ul {
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li {
+  background-color: transparent;
+}
+
+nav ul li .nav-link:hover {
+  background-color: #1a1a1d;
+  color: white;
+}
+
+nav ul li .nav-link {
+  border-radius: 20px;
+  color: white;
+  background-color: #6b2a59;
+
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  .navbar-nav {
+    background: #3b1c32 !important;
+    padding: 8px;
+    width: 100%;
+    margin-top: 32px;
+    border-radius: 12px;
+  }
+  nav ul li .nav-link {
+    border-radius: 20px;
+    color: white;
+    background-color: #6b2a59;
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+  }
+}
+@media (max-width: 382px) {
+  nav {
+    text-align: center !important;
+  }
+  nav .navbar-brand,
+  nav .navbar-toggler {
+    margin: auto;
+  }
+  nav h1 {
+    font-size: 1.5rem !important;
+  }
+}
+@media (max-width: 277px) {
+  .navbar-nav {
+    margin-top: 5px;
+    position: relative;
+    z-index: 1100;
+  }
 }

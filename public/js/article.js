@@ -7,7 +7,7 @@ function formatText(type) {
     let formatted = selected;
   
     if (type === "bold") {
-      formatted = `<strong>${selected}</strong>`;
+      formatted = `<strong> ${selected} </strong>`;
     } else if (type === "highlight") {
       formatted = `<mark>${selected}</mark>`;
     }

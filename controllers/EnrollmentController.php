@@ -11,7 +11,7 @@ class EnrollmentsController
     {
         // Check if the student is already enrolled
         if ($this->isEnrolled($courseId, $studentId)) {
-            header("Location: http://localhost/e-learning-platform/views/student/courses.php?message=You are already enrolled in this course.");
+            header("Location: ../../views/student/courses.php?message=You are already enrolled in this course.");
 
             exit();
         }
@@ -21,7 +21,7 @@ class EnrollmentsController
         $enrollment->enrollStudent($courseId, $studentId);
 
         // Redirect with success message
-        header("Location: http://localhost/e-learning-platform/views/student/courses.php?message=Successfully enrolled in the course.");
+        header("Location: ../../views/student/courses.php?message=Successfully enrolled in the course.");
         exit();
     }
 

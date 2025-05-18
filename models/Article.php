@@ -12,9 +12,24 @@ class Article
 
     public function getAll()
     {
-        $stmt = $this->db->query("SELECT * FROM articles");
-        return $stmt->fetchAll();
+        $sql = "
+            SELECT 
+                articles.*, 
+                users.name AS teacher_name, 
+                users.email AS teacher_email
+            FROM 
+                articles
+            INNER JOIN 
+                users ON articles.teacher_id = users.id
+            ORDER BY 
+                articles.created_at DESC
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     public function getArticleById($id)
     {
@@ -43,7 +58,7 @@ class Article
 
     public function create($title, $content, $author_id)
     {
-        $stmt = $this->db->prepare("INSERT INTO articles (title, content, author_id) VALUES (?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO articles (title, content, teacher_id) VALUES (?, ?, ?)");
         return $stmt->execute([$title, $content, $author_id]);
     }
 

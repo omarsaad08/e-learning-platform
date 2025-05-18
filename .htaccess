@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /e-learning-platform/
+
+# Allow direct access to existing files/directories
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Redirect all other requests to index.php
+RewriteRule ^ index.php [L]
+
+# Custom 404 handler
+ErrorDocument 404 /e-learning-platform/views/mutual/404.php

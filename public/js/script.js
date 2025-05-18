@@ -38,3 +38,4 @@ function applyFilters() {
     card.style.display = (showCard && matchesSearch) ? "block" : "none";
   });
 }
+console.log("yasmeen")

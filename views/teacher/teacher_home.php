@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../controllers/auth_check.php';
 session_start();
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'teacher') {
@@ -25,12 +26,15 @@ $articles = $controller->getArticlesByTeacher();
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <?php
+    include('../components/headImports.php');
+    ?>
     <title>Teacher Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../public/css/teacher_home.css">
 </head>
 
-<body class="bg-light">
+<body>
     <?php include('../components/navbar.php'); ?>
     <div class="container mt-5">
         <h2>Welcome, Teacher!</h2>
@@ -57,7 +61,7 @@ $articles = $controller->getArticlesByTeacher();
                                 + Add Lesson
                             </a>
                             <a href="view_course.php?course_id=<?= $course['id'] ?>" class="btn btn-sm btn-outline-secondary mt-2 ms-2">
-                                👁️ View Course
+                                View Course
                             </a>
                         </div>
                     </div>
@@ -73,12 +77,18 @@ $articles = $controller->getArticlesByTeacher();
                     <h6><?= htmlspecialchars($article['title']) ?></h6>
                     <p><?= htmlspecialchars(substr($article['content'], 0, 100)) ?>...</p>
                     <a href="edit_article.php?article_id=<?= $article['id'] ?>" class="btn btn-sm btn-outline-primary mt-2">
-                        ✏️ Edit Article
+                        Edit Article
                     </a>
                 </li>
             <?php endforeach; ?>
         </ul>
     </div>
+    <!-- END: Articles Page -->
+    <?php
+    include('../components/footer.php');
+    ?>
+    <script src="../../public/js/forceReload.js"></script>
+
 </body>
 
 </html>

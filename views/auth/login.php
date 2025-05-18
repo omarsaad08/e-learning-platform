@@ -1,22 +1,26 @@
 <?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
 require_once  '../../controllers/AuthController.php';
+$auth = new AuthController();
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $auth = new AuthController();
-    $auth->login($_POST['email'], $_POST['password']);
+    $response = $auth->login($_POST['email'], $_POST['password'], isset($_POST['remember']));
 }
+session_unset();
+session_destroy();
+setcookie('auth_token', '', time() - 3600, '/');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <?php
+    include '../components/headImports.php';
+    ?>
     <title>Login Form</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../public/css/login.css">
 </head>
 
@@ -33,8 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                     <label for="password">Password</label>
                 </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                    <label class="form-check-label" for="remember">Remember me</label>
+                </div>
                 <button type="submit" class="btn btn-light w-100 mb-3">Login</button>
                 <p>Don't have an account? <a href="signup.php" class="text-white fw-bold">Register</a></p>
+                <span class="error <?= isset($response) ? 'd-block' : ''; ?>"><?php echo isset($response) ? $response : ''; ?></span>
             </form>
 
         </div>

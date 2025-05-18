@@ -49,4 +49,12 @@ class ArticleController
     {
         return $this->articleModel->getArticleById($id);
     }
+    public function updateArticle($id, $title, $content)
+    {
+        return $this->articleModel->update($id, $title, $content);
+    }
+    public function getAll()
+    {
+        return $this->articleModel->getAll();
+    }
 }

@@ -36,4 +36,19 @@ class Enrollment
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$studentId, $courseId]);
     }
+
+    public function getCoursesByStudent($studentId)
+    {
+        $sql = "
+            SELECT courses.*
+            FROM enrollments
+            INNER JOIN courses ON enrollments.course_id = courses.id
+            WHERE enrollments.student_id = ?
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$studentId]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

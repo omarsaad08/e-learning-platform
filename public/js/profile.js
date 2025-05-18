@@ -12,13 +12,6 @@ const savePasswordBtn = document.getElementById('savePasswordBtn');
 const saveUsernameBtn = document.getElementById('saveUsernameBtn');
 const newUsernameInput = document.getElementById('newUsername');
 
-// Mock user data (in a real app, this would come from a backend)
-const userData = {
-    name: 'Jane Smith',
-    title: 'Web Development Student',
-    email: 'jane.smith@example.com',
-    coursesCompleted: 12
-};
 
 // Load user data
 function loadUserData() {
@@ -27,18 +20,6 @@ function loadUserData() {
     userEmail.textContent = userData.email;
     coursesCompleted.textContent = userData.coursesCompleted;
 }
-
-// Handle profile image change
-imageUpload.addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            profileImage.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
-});
 
 // Handle username change
 editNameBtn.addEventListener('click', () => {
@@ -83,7 +64,7 @@ savePasswordBtn.addEventListener('click', () => {
 });
 
 // Logout function
-logoutBtn.addEventListener('click', function() {
+logoutBtn.addEventListener('click', function () {
     if (confirm('Are you sure you want to logout?')) {
         // In a real app, you would clear session/local storage and redirect
         alert('Logged out successfully!');

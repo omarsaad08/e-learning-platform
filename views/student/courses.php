@@ -1,8 +1,15 @@
 <?php
+session_start();
+require_once __DIR__ . '/../../controllers/auth_check.php';
+include('../../controllers/CourseController.php');
+include('../../controllers/EnrollmentController.php');
+require_once('../../controllers/AuthController.php');
+
+$coursesController = new CourseController();
+$enrollmentController = new EnrollmentsController();
+$userController = new AuthController();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  session_start();
-  require_once '../../controllers/EnrollmentController.php';
-  $enrollmentController = new EnrollmentsController();
   // var_dump($_POST['course_id']);
   if ($_POST['course_id']) {
     $enrollmentController->enroll($_POST['course_id'], $_SESSION['user_id']);
@@ -18,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   ?>
   <title>Courses</title>
   <link rel="stylesheet" href="../../public/css/courses.css">
-</head>
 </head>
 
 <body>
@@ -36,12 +42,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Sidebar Filters -->
     <aside class="sidebar" id="sidebar">
       <h2>Filter Courses</h2>
+      <?php
+      $categories = $coursesController->getAllCategories(); // Add this above the sidebar
+      ?>
+
       <div class="filter-group">
         <h4>Category</h4>
-        <label><input type="checkbox" value="web"> Web Development</label>
-        <label><input type="checkbox" value="data"> Data Science</label>
-        <label><input type="checkbox" value="ai"> AI & ML</label>
+        <?php foreach ($categories as $cat): ?>
+          <label>
+            <input type="checkbox" class="category-filter" value="<?= strtolower($cat['name']) ?>">
+            <?= htmlspecialchars($cat['name']) ?>
+          </label>
+        <?php endforeach; ?>
       </div>
+
       <div class="filter-group">
         <h4>Level</h4>
         <label><input type="checkbox" value="beginner"> Beginner</label>
@@ -53,10 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Main Content -->
     <main class="content">
       <div class="topbar">
-        <h1>All Courses</h1>
-        <input type="text" placeholder="Search courses..." class="search-box">
+        <h1 style="font-weight:700;">All Courses</h1>
+        <input type="text" placeholder="Search articles..." class="search-box">
       </div>
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
           <?php if (isset($_GET['message'])): ?>
             <div class="alert alert-info text-center">
@@ -65,25 +79,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <?php endif; ?>
 
           <?php
-          include('../../controllers/CourseController.php');
-          include('../../controllers/EnrollmentController.php');
-          $coursesController = new CourseController();
-          $enrollmentController = new EnrollmentsController();
+
           $courses = $coursesController->getAllCourses();
 
           if (count($courses) > 0) {
             $currentUserId = $_SESSION['user_id'] ?? null;
             foreach ($courses as $course) {
               $title = htmlspecialchars($course['title']);
-              $instructor = htmlspecialchars($course['instructor_name'] ?? 'N/A');
+              $instructorId = $course['teacher_id'] ?? null;
+              $instructor = 'N/A';
+              $instructorEmail = '';
+
+              if ($instructorId) {
+                $instructorData = $userController->getUserById($instructorId);
+                if ($instructorData) {
+                  $instructor = htmlspecialchars($instructorData['name']);
+                }
+              }
+
               $level = htmlspecialchars($course['level']);
               $category = htmlspecialchars($course['category']);
               $image = htmlspecialchars($course['thumbnail']);
-              $rating = floatval($course['rating']);
-              $stars = str_repeat("⭐️", floor($rating));
-              if (fmod($rating, 1) >= 0.5) {
-                $stars .= "✨";
-              }
 
 
               // Check if the user is enrolled in this course
@@ -92,26 +108,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $isEnrolled = $enrollmentController->isEnrolled($course['id'], $currentUserId);
               }
 
-              echo "
-      <div class='col-lg-4 col-md-6 col-12 mb-4'>
-        <div class='card h-100' data-category='$category' data-level='$level'>
-          <img src='$image' class='card-img-top' alt='$title' />
-          <div class='card-body'>
-            <h5 class='card-title'>$title</h5>
-            <p class='card-text'>Instructor: $instructor</p>
-            <div class='rating'>$stars</div>
-            <span class='badge bg-secondary'>$level</span>
-          </div>
-      <div class='card-footer text-center'>";
+              echo "<div class='col-lg-4 col-md-6 col-12 mb-4'>
+                      <div class='card h-100' data-category='$category' data-level='$level'>
+                        <img src='$image' class='card-img-top' alt='$title' />
+                        <div class='card-body'>
+                          <h5 class='card-title'>$title</h5>
+                          <p class='card-text'>Instructor: $instructor</p>
+                          <span class='badge bg-secondary'>$level</span>
+                        </div>
+                    <div class='card-footer text-center'>";
               if ($isEnrolled) {
-                echo "<a class=\"watch-enroll\" href='videos.php?course_id= {$course['id']} ?>'>Watch Course</a>";
+                echo "<a class=\"watch-enroll\" href='videos.php?course_id= {$course['id']}'>Watch Course</a>";
               } else {
                 echo "
-    <form action=\"\" method=\"POST\">
-        <input type=\"hidden\" name=\"course_id\" value=\"{$course['id']}\">
-        <button type=\"submit\" class=\"watch-enroll\">Enroll</button>
-    </form>
-";
+                    <form action=\"\" method=\"POST\">
+                        <input type=\"hidden\" name=\"course_id\" value=\"{$course['id']}\">
+                        <button type=\"submit\" class=\"watch-enroll\">Enroll</button>
+                    </form>
+                    ";
               }
               echo "</div></div></div>";
             }
@@ -121,14 +135,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           ?>
         </div>
       </div>
+    </main>
+  </div>
+  <!-- END: Articles Page -->
+  <?php
+  include('../components/footer.php');
+  ?>
 
-      <!-- END: Articles Page -->
-      <?php
-      include('../components/footer.php');
-      ?>
 
-
-      <script src="../../public/js/courses.js"></script>
+  <script src="../../public/js/courses.js"></script>
+  <script src="../../public/js/forceReload.js"></script>
 </body>
 
 </html>

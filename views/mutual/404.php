@@ -1,11 +1,15 @@
+<?php
+http_response_code(404);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <?php
+  include_once "./views/mutual/headImports.php";
+  ?>
   <title>404 Page Not Found</title>
-  <link rel="stylesheet" href="../public/css/error.css" />
+  <link rel="stylesheet" href="/e-learning-platform/public/css/error.css" />
 </head>
 
 <body>
@@ -17,8 +21,7 @@
       is broken, report a problem.
     </p>
     <div class="buttons">
-      <button onclick="goHome()"><a href="home.php"></a>RETURN HOME</button>
-      <button onclick="reportProblem()">REPORT PROBLEM</button>
+      <button><a href="/e-learning-platform/">RETURN HOME</a></button>
     </div>
   </div>
 
