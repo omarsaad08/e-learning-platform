@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../controllers/auth_check.php';
+require_once __DIR__ . '/../../controllers/teacher_check.php';
 session_start();
 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'teacher') {

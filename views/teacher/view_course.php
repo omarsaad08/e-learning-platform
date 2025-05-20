@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../controllers/auth_check.php';
+require_once __DIR__ . '/../../controllers/teacher_check.php';
 session_start();
 require_once '../../controllers/LessonController.php';
 require_once '../../controllers/CourseController.php';

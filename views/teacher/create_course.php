@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../controllers/auth_check.php';
+require_once __DIR__ . '/../../controllers/teacher_check.php';
 require_once '../../controllers/CourseController.php';
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $controller = new CourseController();
   $result = $controller->createCourse(
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <img id="previewImage" class="mt-3 img-thumbnail" style="max-height: 200px; display: none;" />
         </div>
 
-        <input type="submit" class="btn btn-primary">
+        <input type="submit" class="btn btn-primary" value="Create Course" />
 
         <span class="error <?= isset($result['error']) ? 'd-block' : ''; ?>"><?php echo isset($result['error']) ? $result['error'] : ''; ?></span>
       </form>

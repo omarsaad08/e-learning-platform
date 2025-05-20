@@ -3,6 +3,7 @@ require_once __DIR__ . '/../../controllers/auth_check.php';
 require_once('../../controllers/LessonController.php');
 require_once('../../controllers/CourseController.php');
 require_once('../../controllers/AuthController.php');
+require_once('../../controllers/EnrollmentController.php');
 
 $course_id = isset($_GET['course_id']) ? intval($_GET['course_id']) : 0;
 
@@ -13,6 +14,12 @@ $courseController = new CourseController();
 $course = $courseController->getCourseById($course_id);
 $authController = new AuthController();
 $teacher = $authController->getUserById($course['teacher_id']);
+$enrollmentController = new EnrollmentsController();
+$isEnrolled = $enrollmentController->isEnrolled($course_id, $_SESSION['user_id']);
+if (!$isEnrolled) {
+  header("Location: ./courses.php?message=You are not enrolled in this course.");
+  exit();
+}
 ?>
 
 <!DOCTYPE html>

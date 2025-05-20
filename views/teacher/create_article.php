@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../controllers/auth_check.php';
+require_once __DIR__ . '/../../controllers/teacher_check.php';
 require_once '../../controllers/ArticleController.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

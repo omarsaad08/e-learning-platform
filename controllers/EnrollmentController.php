@@ -32,7 +32,6 @@ class EnrollmentsController
         return $enrollment->checkEnrollment($courseId, $studentId);
     }
 
-    // Optionally, you can add a function to handle unenrollment
     public function unenroll($courseId, $studentId)
     {
         $enrollment = new Enrollment();
