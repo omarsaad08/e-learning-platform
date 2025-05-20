@@ -51,9 +51,7 @@ $courses = $data['courses'];
                             </form>
                             <div class="username-container">
                                 <h2 class="card-title mb-0" id="userName"><?= htmlspecialchars($user['name']) ?></h2>
-                                <button class="btn btn-link btn-sm text-decoration-none" id="editNameBtn">
-                                    <i class="bi bi-pencil"></i> Edit
-                                </button>
+
                             </div>
                             <p id="userTitle">
                                 <?= $user['role'] === 'student' ? 'Student' : 'Instructor' ?>

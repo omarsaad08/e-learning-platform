@@ -1,9 +1,8 @@
 body {
-
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   flex: 1;
- 
-  background-image: url('../../public/images/home-background.svg');
+
+  background-image: url("../../public/images/home-background.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed; /* يجعل الخلفية ثابتة عند التمرير */
@@ -23,7 +22,6 @@ body {
 .navbar {
   background-color: rgba(0, 0, 0, 0.8); /* خلفية شفافة */
   z-index: 1000;
-
 }
 /* إزالة الـ margin الافتراضي في الـ row */
 .row {
@@ -35,160 +33,159 @@ body {
   padding: 0 !important;
 }
 
-    
-  
+.sidebar {
+  background-color: #1a1a1d;
+  color: white;
 
-    .sidebar {
-      background-color: #1A1A1D;
-      color: white;
-      min-height: 100vh;
-      padding: 20px;
-    }
+  padding: 20px;
+}
 
-    .playlist-item {
-      background-color: white;
-      color: #1A1A1D;
-      padding: 10px 15px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background 0.3s ease, transform 0.2s;
-      cursor: pointer;
-    }
+.playlist-item {
+  background-color: white;
+  color: #1a1a1d;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s;
+  cursor: pointer;
+}
 
-    .playlist-item:hover {
-      background-color: #e2e2e2;
-    }
+.playlist-item:hover {
+  background-color: #e2e2e2;
+}
 
-    .playlist-active {
-      background-color: #3B1C32;
-      color: white;
-      border-left: 4px solid #0d6efd;
-    }
+.playlist-active {
+  background-color: #3b1c32;
+  color: white;
+  border-left: 4px solid #0d6efd;
+}
 
-    .content-area {
-      background-image: url('../../public/images/your-bg.jpg'); /* Replace with your actual image */
-      background-size: cover;
-      background-position: center;
-      padding: 40px 20px;
-      min-height: 100vh;
-    }
+.content-area {
+  background-image: url("../../public/images/your-bg.jpg"); /* Replace with your actual image */
+  background-size: cover;
+  background-position: center;
+  padding: 40px 20px;
+}
+@media (min-width: 768px) {
+  .content-area {
+    min-height: 100vh;
+  }
+}
+.video-player {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 30px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
 
-    .video-player {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto 30px;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    }
+iframe {
+  width: 100%;
+  height: 480px;
+  border: none;
+}
 
-    iframe {
-      width: 100%;
-      height: 480px;
-      border: none;
-    }
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
+.btn {
+  background-color: #fff;
+  color: #1a1a1d;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
 
-    .btn {
-      background-color: #fff;
-      color: #1A1A1D;
-      border: 1px solid #ccc;
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
+.btn:hover {
+  background-color: #3b1c32;
+  color: white;
+}
 
-    .btn:hover {
-      background-color: #3B1C32;
-      color: white;
-    }
+#mark-complete-btn {
+  background-color: #3b1c32;
+  color: white;
+}
 
-    #mark-complete-btn {
-      background-color: #3B1C32;
-      color: white;
-    }
+#mark-complete-btn:hover {
+  background-color: #571c3f;
+}
 
-    #mark-complete-btn:hover {
-      background-color: #571c3f;
-    }
+@media (max-width: 768px) {
+  iframe {
+    height: 260px;
+  }
 
-    @media (max-width: 768px) {
-      iframe {
-        height: 260px;
-      }
+  .btn {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
 
-      .btn {
-        font-size: 11px;
-        padding: 5px 10px;
-      }
+  .buttons {
+    gap: 10px;
+  }
+}
+.playlist-item.completed {
+  background-color: #322330; /* لون رايق يتماشى مع الخلفية */
+  border-left: 4px solid #0d6efd; /* خط جانبي */
+  color: #ccc; /* لون النص */
+  position: relative;
+}
 
-      .buttons {
-        gap: 10px;
-      }
-    }
-    .playlist-item.completed {
-      background-color: #322330; /* لون رايق يتماشى مع الخلفية */
-      border-left: 4px solid #0d6efd; /* خط جانبي */
-      color: #ccc; /* لون النص */
-      position: relative;
-    }
-    
-    .playlist-item.completed::after {
-      content: '✓';
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 16px;
-      color: #28a745;
-    }
-    
-    .playlist-item.completed:hover {
-      background-color: #3a2a3a;
-      transform: translateX(3px);
-    }
-    
-    .toggle-sidebar-btn {
-      display: none;
-      background-color: #3B1C32;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 6px;
-      font-size: 16px;
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1100;
-      cursor: pointer;
-    }
-    
-    /* السايد بار مخفية */
-    .sidebar.hidden {
-      display: none;
-    }
-    
-    /* إظهار الزر في الشاشات الصغيرة */
-    @media (max-width: 768px) {
-      .toggle-sidebar-btn {
-        display: block;
-      }
-    }
-    .sidebar {
-      transition: transform 0.3s ease;
-    }
-    
-    .sidebar.hidden {
-      transform: translateX(-100%);
-    }
-        
+.playlist-item.completed::after {
+  content: "✓";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #28a745;
+}
+
+.playlist-item.completed:hover {
+  background-color: #3a2a3a;
+  transform: translateX(3px);
+}
+
+.toggle-sidebar-btn {
+  display: none;
+  background-color: #3b1c32;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 16px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1100;
+  cursor: pointer;
+}
+
+/* السايد بار مخفية */
+.sidebar.hidden {
+  display: none;
+}
+
+/* إظهار الزر في الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .toggle-sidebar-btn {
+    display: block;
+  }
+}
+.sidebar {
+  transition: transform 0.3s ease;
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
